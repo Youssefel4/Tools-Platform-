@@ -1,0 +1,6 @@
+# Ensure static files are accessible
+/sitemap.xml  /sitemap.xml  200
+/robots.txt   /robots.txt   200
+
+# Handle React Router (SPA) - Send everything else to index.html
+/*  /index.html  200
