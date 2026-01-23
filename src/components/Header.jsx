@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   FaCalculator, FaStickyNote, FaExchangeAlt, FaFont, FaLock,
-  FaClock, FaPalette, FaCheckSquare, FaQrcode, FaLink, FaFileUpload,
-  FaHome, FaInfoCircle, FaEnvelope, FaUserSecret, FaFileContract
+  FaClock, FaPalette, FaCheckSquare, FaQrcode, FaFileUpload,
+  FaHome, FaInfoCircle, FaEnvelope, FaUserSecret, FaFileContract, FaImage
 } from 'react-icons/fa';
 
 const Header = ({ darkMode, setDarkMode }) => {
@@ -28,7 +28,7 @@ const Header = ({ darkMode, setDarkMode }) => {
     { name: 'Color Picker', href: '/color-picker', icon: FaPalette },
     { name: 'To-Do List', href: '/todo-list', icon: FaCheckSquare },
     { name: 'QR Generator', href: '/qr-generator', icon: FaQrcode },
-    { name: 'URL Shortener', href: '/url-shortener', icon: FaLink },
+    { name: 'Image Resizer', href: '/image-resizer', icon: FaImage },
     { name: 'File Converter', href: '/file-converter', icon: FaFileUpload },
   ];
 

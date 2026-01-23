@@ -65,21 +65,23 @@ export const supabaseHelpers = {
     async saveNote(note) {
         const notes = this._getItems(STORAGE_KEYS.NOTES);
         const existingIndex = notes.findIndex(n => n.id === note.id);
+        let resultNote;
 
         if (existingIndex >= 0) {
-            notes[existingIndex] = { ...note, updatedAt: new Date().toISOString() };
+            resultNote = { ...note, updatedAt: new Date().toISOString() };
+            notes[existingIndex] = resultNote;
         } else {
-            const newNote = {
+            resultNote = {
                 ...note,
                 id: note.id || Date.now(),
                 createdAt: new Date().toISOString(),
                 updatedAt: new Date().toISOString()
             };
-            notes.unshift(newNote);
+            notes.unshift(resultNote);
         }
 
         this._saveItems(STORAGE_KEYS.NOTES, notes);
-        return mockAsync([notes.find(n => n.id === note.id || n.id === Date.now())]).then(res => res.data);
+        return mockAsync([resultNote]).then(res => res.data);
     },
 
     async deleteNote(noteId) {
@@ -97,20 +99,22 @@ export const supabaseHelpers = {
     async saveTodo(todo) {
         const todos = this._getItems(STORAGE_KEYS.TODOS);
         const existingIndex = todos.findIndex(t => t.id === todo.id);
+        let resultTodo;
 
         if (existingIndex >= 0) {
-            todos[existingIndex] = { ...todo, updatedAt: new Date().toISOString() };
+            resultTodo = { ...todo, updatedAt: new Date().toISOString() };
+            todos[existingIndex] = resultTodo;
         } else {
-            const newTodo = {
+            resultTodo = {
                 ...todo,
                 id: todo.id || Date.now(),
                 createdAt: new Date().toISOString()
             };
-            todos.unshift(newTodo);
+            todos.unshift(resultTodo);
         }
 
         this._saveItems(STORAGE_KEYS.TODOS, todos);
-        return mockAsync([todos.find(t => t.id === todo.id || t.id === Date.now())]).then(res => res.data);
+        return mockAsync([resultTodo]).then(res => res.data);
     },
 
     async deleteTodo(todoId) {

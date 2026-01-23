@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   FaCalculator, FaStickyNote, FaExchangeAlt, FaFont, FaLock,
-  FaClock, FaPalette, FaCheckSquare, FaQrcode, FaLink, FaFileUpload
+  FaClock, FaPalette, FaCheckSquare, FaQrcode, FaFileUpload, FaImage
 } from 'react-icons/fa';
 import SEO from '../components/SEO';
 
@@ -17,7 +17,7 @@ const Home = () => {
     { name: 'Color Picker', description: 'Pick colors and get HEX and RGB codes', icon: FaPalette, href: '/color-picker', color: 'bg-pink-500' },
     { name: 'To-Do List', description: 'Manage your tasks with a simple to-do list', icon: FaCheckSquare, href: '/todo-list', color: 'bg-teal-500' },
     { name: 'QR Generator', description: 'Create custom QR codes for URLs, text, and more', icon: FaQrcode, href: '/qr-generator', color: 'bg-orange-500' },
-    { name: 'URL Shortener', description: 'Create short, memorable links for long URLs', icon: FaLink, href: '/url-shortener', color: 'bg-cyan-500' },
+    { name: 'Image Resizer', description: 'Resize images locally with no quality loss', icon: FaImage, href: '/image-resizer', color: 'bg-cyan-500' },
     { name: 'File Converter', description: 'Convert files between different formats', icon: FaFileUpload, href: '/file-converter', color: 'bg-lime-500' }
   ];
 

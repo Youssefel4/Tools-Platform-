@@ -17,9 +17,8 @@ import CountdownTimer from './components/CountdownTimer';
 import ColorPicker from './components/ColorPicker';
 import TodoList from './components/TodoList';
 import QRCodeGenerator from './components/QRCodeGenerator';
-import URLShortener from './components/URLShortener';
+import ImageResizer from './components/ImageResizer';
 import FileConverter from './components/FileConverter';
-import RedirectHandler from './components/RedirectHandler';
 
 import { supabase } from './config/supabase';
 import { setEncryptedItem, getEncryptedItem } from './utils/encryption';
@@ -98,9 +97,8 @@ function App() {
               <Route path="/color-picker" element={<ColorPicker />} />
               <Route path="/todo-list" element={<TodoList session={session} />} />
               <Route path="/qr-generator" element={<QRCodeGenerator />} />
-              <Route path="/url-shortener" element={<URLShortener />} />
+              <Route path="/image-resizer" element={<ImageResizer />} />
               <Route path="/file-converter" element={<FileConverter />} />
-              <Route path="/s/:code" element={<RedirectHandler />} />
             </Routes>
           </main>
           <Footer />
