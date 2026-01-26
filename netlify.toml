@@ -23,6 +23,20 @@
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://api.qrserver.com; frame-ancestors 'none';"
     
+# Block access to source maps
+[[headers]]
+  for = "/*.map"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+    Cache-Control = "no-store, no-cache, must-revalidate"
+    
+# Block access to source directories (if somehow exposed)
+[[headers]]
+  for = "/src/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+    Cache-Control = "no-store"
+    
 # Cache static assets
 [[headers]]
   for = "/static/*"
