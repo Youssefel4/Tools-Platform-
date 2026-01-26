@@ -152,9 +152,10 @@ const TodoList = ({ session }) => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <SEO
-        title="To-Do List"
-        description="Simple and effective to-do list manager to track your tasks and productivity."
-        keywords="todo list, task manager, productivity, checklist, task tracker"
+        title="Todo List"
+        description="Free online todo list manager - create, organize, and track your tasks. Simple and effective task management tool to boost your productivity. Works offline with local storage."
+        keywords="todo list, task manager, to do list, productivity tool, task tracker, checklist, task organizer, free todo app, productivity app, task management"
+        url="https://platformtools.netlify.app/todo-list"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">

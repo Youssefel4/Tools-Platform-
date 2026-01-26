@@ -3,6 +3,7 @@ import { supabaseHelpers } from '../config/supabase';
 import { validateText, validateEmail } from '../utils/validation';
 import { sanitizeInput } from '../utils/sanitization';
 import { canExecute } from '../utils/rateLimit';
+import SEO from '../components/SEO';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -67,6 +68,12 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-6 sm:py-8">
+      <SEO
+        title="Contact Us"
+        description="Get in touch with Tools Platform. Send us your feedback, questions, or suggestions. We'd love to hear from you!"
+        keywords="contact, support, feedback, help, tools platform, customer service"
+        url="https://platformtools.netlify.app/contact"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6 sm:mb-8">
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">

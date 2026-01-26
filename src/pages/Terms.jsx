@@ -1,8 +1,15 @@
 import React from 'react';
+import SEO from '../components/SEO';
 
 const Terms = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
+      <SEO
+        title="Terms of Service"
+        description="Read the Terms of Service for Tools Platform. Understand the rules and guidelines for using our free online tools and utilities."
+        keywords="terms of service, terms and conditions, user agreement, legal, terms"
+        url="https://platformtools.netlify.app/terms"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">

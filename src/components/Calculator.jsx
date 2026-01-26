@@ -117,8 +117,9 @@ const Calculator = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <SEO
         title="Calculator"
-        description="Free online scientific and basic calculator with trigonometry, log, and power functions."
-        keywords="calculator, scientific calculator, online calculator, math tools"
+        description="Free online calculator - basic and scientific calculator with trigonometry, logarithms, powers, and advanced math functions. Perfect for students, professionals, and everyday calculations."
+        keywords="calculator, scientific calculator, online calculator, math calculator, trigonometry calculator, free calculator, basic calculator, advanced calculator, math tools"
+        url="https://platformtools.netlify.app/calculator"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">

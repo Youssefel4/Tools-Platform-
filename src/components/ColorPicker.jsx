@@ -158,8 +158,9 @@ const ColorPicker = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <SEO
         title="Color Picker"
-        description="Advanced Color Picker with Image Color Extraction, HEX, RGB, and HSL support."
-        keywords="color picker, image color picker, hex code, rgb code, hsl code"
+        description="Free online color picker - extract colors from images, get HEX, RGB, HSL, and HSV codes. Advanced color picker tool for designers and developers with color palette generator."
+        keywords="color picker, image color picker, hex color picker, rgb color picker, hsl color picker, color extractor, color palette generator, color code generator, design tools"
+        url="https://platformtools.netlify.app/color-picker"
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">

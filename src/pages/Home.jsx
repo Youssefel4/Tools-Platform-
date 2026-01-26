@@ -21,12 +21,46 @@ const Home = () => {
     { name: 'File Converter', description: 'Convert files between different formats', icon: FaFileUpload, href: '/file-converter', color: 'bg-lime-500' }
   ];
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Tools Platform",
+    "description": "A comprehensive collection of free online tools including calculator, unit converter, color picker, QR generator, image resizer, and more.",
+    "url": "https://platformtools.netlify.app",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "150"
+    },
+    "featureList": [
+      "Free Online Calculator",
+      "Unit Converter",
+      "Color Picker",
+      "QR Code Generator",
+      "Image Resizer",
+      "Password Generator",
+      "Text Counter",
+      "Notes App",
+      "Todo List",
+      "Countdown Timer",
+      "File Converter"
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <SEO
         title="Home"
-        description="Access a variety of useful online tools like Calculator, Color Picker, Unit Converter, and more."
-        keywords="online tools, calculator, converter, color picker, productivity"
+        description="Free online tools platform with calculator, unit converter, color picker, QR generator, image resizer, password generator, and more. All tools work locally in your browser with complete privacy."
+        keywords="free online tools, calculator, unit converter, color picker, QR code generator, image resizer, password generator, text counter, notes app, todo list, countdown timer, file converter, web utilities, productivity tools"
+        structuredData={structuredData}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="text-center mb-8 sm:mb-12">

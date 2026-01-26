@@ -61,8 +61,9 @@ const PasswordGenerator = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <SEO
         title="Password Generator"
-        description="Generate strong, secure passwords with customizable length and character sets."
-        keywords="password generator, secure password, random password, password strength"
+        description="Free secure password generator - create strong, random passwords with customizable length, uppercase, lowercase, numbers, and special characters. Generate passwords up to 128 characters."
+        keywords="password generator, secure password generator, random password, strong password, password creator, secure password maker, password strength checker, free password generator"
+        url="https://platformtools.netlify.app/password-generator"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">

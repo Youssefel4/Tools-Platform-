@@ -55,8 +55,9 @@ const TextCounter = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <SEO
         title="Text Counter"
-        description="Count words, characters, sentences, paragraphs, and estimate reading time."
-        keywords="word counter, character counter, text analysis, reading time estimator"
+        description="Free online text counter - count words, characters (with and without spaces), sentences, paragraphs, and estimate reading time. Perfect for writers, students, and content creators."
+        keywords="word counter, character counter, text counter, word count, character count, reading time calculator, text analysis tool, writing tool, content analysis"
+        url="https://platformtools.netlify.app/text-counter"
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">

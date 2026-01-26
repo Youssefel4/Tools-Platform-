@@ -93,8 +93,9 @@ const UnitConverter = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <SEO
         title="Unit Converter"
-        description="Convert easily between units of length, weight, temperature, and more."
-        keywords="unit converter, length converter, weight converter, temperature converter, measurement tools"
+        description="Free online unit converter - convert between units of length, weight, temperature, volume, and area. Fast, accurate conversions for meters, feet, pounds, kilograms, Celsius, Fahrenheit, and more."
+        keywords="unit converter, length converter, weight converter, temperature converter, measurement converter, metric converter, imperial converter, unit conversion tool, measurement tools"
+        url="https://platformtools.netlify.app/unit-converter"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">

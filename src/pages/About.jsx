@@ -4,6 +4,12 @@ import SEO from '../components/SEO';
 const About = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-6 sm:py-8">
+      <SEO
+        title="About Us"
+        description="Learn about Tools Platform - our mission to provide free, accessible, and powerful web tools. Discover our values, features, and commitment to privacy."
+        keywords="about, mission, values, free tools, privacy-first, web tools, online utilities"
+        url="https://platformtools.netlify.app/about"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6 sm:mb-8">
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">

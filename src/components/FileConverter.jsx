@@ -204,8 +204,9 @@ const FileConverter = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <SEO
         title="File Converter"
-        description="Convert files locally in your browser. Supports Image to PNG/JPG/WebP, and JSON/CSV conversions."
-        keywords="file converter, image converter, json to csv, local file conversion, privacy first"
+        description="Free online file converter - convert images (PNG, JPG, WEBP), JSON to CSV, and more file formats locally in your browser. Privacy-first file conversion with no server uploads."
+        keywords="file converter, image converter, json to csv converter, file format converter, png to jpg, jpg to png, webp converter, csv converter, privacy file converter, local file conversion"
+        url="https://platformtools.netlify.app/file-converter"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">

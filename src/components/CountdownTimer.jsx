@@ -87,8 +87,9 @@ const CountdownTimer = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <SEO
         title="Countdown Timer"
-        description="Simple online countdown timer with alarm. Set hours, minutes, and seconds."
-        keywords="countdown timer, online timer, alarm, stopwatch, time tracker"
+        description="Free online countdown timer with alarm - set hours, minutes, and seconds. Perfect for cooking, workouts, meetings, and time management. Simple and easy to use timer."
+        keywords="countdown timer, online timer, alarm timer, stopwatch, time tracker, cooking timer, workout timer, free timer, countdown clock, timer app"
+        url="https://platformtools.netlify.app/countdown-timer"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">

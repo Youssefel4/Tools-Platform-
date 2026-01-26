@@ -1,8 +1,15 @@
 import React from 'react';
+import SEO from '../components/SEO';
 
 const Privacy = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
+      <SEO
+        title="Privacy Policy"
+        description="Read our Privacy Policy to understand how Tools Platform collects, uses, and protects your data. We prioritize your privacy and data security."
+        keywords="privacy policy, data protection, privacy, security, GDPR, data security, user privacy"
+        url="https://platformtools.netlify.app/privacy"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">

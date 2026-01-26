@@ -133,8 +133,9 @@ const Notes = ({ session }) => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <SEO
         title="Notes App"
-        description="Private, local-first notes app. Securely store your thoughts and ideas in your browser."
-        keywords="notes, notepad, online notes, local storage notes, privacy"
+        description="Free online notes app - create, edit, and manage your notes with local storage. Private, secure, and works offline. Perfect for personal notes, ideas, and reminders."
+        keywords="notes app, online notepad, note taking app, local notes, privacy notes, secure notes, offline notes, note organizer, digital notebook, free notes"
+        url="https://platformtools.netlify.app/notes"
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">

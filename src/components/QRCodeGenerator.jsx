@@ -91,8 +91,9 @@ const QRCodeGenerator = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-6 sm:py-8">
       <SEO
         title="QR Code Generator"
-        description="Create free QR codes for URLs, text, WiFi, and email. Customizable colors and size."
-        keywords="qr code generator, create qr code, free qr code, custom qr code"
+        description="Free QR code generator - create custom QR codes for URLs, text, WiFi networks, email, phone numbers, and more. Customize colors, size, and download high-quality QR codes instantly."
+        keywords="qr code generator, create qr code, free qr code, custom qr code, qr code maker, qr code creator, wifi qr code, url qr code, barcode generator"
+        url="https://platformtools.netlify.app/qr-generator"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6 sm:mb-8">
