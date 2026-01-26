@@ -68,8 +68,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/notes" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
-                  Notes App
+                <Link to="/unit-converter" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
+                  Unit Converter
                 </Link>
               </li>
               <li>
@@ -78,8 +78,18 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/todo-list" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
-                  To-Do List
+                <Link to="/qr-generator" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
+                  QR Generator
+                </Link>
+              </li>
+              <li>
+                <Link to="/image-resizer" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
+                  Image Resizer
+                </Link>
+              </li>
+              <li>
+                <Link to="/file-converter" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
+                  File Converter
                 </Link>
               </li>
             </ul>
