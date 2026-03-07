@@ -170,7 +170,7 @@ const TextCounter = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="text-center">
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                {(words / sentences).toFixed(1)}
+                {sentences > 0 ? (words / sentences).toFixed(1) : 0}
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 Avg Words/Sentence
@@ -178,7 +178,7 @@ const TextCounter = () => {
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                {(characters / words).toFixed(1)}
+                {words > 0 ? (characters / words).toFixed(1) : 0}
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 Avg Characters/Word
