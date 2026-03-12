@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import {
   FaCalculator, FaStickyNote, FaExchangeAlt, FaFont, FaLock,
   FaClock, FaPalette, FaCheckSquare, FaQrcode, FaFileUpload,
-  FaHome, FaInfoCircle, FaEnvelope, FaUserSecret, FaFileContract, FaImage
+  FaHome, FaInfoCircle, FaEnvelope, FaUserSecret, FaFileContract, FaImage, FaGamepad
 } from 'react-icons/fa';
 
 const Header = ({ darkMode, setDarkMode }) => {
@@ -30,17 +30,21 @@ const Header = ({ darkMode, setDarkMode }) => {
     { name: 'QR Generator', href: '/qr-generator', icon: FaQrcode },
     { name: 'Image Resizer', href: '/image-resizer', icon: FaImage },
     { name: 'File Converter', href: '/file-converter', icon: FaFileUpload },
+    { name: 'Mini Games', href: '/mini-games', icon: FaGamepad },
   ];
 
   const isActive = (path) => location.pathname === path;
 
   return (
-    <header className="bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50">
+    <header className="glass sticky top-0 z-50 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex-shrink-0">
-            <h1 className="text-2xl font-bold text-blue-600 dark:text-blue-400">Tools Platform</h1>
+          <Link to="/" className="flex-shrink-0 flex items-center gap-2 group">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-105 transition-transform duration-300">
+              T
+            </div>
+            <h1 className="text-2xl font-extrabold text-gradient">Tools Platform</h1>
           </Link>
 
           {/* Desktop Nav */}
@@ -49,9 +53,9 @@ const Header = ({ darkMode, setDarkMode }) => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive(item.href)
-                  ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
-                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                className={`flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${isActive(item.href)
+                  ? 'bg-blue-600 text-white shadow-md'
+                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:scale-105'
                   }`}
               >
                 <item.icon className="mr-2" size={16} />
@@ -64,10 +68,10 @@ const Header = ({ darkMode, setDarkMode }) => {
           <div className="hidden md:flex items-center space-x-4">
             {/* Tools Dropdown */}
             <div className="relative group">
-              <button className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-                Tools ▼
+              <button className="px-4 py-2 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 flex items-center gap-1">
+                Tools <span className="text-xs">▼</span>
               </button>
-              <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="absolute right-0 mt-2 w-56 rounded-xl shadow-xl glass opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right group-hover:scale-100 scale-95 z-50">
                 <div className="py-1">
                   {tools.map((tool) => {
                     const Icon = tool.icon;
@@ -75,7 +79,7 @@ const Header = ({ darkMode, setDarkMode }) => {
                       <Link
                         key={tool.name}
                         to={tool.href}
-                        className="flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                        className="flex items-center px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition-colors first:rounded-t-xl last:rounded-b-xl"
                       >
                         <Icon className="mr-2" size={16} />
                         {tool.name}

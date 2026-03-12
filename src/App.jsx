@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
@@ -19,6 +20,7 @@ import TodoList from './components/TodoList';
 import QRCodeGenerator from './components/QRCodeGenerator';
 import ImageResizer from './components/ImageResizer';
 import FileConverter from './components/FileConverter';
+import MiniGames from './components/MiniGames';
 
 import { supabase } from './config/supabase';
 import { setEncryptedItem, getEncryptedItem } from './utils/encryption';
@@ -79,6 +81,7 @@ function App() {
   return (
     <HelmetProvider>
       <Router>
+        <ScrollToTop />
         <div className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''}`}>
           <Header darkMode={darkMode} setDarkMode={setDarkMode} />
           <main className="flex-grow">
@@ -99,6 +102,7 @@ function App() {
               <Route path="/qr-generator" element={<QRCodeGenerator />} />
               <Route path="/image-resizer" element={<ImageResizer />} />
               <Route path="/file-converter" element={<FileConverter />} />
+              <Route path="/mini-games" element={<MiniGames />} />
             </Routes>
           </main>
           <Footer />

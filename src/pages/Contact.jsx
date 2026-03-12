@@ -74,19 +74,20 @@ const Contact = () => {
         keywords="contact, support, feedback, help, tools platform, customer service"
         url="https://platformtools.netlify.app/contact"
       />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-6 sm:mb-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            Contact Us
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-10 sm:mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">
+            Contact <span className="text-gradient">Us</span>
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 px-2">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Get in touch with us - we'd love to hear from you!
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 sm:p-8">
-            <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="glass-panel rounded-3xl p-8 sm:p-10 relative overflow-hidden">
+            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               Send us a Message
             </h2>
 
@@ -106,9 +107,9 @@ const Contact = () => {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                   Name *
                 </label>
                 <input
@@ -118,13 +119,13 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white text-base"
+                  className="w-full px-4 py-3 bg-gray-50/50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 dark:text-white transition-all text-base"
                   placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                   Email *
                 </label>
                 <input
@@ -134,13 +135,13 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white text-base"
+                  className="w-full px-4 py-3 bg-gray-50/50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 dark:text-white transition-all text-base"
                   placeholder="your.email@example.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                   Message *
                 </label>
                 <textarea
@@ -149,24 +150,25 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows="6"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white text-base"
+                  rows="5"
+                  className="w-full px-4 py-3 bg-gray-50/50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 dark:text-white transition-all text-base resize-none"
                   placeholder="Tell us what's on your mind..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full px-6 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors font-semibold min-h-[44px] text-base"
+                className="w-full px-6 py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1 font-semibold text-base"
               >
                 Send Message
               </button>
             </form>
           </div>
 
-          <div className="space-y-8">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+          <div className="space-y-6 md:space-y-8">
+            <div className="glass-panel rounded-3xl p-8 sm:p-10 relative overflow-hidden">
+              <div className="absolute bottom-0 right-0 -mr-16 -mb-16 w-32 h-32 bg-green-500/10 rounded-full blur-2xl pointer-events-none"></div>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 relative z-10">
                 Other Ways to Reach Us
               </h2>
 
@@ -209,8 +211,9 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+            <div className="glass-panel rounded-3xl p-8 sm:p-10 relative overflow-hidden">
+              <div className="absolute top-0 left-0 -ml-16 -mt-16 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl pointer-events-none"></div>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 relative z-10">
                 Frequently Asked Questions
               </h2>
 

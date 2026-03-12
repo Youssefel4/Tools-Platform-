@@ -150,66 +150,69 @@ const TodoList = ({ session }) => {
   const completedTodosCount = todos.filter(todo => todo.completed).length;
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <SEO
         title="Todo List"
         description="Free online todo list manager - create, organize, and track your tasks. Simple and effective task management tool to boost your productivity. Works offline with local storage."
         keywords="todo list, task manager, to do list, productivity tool, task tracker, checklist, task organizer, free todo app, productivity app, task management"
         url="https://platformtools.netlify.app/todo-list"
       />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            To-Do List
+      <div className="max-w-4xl mx-auto relative z-10">
+        <div className="text-center mb-10 sm:mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">
+            To-Do <span className="text-gradient">List</span>
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">
-            Manage your tasks {session ? 'in the cloud' : 'locally'}
+          <p className="text-lg text-gray-600 dark:text-gray-400 font-medium max-w-2xl mx-auto">
+            Manage your tasks {session ? 'securely in the cloud' : 'privately on your device'}
           </p>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
-          <div className="flex space-x-2 mb-6">
+        <div className="glass-panel rounded-3xl p-8 sm:p-10 relative overflow-hidden mb-8 shadow-xl">
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8 relative z-10">
             <input
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyPress={handleKeyPress}
-              className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              className="flex-1 px-6 py-4 border border-gray-200 dark:border-gray-700 rounded-2xl bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white text-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 shadow-inner"
               placeholder="What needs to be done?"
             />
             <button
               onClick={addTodo}
-              className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+              disabled={!inputValue.trim()}
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:transform-none disabled:cursor-not-allowed flex items-center justify-center gap-2 text-lg whitespace-nowrap"
             >
-              Add Task
+              <span>➕</span> Add Task
             </button>
           </div>
 
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex space-x-2">
+          <div className="flex flex-col sm:flex-row items-center justify-between mb-8 relative z-10 gap-4">
+            <div className="flex bg-white/40 dark:bg-gray-800/40 p-1.5 rounded-xl border border-gray-100 dark:border-gray-700/50 w-full sm:w-auto overflow-x-auto custom-scrollbar">
               <button
                 onClick={() => setFilter('all')}
-                className={`px-3 py-1 rounded-md transition-colors ${filter === 'all'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                className={`px-5 py-2.5 rounded-lg transition-all font-bold text-sm flex-1 sm:flex-none whitespace-nowrap ${filter === 'all'
+                  ? 'bg-blue-500 text-white shadow-md'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50'
                   }`}
               >
                 All ({todos.length})
               </button>
               <button
                 onClick={() => setFilter('active')}
-                className={`px-3 py-1 rounded-md transition-colors ${filter === 'active'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                className={`px-5 py-2.5 rounded-lg transition-all font-bold text-sm flex-1 sm:flex-none whitespace-nowrap ${filter === 'active'
+                  ? 'bg-blue-500 text-white shadow-md'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50'
                   }`}
               >
                 Active ({activeTodosCount})
               </button>
               <button
                 onClick={() => setFilter('completed')}
-                className={`px-3 py-1 rounded-md transition-colors ${filter === 'completed'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                className={`px-5 py-2.5 rounded-lg transition-all font-bold text-sm flex-1 sm:flex-none whitespace-nowrap ${filter === 'completed'
+                  ? 'bg-blue-500 text-white shadow-md'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50'
                   }`}
               >
                 Completed ({completedTodosCount})
@@ -219,63 +222,70 @@ const TodoList = ({ session }) => {
             {completedTodosCount > 0 && (
               <button
                 onClick={clearCompleted}
-                className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
+                className="px-5 py-2.5 bg-red-50 hover:bg-red-100 dark:bg-red-900/30 dark:hover:bg-red-900/50 text-red-600 dark:text-red-400 font-bold rounded-xl border border-red-100 dark:border-red-800/50 shadow-sm transition-all duration-300 w-full sm:w-auto whitespace-nowrap"
               >
                 Clear Completed
               </button>
             )}
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-3 relative z-10">
             {loading ? (
-              <p className="text-center text-gray-500">Loading tasks...</p>
+              <div className="text-center py-12 flex flex-col items-center justify-center">
+                <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+                <p className="text-gray-500 font-medium">Loading tasks...</p>
+              </div>
             ) : filteredTodos.length === 0 ? (
-              <div className="text-center py-12">
-                <div className="text-gray-400 dark:text-gray-500 mb-2">
+              <div className="text-center py-16 bg-white/30 dark:bg-gray-800/30 rounded-2xl border border-gray-100 dark:border-gray-700/30 border-dashed">
+                <div className="text-5xl mb-4 opacity-50">📝</div>
+                <div className="text-gray-900 dark:text-white font-bold text-xl mb-2">
                   {filter === 'completed' ? 'No completed tasks' :
                     filter === 'active' ? 'No active tasks' :
-                      'No tasks yet'}
+                      'Your list is empty'}
                 </div>
-                <p className="text-gray-500 dark:text-gray-400 text-sm">
-                  {filter === 'all' ? 'Add a task to get started!' : 'Change filter to see other tasks'}
+                <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">
+                  {filter === 'all' ? 'Add a task above to get started!' : 'Change filter to see other tasks'}
                 </p>
               </div>
             ) : (
-              filteredTodos.map((todo) => (
-                <TodoItem
-                  key={todo.id}
-                  todo={todo}
-                  onToggle={toggleTodo}
-                  onDelete={deleteTodo}
-                  onEdit={editTodo}
-                />
-              ))
+              <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
+                {filteredTodos.map((todo) => (
+                  <TodoItem
+                    key={todo.id}
+                    todo={todo}
+                    onToggle={toggleTodo}
+                    onDelete={deleteTodo}
+                    onEdit={editTodo}
+                  />
+                ))}
+              </div>
             )}
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            Statistics
+        <div className="glass-panel rounded-3xl p-8 relative overflow-hidden mb-8 shadow-xl">
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+          <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6 relative z-10 flex items-center gap-2">
+            <span>📊</span> Productivity Stats
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+            <div className="text-center p-6 bg-white/40 dark:bg-gray-800/40 rounded-2xl border border-gray-100 dark:border-gray-700/50 shadow-sm flex flex-col items-center justify-center">
+              <div className="text-4xl font-black text-blue-600 dark:text-blue-400 mb-2">
                 {todos.length}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Total Tasks</div>
+              <div className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total Tasks</div>
             </div>
-            <div className="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-              <div className="text-2xl font-bold text-green-600 dark:text-green-400">
+            <div className="text-center p-6 bg-white/40 dark:bg-gray-800/40 rounded-2xl border border-gray-100 dark:border-gray-700/50 shadow-sm flex flex-col items-center justify-center">
+              <div className="text-4xl font-black text-emerald-600 dark:text-emerald-400 mb-2">
                 {completedTodosCount}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Completed</div>
+              <div className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Completed</div>
             </div>
-            <div className="text-center p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
-              <div className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">
-                {todos.length > 0 ? Math.round((completedTodosCount / todos.length) * 100) : 0}%
+            <div className="text-center p-6 bg-white/40 dark:bg-gray-800/40 rounded-2xl border border-gray-100 dark:border-gray-700/50 shadow-sm flex flex-col items-center justify-center">
+              <div className="text-4xl font-black text-amber-500 dark:text-amber-400 mb-2 flex items-baseline justify-center">
+                {todos.length > 0 ? Math.round((completedTodosCount / todos.length) * 100) : 0}<span className="text-xl ml-1">%</span>
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Completion Rate</div>
+              <div className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Completion Rate</div>
             </div>
           </div>
         </div>
@@ -313,50 +323,59 @@ const TodoItem = ({ todo, onToggle, onDelete, onEdit }) => {
   };
 
   return (
-    <div className={`flex items-center space-x-3 p-3 rounded-lg border ${todo.completed
-      ? 'bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600'
-      : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600'
+    <div className={`group flex flex-col sm:flex-row items-start sm:items-center p-4 rounded-2xl border transition-all duration-300 hover:shadow-md ${todo.completed
+      ? 'bg-gray-50/80 dark:bg-gray-800/80 border-gray-200 dark:border-gray-700/50 opacity-80'
+      : 'bg-white/80 dark:bg-gray-800/90 border-gray-200 dark:border-gray-600 shadow-sm'
       }`}>
-      <input
-        type="checkbox"
-        checked={todo.completed}
-        onChange={() => onToggle(todo.id)}
-        className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500"
-      />
+      
+      <div className="flex items-center w-full sm:w-auto flex-1 gap-4">
+        <label className="relative flex cursor-pointer items-center justify-center">
+          <input
+            type="checkbox"
+            checked={todo.completed}
+            onChange={() => onToggle(todo.id)}
+            className="peer sr-only"
+          />
+          <div className="h-6 w-6 rounded-md border-2 border-gray-300 dark:border-gray-500 bg-white dark:bg-gray-700 transition-all peer-checked:border-emerald-500 peer-checked:bg-emerald-500"></div>
+          <svg className="absolute w-4 h-4 text-white opacity-0 transition-opacity peer-checked:opacity-100 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </label>
 
-      {isEditing ? (
-        <input
-          type="text"
-          value={editText}
-          onChange={(e) => setEditText(e.target.value)}
-          onKeyPress={handleKeyPress}
-          className="flex-1 px-2 py-1 border border-gray-300 dark:border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
-          autoFocus
-        />
-      ) : (
-        <span
-          className={`flex-1 cursor-pointer ${todo.completed
-            ? 'line-through text-gray-500 dark:text-gray-400'
-            : 'text-gray-900 dark:text-white'
-            }`}
-          onClick={() => onToggle(todo.id)}
-        >
-          {todo.text}
-        </span>
-      )}
+        {isEditing ? (
+          <input
+            type="text"
+            value={editText}
+            onChange={(e) => setEditText(e.target.value)}
+            onKeyPress={handleKeyPress}
+            className="flex-1 px-4 py-2 border border-blue-300 dark:border-blue-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-900/50 dark:text-white bg-blue-50 dark:bg-blue-900/10 shadow-inner w-full"
+            autoFocus
+          />
+        ) : (
+          <span
+            className={`flex-1 text-lg font-medium cursor-text break-all transition-all ${todo.completed
+              ? 'line-through text-gray-400 dark:text-gray-500'
+              : 'text-gray-800 dark:text-gray-100'
+              }`}
+            onDoubleClick={() => setIsEditing(true)}
+          >
+            {todo.text}
+          </span>
+        )}
+      </div>
 
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-2 mt-4 sm:mt-0 w-full sm:w-auto justify-end sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
         {isEditing ? (
           <>
             <button
               onClick={handleSave}
-              className="px-2 py-1 text-sm bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
+              className="px-4 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:hover:bg-emerald-900/50 dark:text-emerald-400 rounded-xl transition-colors font-bold text-sm"
             >
               Save
             </button>
             <button
               onClick={handleCancel}
-              className="px-2 py-1 text-sm bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors"
+              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 rounded-xl transition-colors font-bold text-sm"
             >
               Cancel
             </button>
@@ -365,15 +384,17 @@ const TodoItem = ({ todo, onToggle, onDelete, onEdit }) => {
           <>
             <button
               onClick={() => setIsEditing(true)}
-              className="px-2 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+              className="p-2 text-blue-500 hover:text-blue-700 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-lg transition-colors"
+              title="Edit"
             >
-              Edit
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
             </button>
             <button
               onClick={() => onDelete(todo.id)}
-              className="px-2 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+              className="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-colors"
+              title="Delete"
             >
-              Delete
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
             </button>
           </>
         )}
