@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaCalculator } from 'react-icons/fa';
 import SEO from './SEO';
 
 const Calculator = () => {
