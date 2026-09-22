@@ -1,169 +1,417 @@
-import React from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  FaCalculator, FaStickyNote, FaExchangeAlt, FaFont, FaLock,
-  FaClock, FaPalette, FaCheckSquare, FaQrcode, FaFileUpload, FaImage
-} from 'react-icons/fa';
+  LuSearch, LuArrowRight, LuShieldCheck, LuZap, LuSmartphone,
+  LuSparkles, LuX, LuBookOpen, LuChevronDown
+} from 'react-icons/lu';
 import SEO from '../components/SEO';
+import { ALL_TOOLS, TOOL_CATEGORIES } from '../data/toolsRegistry';
+import { BLOG_POSTS } from '../data/blogPosts';
 
 const Home = () => {
-  const tools = [
-    { name: 'Calculator', description: 'Basic and scientific calculator for all your mathematical needs', icon: FaCalculator, href: '/calculator', color: 'bg-blue-500' },
-    { name: 'Notes App', description: 'Create, edit, and manage your notes with local storage', icon: FaStickyNote, href: '/notes', color: 'bg-green-500' },
-    { name: 'Unit Converter', description: 'Convert between different units of length, weight, and temperature', icon: FaExchangeAlt, href: '/unit-converter', color: 'bg-purple-500' },
-    { name: 'Text Counter', description: 'Count words, characters, sentences, and more in your text', icon: FaFont, href: '/text-counter', color: 'bg-yellow-500' },
-    { name: 'Password Generator', description: 'Generate secure passwords with customizable options', icon: FaLock, href: '/password-generator', color: 'bg-red-500' },
-    { name: 'Countdown Timer', description: 'Set countdown timers for your tasks and activities', icon: FaClock, href: '/countdown-timer', color: 'bg-indigo-500' },
-    { name: 'Color Picker', description: 'Pick colors and get HEX and RGB codes', icon: FaPalette, href: '/color-picker', color: 'bg-pink-500' },
-    { name: 'To-Do List', description: 'Manage your tasks with a simple to-do list', icon: FaCheckSquare, href: '/todo-list', color: 'bg-teal-500' },
-    { name: 'QR Generator', description: 'Create custom QR codes for URLs, text, and more', icon: FaQrcode, href: '/qr-generator', color: 'bg-orange-500' },
-    { name: 'Image Resizer', description: 'Resize images locally with no quality loss', icon: FaImage, href: '/image-resizer', color: 'bg-cyan-500' },
-    { name: 'File Converter', description: 'Convert files between different formats', icon: FaFileUpload, href: '/file-converter', color: 'bg-lime-500' }
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [openFaq, setOpenFaq] = useState(null);
+  const searchInputRef = useRef(null);
+
+  // Keyboard shortcut: Press '/' to focus search bar
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === '/' && document.activeElement !== searchInputRef.current) {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Filter tools based on search query & category
+  const filteredTools = useMemo(() => {
+    const q = searchQuery.toLowerCase().trim();
+    return ALL_TOOLS.filter(tool => {
+      const matchesCat = activeCategory === 'all' || tool.category === activeCategory;
+      const matchesQuery = !q ||
+        tool.name.toLowerCase().includes(q) ||
+        tool.description.toLowerCase().includes(q) ||
+        (tool.keywords && tool.keywords.some(k => k.toLowerCase().includes(q)));
+      return matchesCat && matchesQuery;
+    });
+  }, [searchQuery, activeCategory]);
+
+  const popularTools = useMemo(() => {
+    return ALL_TOOLS.filter(t => t.isPopular).slice(0, 6);
+  }, []);
+
+  const homeFaqs = [
+    {
+      question: "Are all tools on Tools Platform completely free to use?",
+      answer: "Yes, 100% free with zero hidden paywalls, subscriptions, or sign-up requirements. You can access every calculator, converter, and developer utility anytime."
+    },
+    {
+      question: "Is my data private and secure?",
+      answer: "Absolutely. All processing, calculations, and conversions happen locally inside your web browser via HTML5 Canvas, Web Crypto, and JavaScript engines. No files or private inputs are ever sent to remote servers."
+    },
+    {
+      question: "Can I use these tools on my smartphone or tablet?",
+      answer: "Yes! The platform is fully responsive and touch-optimized for iPhones, Android smartphones, iPads, tablets, laptops, and desktops."
+    },
+    {
+      question: "Do tools work offline?",
+      answer: "Once the website is loaded in your browser cache, the vast majority of our client-side tools continue to function without an active internet connection."
+    }
   ];
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Tools Platform",
-    "description": "A comprehensive collection of free online tools including calculator, unit converter, color picker, QR generator, image resizer, and more.",
+    "description": "Free, lightning-fast, and privacy-first online web tools for everyday calculations, conversions, and developer tasks.",
     "url": "https://platformtools.netlify.app",
     "applicationCategory": "UtilityApplication",
-    "operatingSystem": "Any",
+    "operatingSystem": "All",
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "ratingCount": "150"
-    },
-    "featureList": [
-      "Free Online Calculator",
-      "Unit Converter",
-      "Color Picker",
-      "QR Code Generator",
-      "Image Resizer",
-      "Password Generator",
-      "Text Counter",
-      "Notes App",
-      "Todo List",
-      "Countdown Timer",
-      "File Converter"
-    ]
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-blue-500 selection:text-white">
       <SEO
-        title="Home"
-        description="Free online tools platform with calculator, unit converter, color picker, QR generator, image resizer, password generator, and more. All tools work locally in your browser with complete privacy."
-        keywords="free online tools, calculator, unit converter, color picker, QR code generator, image resizer, password generator, text counter, notes app, todo list, countdown timer, file converter, web utilities, productivity tools"
+        title="Free Online Tools for Everyday Tasks"
+        description="Discover 40+ free, fast, and secure online tools. Percentage calculator, password generator, unit converter, QR generator, image resizer, and developer utilities with 100% privacy."
+        keywords="free online tools, calculators, unit converter, password generator, qr code generator, image resizer, developer utilities"
         structuredData={structuredData}
+        faqs={homeFaqs}
       />
-      <div className="relative overflow-hidden mb-16 py-20 lg:py-32">
-        <div className="absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-blue-50 dark:from-gray-800 to-transparent pointer-events-none"></div>
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-blue-400/20 dark:bg-blue-600/10 blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-purple-400/20 dark:bg-purple-600/10 blur-3xl pointer-events-none"></div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-6 tracking-tight">
-              Supercharge your workflow with <br className="hidden md:block"/>
-              <span className="text-gradient">Tools Platform</span>
-            </h1>
-            <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-10 leading-relaxed font-light">
-              Discover a premium collection of beautifully designed web utilities. Run everything locally in your browser with absolute zero data tracking.
-            </p>
-            <div className="flex justify-center gap-4">
-               <a href="#tools" className="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-medium shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-1">
-                 Explore Tools
-               </a>
+
+      {/* Hero Section */}
+      <section className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
+        {/* Ambient background glows */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-blue-100/50 via-indigo-50/30 to-transparent dark:from-blue-950/20 dark:via-indigo-950/10 pointer-events-none blur-3xl -z-10" />
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Trust Pill */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-xs font-bold text-slate-700 dark:text-slate-300 mb-6">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+            <span>40+ Free Online Web Tools • 100% Private & Instant</span>
+          </div>
+
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.1] mb-6">
+            Free Online Tools for <br className="hidden sm:inline" />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400">
+              Everyday Tasks
+            </span>
+          </h1>
+
+          <p className="text-base sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+            Simple, fast, and privacy-first web utilities. No registration, no downloads, no ads clutter. Just open in your browser and get things done.
+          </p>
+
+          {/* Interactive Live Search Bar (In place of static Explore button) */}
+          <div id="tools-search" className="max-w-2xl mx-auto relative mb-6">
+            <div className="relative flex items-center">
+              <LuSearch className="absolute left-5 text-slate-400" size={22} />
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search 40+ tools... (e.g. 'password', 'bmi', 'qr', 'mortgage', 'diff')"
+                className="w-full pl-14 pr-24 py-4 sm:py-5 rounded-3xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-semibold text-base sm:text-lg shadow-xl shadow-slate-200/50 dark:shadow-none outline-none focus:border-blue-600 dark:focus:border-blue-500 transition-all"
+              />
+              <div className="absolute right-4 flex items-center gap-2">
+                {searchQuery ? (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    className="p-1 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                    title="Clear search"
+                  >
+                    <LuX size={18} />
+                  </button>
+                ) : (
+                  <kbd className="hidden sm:inline-block px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 text-xs font-mono font-bold text-slate-500">
+                    /
+                  </kbd>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div id="tools" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 relative z-20">
-          {tools.map((tool) => {
-            const Icon = tool.icon;
-            return (
-              <Link
-                key={tool.name}
-                to={tool.href}
-                className="group block glass rounded-2xl hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-200/50 dark:border-gray-700/50"
+          {/* Quick Category Filter Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto">
+            {TOOL_CATEGORIES.map(cat => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-semibold transition-all ${
+                  activeCategory === cat.id
+                    ? 'bg-blue-600 text-white shadow-md shadow-blue-500/25 scale-105'
+                    : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                }`}
               >
-                <div className="p-8">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-sm border border-gray-100 dark:border-gray-700 text-2xl mb-6 group-hover:scale-110 transition-transform duration-500`}>
-                    <div className={tool.color.replace('bg-', 'text-')}>
-                      <Icon size={28} className="drop-shadow-sm" />
+                {cat.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Popular Tools Section (Only shown when not actively searching) */}
+      {!searchQuery && activeCategory === 'all' && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                Popular & Trending Tools
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500">
+                Most frequented tools by our community today
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {popularTools.map(tool => {
+              const ToolIcon = tool.icon;
+              return (
+                <Link
+                  key={tool.id}
+                  to={tool.href}
+                  className="group relative p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 hover:border-blue-500/50 shadow-lg shadow-slate-200/30 dark:shadow-none hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${tool.color} text-white flex items-center justify-center shadow-md`}>
+                        <ToolIcon size={24} />
+                      </div>
+                      <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
+                        {tool.badge || 'Popular'}
+                      </span>
                     </div>
+
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2">
+                      {tool.name}
+                    </h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
+                      {tool.description}
+                    </p>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-indigo-600 transition-all">
-                    {tool.name}
+
+                  <div className="mt-6 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-bold text-blue-600 dark:text-blue-400">
+                    <span>Open Tool</span>
+                    <LuArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* Main Tools Catalog Grid */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+        <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-200 dark:border-slate-800">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+              {searchQuery ? `Search Results (${filteredTools.length})` : 'All Available Web Tools'}
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 mt-1">
+              Click on any tool to launch immediately without delay
+            </p>
+          </div>
+        </div>
+
+        {filteredTools.length === 0 ? (
+          <div className="p-16 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center space-y-3">
+            <p className="text-lg font-bold text-slate-700 dark:text-slate-300">
+              No tools matched your search "{searchQuery}".
+            </p>
+            <p className="text-sm text-slate-500">
+              Try searching for something else like "calculator", "password", "image", or "time".
+            </p>
+            <button
+              onClick={() => { setSearchQuery(''); setActiveCategory('all'); }}
+              className="mt-4 px-5 py-2.5 rounded-xl bg-blue-600 text-white font-semibold text-xs"
+            >
+              Reset Search Filter
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredTools.map(tool => {
+              const ToolIcon = tool.icon;
+              return (
+                <Link
+                  key={tool.id}
+                  to={tool.href}
+                  className="group p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 hover:border-blue-500/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <div className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${tool.color} text-white flex items-center justify-center shadow-sm`}>
+                        <ToolIcon size={20} />
+                      </div>
+                      {tool.badge && (
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                          {tool.badge}
+                        </span>
+                      )}
+                    </div>
+
+                    <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-1.5">
+                      {tool.name}
+                    </h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
+                      {tool.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between text-xs font-semibold text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                    <span>Get Started</span>
+                    <LuArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        )}
+      </section>
+
+      {/* Featured Educational Blog Guides Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-slate-900 dark:to-slate-900 border border-blue-200/70 dark:border-slate-800">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                Knowledge Base & Best Practices
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-1">
+                Featured Guides & Tutorials
+              </h2>
+            </div>
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-sm"
+            >
+              View All Articles <LuArrowRight size={14} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {BLOG_POSTS.slice(0, 3).map(post => (
+              <Link
+                key={post.slug}
+                to={`/blog/${post.slug}`}
+                className="group p-6 rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 hover:shadow-lg transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <span className="text-xs font-bold text-blue-600 dark:text-blue-400 block mb-2">
+                    {post.category}
+                  </span>
+                  <h3 className="font-bold text-slate-900 dark:text-white text-base group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 line-clamp-2">
+                    {post.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {tool.description}
+                  <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed mb-4">
+                    {post.excerpt}
                   </p>
                 </div>
-                <div className="px-8 py-4 bg-gray-50/50 dark:bg-gray-800/30 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors">
-                  <span className="text-sm font-semibold text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    Get Started
-                  </span>
-                  <span className="transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300 text-blue-600 dark:text-blue-400 font-bold">
-                    →
-                  </span>
+                <div className="text-xs font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1">
+                  Read Guide <LuArrowRight size={13} />
                 </div>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Platform Trust Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-3">
+            Why Choose Tools Platform?
+          </h2>
+          <p className="text-sm text-slate-600 dark:text-slate-400">
+            Engineered with modern web standards to deliver an effortless experience.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 text-center space-y-3">
+            <div className="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto text-2xl shadow-sm">
+              <LuShieldCheck size={28} />
+            </div>
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">Absolute Privacy</h3>
+            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Every calculation, conversion, and compression happens locally inside your browser sandbox. Your data never leaves your device.
+            </p>
+          </div>
+
+          <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 text-center space-y-3">
+            <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center mx-auto text-2xl shadow-sm">
+              <LuZap size={28} />
+            </div>
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">Lightning Fast</h3>
+            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Zero network latency. Powered by native browser APIs for instantaneous, lag-free calculations without server roundtrips.
+            </p>
+          </div>
+
+          <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 text-center space-y-3">
+            <div className="w-14 h-14 rounded-2xl bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 flex items-center justify-center mx-auto text-2xl shadow-sm">
+              <LuSmartphone size={28} />
+            </div>
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">Works Everywhere</h3>
+            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Fully responsive design tailored for smartphones, tablets, and desktop workstations. No app installations required.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions (FAQ) Accordion */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-2">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-sm text-slate-500">
+            Everything you need to know about our web tools platform.
+          </p>
+        </div>
+
+        <div className="space-y-3">
+          {homeFaqs.map((faq, index) => {
+            const isOpen = openFaq === index;
+            return (
+              <div
+                key={index}
+                className="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-slate-900 transition-colors"
+              >
+                <button
+                  onClick={() => setOpenFaq(isOpen ? null : index)}
+                  className="w-full flex items-center justify-between p-5 text-left font-bold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                >
+                  <span className="text-base sm:text-lg">{faq.question}</span>
+                  <LuChevronDown
+                    size={20}
+                    className={`text-slate-400 transform transition-transform duration-200 flex-shrink-0 ${
+                      isOpen ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                {isOpen && (
+                  <div className="p-5 pt-0 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800/60 bg-slate-50/50 dark:bg-slate-800/20">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>
-
-        <div className="glass-panel rounded-3xl p-10 md:p-14 mb-20 relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl"></div>
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12 relative z-10">
-            Why Choose <span className="text-gradient">Our Platform?</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative z-10">
-            <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 rounded-2xl text-blue-600 dark:text-blue-300 mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm group-hover:shadow-blue-500/20">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Absolute Privacy</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Every calculation and conversion happens locally inside your browser. Your data never leaves your device.
-              </p>
-            </div>
-            <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900 dark:to-green-800 rounded-2xl text-green-600 dark:text-green-300 mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm group-hover:shadow-green-500/20">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Lightning Fast</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Zero server lag. Our tools are optimized for instantaneous results no matter what device you're on.
-              </p>
-            </div>
-            <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900 dark:to-purple-800 rounded-2xl text-purple-600 dark:text-purple-300 mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm group-hover:shadow-purple-500/20">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Premium & Free</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Enjoy a stunning, modern interface with zero hidden costs. Productivity shouldn't have a price tag.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
   );
 };

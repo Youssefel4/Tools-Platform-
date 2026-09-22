@@ -1,61 +1,125 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const SEO = ({ title, description, keywords, image, url, type = 'website', noindex = false, structuredData }) => {
-    const siteTitle = 'Tools Platform';
-    const siteUrl = 'https://platformtools.netlify.app';
-    const defaultDescription = 'A collection of useful online tools including calculator, color picker, unit converter, and more.';
-    const defaultKeywords = 'tools, calculator, color picker, converter, utilities, web tools';
-    const defaultImage = `${siteUrl}/favicon.png`;
-    const currentUrl = url || (typeof window !== 'undefined' ? window.location.href : siteUrl);
-    const fullTitle = title ? `${title} | ${siteTitle}` : `${siteTitle} | Free Online Tools & Utilities`;
-    const metaDescription = description || defaultDescription;
-    const metaKeywords = keywords || defaultKeywords;
-    const ogImage = image || defaultImage;
+const SEO = ({
+  title,
+  description,
+  keywords,
+  image,
+  url,
+  type = 'website',
+  noindex = false,
+  structuredData,
+  faqs,
+  article
+}) => {
+  const siteTitle = 'Tools Platform';
+  const siteUrl = 'https://platformtools.netlify.app';
+  const defaultDescription = 'A premium collection of 40+ free online web tools. Run calculators, converters, developer utilities, and productivity apps locally in your browser with 100% privacy.';
+  const defaultKeywords = 'free online tools, web tools, calculators, unit converter, password generator, qr code generator, image resizer, developer utilities';
+  const defaultImage = `${siteUrl}/logo.png`;
+  const currentUrl = url || (typeof window !== 'undefined' ? window.location.href : siteUrl);
+  const fullTitle = title ? `${title} | ${siteTitle}` : `${siteTitle} | Free Online Tools, Calculators & Utilities`;
+  const metaDescription = description || defaultDescription;
+  const metaKeywords = keywords || defaultKeywords;
+  const ogImage = image || defaultImage;
 
-    return (
-        <Helmet>
-            {/* Standard Metadata */}
-            <title>{fullTitle}</title>
-            <meta name="description" content={metaDescription} />
-            <meta name="keywords" content={metaKeywords} />
-            <meta name="author" content="Tools Platform" />
-            <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
-            <meta name="language" content="English" />
-            <meta name="revisit-after" content="7 days" />
-            <meta name="theme-color" content="#3b82f6" />
+  // Build FAQ Schema if faqs array provided
+  const faqSchema = (faqs && faqs.length > 0) ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  } : null;
 
-            {/* Open Graph / Facebook */}
-            <meta property="og:type" content={type} />
-            <meta property="og:url" content={currentUrl} />
-            <meta property="og:title" content={title || siteTitle} />
-            <meta property="og:description" content={metaDescription} />
-            <meta property="og:image" content={ogImage} />
-            <meta property="og:image:width" content="1200" />
-            <meta property="og:image:height" content="630" />
-            <meta property="og:image:alt" content={title || siteTitle} />
-            <meta property="og:site_name" content={siteTitle} />
-            <meta property="og:locale" content="en_US" />
+  // Build Article Schema if article provided
+  const articleSchema = article ? {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": article.title,
+    "description": article.excerpt,
+    "image": ogImage,
+    "author": {
+      "@type": "Person",
+      "name": article.author?.name || "Tools Platform Team"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": siteTitle,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/logo.png`
+      }
+    },
+    "datePublished": article.publishedDate,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": currentUrl
+    }
+  } : null;
 
-            {/* Twitter */}
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:url" content={currentUrl} />
-            <meta name="twitter:title" content={title || siteTitle} />
-            <meta name="twitter:description" content={metaDescription} />
-            <meta name="twitter:image" content={ogImage} />
-            <meta name="twitter:image:alt" content={title || siteTitle} />
+  return (
+    <Helmet>
+      {/* Standard Metadata */}
+      <title>{fullTitle}</title>
+      <meta name="description" content={metaDescription} />
+      <meta name="keywords" content={metaKeywords} />
+      <meta name="author" content="Tools Platform" />
+      <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+      <meta name="language" content="English" />
+      <meta name="theme-color" content="#2563eb" />
 
-            {/* Canonical */}
-            <link rel="canonical" href={currentUrl} />
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content={type} />
+      <meta property="og:url" content={currentUrl} />
+      <meta property="og:title" content={title || siteTitle} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={title || siteTitle} />
+      <meta property="og:site_name" content={siteTitle} />
+      <meta property="og:locale" content="en_US" />
 
-            {/* Structured Data (JSON-LD) */}
-            {structuredData && (
-                <script type="application/ld+json">
-                    {JSON.stringify(structuredData)}
-                </script>
-            )}
-        </Helmet>
-    );
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:url" content={currentUrl} />
+      <meta name="twitter:title" content={title || siteTitle} />
+      <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image:alt" content={title || siteTitle} />
+
+      {/* Canonical Link */}
+      <link rel="canonical" href={currentUrl} />
+
+      {/* Custom Structured Data (JSON-LD) */}
+      {structuredData && (
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      )}
+
+      {/* FAQ Structured Data */}
+      {faqSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      )}
+
+      {/* Article Structured Data */}
+      {articleSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(articleSchema)}
+        </script>
+      )}
+    </Helmet>
+  );
 };
 
 export default SEO;
