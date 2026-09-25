@@ -8,7 +8,7 @@ const Blog = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const categories = ['All', 'Security & Privacy', 'Design & Utilities', 'Mathematics & Science', 'Media & Design'];
+  const categories = ['All', 'Text & Audio', 'Security & Privacy', 'Design & Utilities', 'Mathematics & Science', 'Media & Design'];
 
   const filteredPosts = BLOG_POSTS.filter(post => {
     const matchesCat = selectedCategory === 'All' || post.category === selectedCategory;

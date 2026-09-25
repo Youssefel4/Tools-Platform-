@@ -2,5 +2,8 @@
 /sitemap.xml  /sitemap.xml  200
 /robots.txt   /robots.txt   200
 
+# Proxy TTS audio requests to avoid browser CORS restrictions
+/api/tts*  https://translate.google.com/translate_tts:splat  200!
+
 # Handle React Router (SPA) - Send everything else to index.html
 /*  /index.html  200

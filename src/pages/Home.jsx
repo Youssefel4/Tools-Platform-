@@ -81,7 +81,7 @@ const Home = () => {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-blue-500 selection:text-white">
       <SEO
         title="Free Online Tools for Everyday Tasks"
-        description="Discover 40+ free, fast, and secure online tools. Percentage calculator, password generator, unit converter, QR generator, image resizer, and developer utilities with 100% privacy."
+        description="50+ free, fast, and private online tools: calculators, converters, image resizer, QR generator, and developer utilities. 100% free and browser-based."
         keywords="free online tools, calculators, unit converter, password generator, qr code generator, image resizer, developer utilities"
         structuredData={structuredData}
         faqs={homeFaqs}

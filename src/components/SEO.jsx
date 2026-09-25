@@ -15,12 +15,29 @@ const SEO = ({
 }) => {
   const siteTitle = 'Tools Platform';
   const siteUrl = 'https://platformtools.netlify.app';
-  const defaultDescription = 'A premium collection of 40+ free online web tools. Run calculators, converters, developer utilities, and productivity apps locally in your browser with 100% privacy.';
+  const defaultDescription = '50+ free, fast, and private online tools: calculators, converters, image resizer, QR generator, and developer utilities. 100% free with no sign-up.';
   const defaultKeywords = 'free online tools, web tools, calculators, unit converter, password generator, qr code generator, image resizer, developer utilities';
   const defaultImage = `${siteUrl}/logo.png`;
   const currentUrl = url || (typeof window !== 'undefined' ? window.location.href : siteUrl);
-  const fullTitle = title ? `${title} | ${siteTitle}` : `${siteTitle} | Free Online Tools, Calculators & Utilities`;
-  const metaDescription = description || defaultDescription;
+
+  // Keep title strictly <= 60 characters to satisfy Google & Ahrefs SEO requirements
+  let fullTitle;
+  if (!title) {
+    fullTitle = `${siteTitle} | 50+ Free Online Web Tools & Utilities`;
+  } else if (title.includes(siteTitle)) {
+    fullTitle = title.length <= 60 ? title : title.slice(0, 57) + '...';
+  } else if (title.length + siteTitle.length + 3 <= 60) {
+    fullTitle = `${title} | ${siteTitle}`;
+  } else {
+    fullTitle = title.length <= 60 ? title : title.slice(0, 57) + '...';
+  }
+
+  // Keep meta description strictly <= 160 characters
+  const rawDescription = (description || defaultDescription).trim();
+  const metaDescription = rawDescription.length > 160
+    ? rawDescription.slice(0, 157).replace(/\s+\S*$/, '') + '...'
+    : rawDescription;
+
   const metaKeywords = keywords || defaultKeywords;
   const ogImage = image || defaultImage;
 

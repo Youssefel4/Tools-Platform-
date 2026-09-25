@@ -159,7 +159,7 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 py-10 px-4 sm:px-6 lg:px-8">
       <SEO
-        title={post.title}
+        title={post.seoTitle || post.title}
         description={post.metaDescription}
         keywords={post.targetKeyword}
         article={post}
