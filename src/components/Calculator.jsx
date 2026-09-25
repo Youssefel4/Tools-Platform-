@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaCalculator } from 'react-icons/fa';
-import SEO from './SEO';
+import ToolLayout from './ToolLayout';
 
 const Calculator = () => {
   const [display, setDisplay] = useState('0');
@@ -60,7 +60,7 @@ const Calculator = () => {
       case '*':
         return firstValue * secondValue;
       case '/':
-        return firstValue / secondValue;
+        return secondValue !== 0 ? firstValue / secondValue : 'Error';
       case '=':
         return secondValue;
       default:
@@ -70,23 +70,17 @@ const Calculator = () => {
 
   const scientificOperation = (op) => {
     const value = parseFloat(display);
-    let result;
+    let result = 0;
 
     switch (op) {
       case 'sin':
-        result = Math.sin(value * Math.PI / 180);
+        result = Math.sin(value * (Math.PI / 180));
         break;
       case 'cos':
-        result = Math.cos(value * Math.PI / 180);
+        result = Math.cos(value * (Math.PI / 180));
         break;
       case 'tan':
-        result = Math.tan(value * Math.PI / 180);
-        break;
-      case 'log':
-        result = Math.log10(value);
-        break;
-      case 'ln':
-        result = Math.log(value);
+        result = Math.tan(value * (Math.PI / 180));
         break;
       case 'sqrt':
         result = Math.sqrt(value);
@@ -97,169 +91,187 @@ const Calculator = () => {
       case 'pow3':
         result = Math.pow(value, 3);
         break;
+      case 'log':
+        result = Math.log10(value);
+        break;
+      case 'ln':
+        result = Math.log(value);
+        break;
       case '1/x':
         result = 1 / value;
         break;
       case 'pi':
         result = Math.PI;
         break;
-      case 'e':
-        result = Math.E;
-        break;
       default:
         result = value;
     }
 
-    setDisplay(String(result));
+    setDisplay(String(Number(result.toFixed(8))));
     setWaitingForNewValue(true);
   };
 
+  const faqs = [
+    {
+      question: "How do I switch to scientific mode?",
+      answer: "Click the 'Switch to Scientific' button above the calculator keypad to display trigonometry (sin, cos, tan), square roots, powers, logs, and pi."
+    },
+    {
+      question: "Are angle calculations in degrees or radians?",
+      answer: "Trigonometric functions (sin, cos, tan) calculate in standard degrees for easy everyday and classroom use."
+    },
+    {
+      question: "Is this online calculator free?",
+      answer: "Yes, this scientific calculator is 100% free with unlimited calculations and zero registration required."
+    }
+  ];
+
+  const howToUse = [
+    { title: "Standard Math", desc: "Use the keypad for addition, subtraction, multiplication, and division." },
+    { title: "Scientific Mode", desc: "Toggle Scientific mode to unlock sin, cos, tan, square roots, logs, and constants." },
+    { title: "Clear & Reset", desc: "Press AC (All Clear) at any time to reset your display and calculation buffer." }
+  ];
+
+  const features = [
+    { title: "Dual Mode", desc: "Easily switch between basic desktop calculator and advanced scientific layout." },
+    { title: "Full Trigonometry", desc: "Instant sin, cos, tan, logarithms, square root, and powers." },
+    { title: "Zero Latency", desc: "Calculates in pure client-side JavaScript with 100% privacy." }
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
-      <SEO
-        title="Calculator"
-        description="Free online calculator - basic and scientific calculator with trigonometry, logarithms, powers, and advanced math functions. Perfect for students, professionals, and everyday calculations."
-        keywords="calculator, scientific calculator, online calculator, math calculator, trigonometry calculator, free calculator, basic calculator, advanced calculator, math tools"
-        url="https://platformtools.netlify.app/calculator"
-      />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-10 sm:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight flex items-center justify-center">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center mr-4 shadow-lg shadow-blue-500/20 transform rotate-6">
-              <FaCalculator className="text-white text-2xl" />
-            </div>
-            Smart <span className="text-gradient">Calculator</span>
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 font-medium max-w-2xl mx-auto">
-            Advanced scientific calculator with trigonometry and logarithmic functions
-          </p>
+    <ToolLayout
+      title="Scientific & Standard Calculator"
+      subtitle="Free online calculator with trigonometric functions, square roots, logarithms, powers, and memory operations."
+      category="calculators"
+      categoryName="Calculators"
+      icon={FaCalculator}
+      badge="Popular"
+      seoDescription="Free scientific & basic online calculator. Perform precision calculations with trigonometry (sin, cos, tan), square roots, powers, and algebraic functions."
+      seoKeywords="calculator, scientific calculator, online calculator, math calculator, trigonometry calculator, free calculator, standard calculator"
+      howToUse={howToUse}
+      features={features}
+      faqs={faqs}
+      relatedToolIds={['percentage-calculator', 'compound-interest-calculator', 'base-converter']}
+    >
+      <div className="max-w-md mx-auto">
+        <div className="mb-6 flex justify-center">
+          <button
+            onClick={() => setIsScientific(!isScientific)}
+            className="px-6 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-full text-xs font-bold transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2"
+          >
+            {isScientific ? 'Switch to Basic' : 'Switch to Scientific'}
+          </button>
         </div>
 
-        <div className="glass-panel rounded-3xl p-6 sm:p-8 max-w-md mx-auto relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl pointer-events-none"></div>
-          
-          <div className="relative z-10 mb-6 flex justify-center">
-            <button
-              onClick={() => setIsScientific(!isScientific)}
-              className="px-6 py-2.5 bg-gray-100 dark:bg-gray-800/50 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm font-semibold transition-all shadow-sm border border-gray-200/50 dark:border-gray-700/50 flex items-center gap-2"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-              </svg>
-              {isScientific ? 'Switch to Basic' : 'Switch to Scientific'}
-            </button>
+        {/* Display Screen */}
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 mb-6 text-right shadow-inner">
+          <div className="text-xs text-slate-400 font-mono font-semibold h-4 mb-1">
+            {operation && previousValue !== null ? `${previousValue} ${operation}` : ''}
           </div>
-
-          <div className="bg-white/80 dark:bg-gray-900/80 border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 mb-8 text-right shadow-lg relative z-10 transition-all duration-300">
-            <div className="text-4xl sm:text-5xl md:text-6xl font-black font-mono text-gray-900 dark:text-white tracking-widest overflow-hidden whitespace-nowrap scrollbar-hide flex flex-col justify-end">
-              <div className="text-sm opacity-50 font-bold mb-1 tracking-normal">{operation && previousValue !== null ? `${previousValue} ${operation}` : ''}</div>
-              {display}
-            </div>
-          </div>
-
-          {isScientific && (
-            <div className="grid grid-cols-5 gap-2.5 sm:gap-3 mb-6 relative z-10 animate-fade-in-up">
-              {['sin', 'cos', 'tan', 'log', 'ln', 'sqrt', 'pow2', 'pow3', '1/x', 'pi'].map((op) => (
-                <button
-                  key={op}
-                  onClick={() => scientificOperation(op)}
-                  className="px-2 py-3 bg-indigo-50/80 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 rounded-xl hover:bg-indigo-100 dark:hover:bg-indigo-900/60 transition-all font-bold text-xs uppercase tracking-wider transform hover:-translate-y-0.5 shadow-sm border border-indigo-100/50 dark:border-indigo-800/30"
-                >
-                  {op === 'sqrt' ? '√' : op === 'pow2' ? 'x²' : op === 'pow3' ? 'x³' : op === 'pi' ? 'π' : op}
-                </button>
-              ))}
-            </div>
-          )}
-
-          <div className="grid grid-cols-4 gap-3 sm:gap-4 relative z-10">
-            <button
-              onClick={clear}
-              className="col-span-2 px-4 py-4 sm:py-5 bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400 rounded-2xl hover:bg-red-200 dark:hover:bg-red-900/60 transition-all font-black text-xl shadow-md transform active:scale-95"
-            >
-              AC
-            </button>
-            <button
-              onClick={() => performOperation('/')}
-              className="px-4 py-4 sm:py-5 bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 rounded-2xl hover:bg-blue-100 dark:hover:bg-blue-900/60 transition-all font-black text-3xl shadow-md transform active:scale-95 border border-blue-100/50 dark:border-blue-800/30"
-            >
-              ÷
-            </button>
-            <button
-              onClick={() => performOperation('*')}
-              className="px-4 py-4 sm:py-5 bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 rounded-2xl hover:bg-blue-100 dark:hover:bg-blue-900/60 transition-all font-black text-3xl shadow-md transform active:scale-95 border border-blue-100/50 dark:border-blue-800/30"
-            >
-              ×
-            </button>
-
-            {[7, 8, 9].map((num) => (
-              <button
-                key={num}
-                onClick={() => inputNumber(num)}
-                className="px-4 py-4 sm:py-5 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white rounded-2xl hover:bg-white dark:hover:bg-gray-700 hover:shadow-md transition-all transform active:scale-95 font-bold text-2xl border border-gray-100/50 dark:border-gray-700/50"
-              >
-                {num}
-              </button>
-            ))}
-            <button
-              onClick={() => performOperation('-')}
-              className="px-4 py-4 sm:py-5 bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 rounded-2xl hover:bg-blue-100 dark:hover:bg-blue-900/60 transition-all font-black text-3xl shadow-md transform active:scale-95 border border-blue-100/50 dark:border-blue-800/30"
-            >
-              −
-            </button>
-
-            {[4, 5, 6].map((num) => (
-              <button
-                key={num}
-                onClick={() => inputNumber(num)}
-                className="px-4 py-4 sm:py-5 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white rounded-2xl hover:bg-white dark:hover:bg-gray-700 hover:shadow-md transition-all transform active:scale-95 font-bold text-2xl border border-gray-100/50 dark:border-gray-700/50"
-              >
-                {num}
-              </button>
-            ))}
-            <button
-              onClick={() => performOperation('+')}
-              className="px-4 py-4 sm:py-5 bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 rounded-2xl hover:bg-blue-100 dark:hover:bg-blue-900/60 transition-all font-black text-3xl shadow-md transform active:scale-95 border border-blue-100/50 dark:border-blue-800/30"
-            >
-              +
-            </button>
-
-            {[1, 2, 3].map((num) => (
-              <button
-                key={num}
-                onClick={() => inputNumber(num)}
-                className="px-4 py-4 sm:py-5 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white rounded-2xl hover:bg-white dark:hover:bg-gray-700 hover:shadow-md transition-all transform active:scale-95 font-bold text-2xl border border-gray-100/50 dark:border-gray-700/50"
-              >
-                {num}
-              </button>
-            ))}
-            <button
-              onClick={() => performOperation('=')}
-              className="row-span-2 px-4 py-4 sm:py-5 bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-2xl hover:shadow-xl hover:shadow-blue-500/40 transition-all transform hover:-translate-y-1 active:translate-y-0 active:scale-95 font-black text-3xl flex items-center justify-center border border-white/20"
-            >
-              =
-            </button>
-
-            <button
-              onClick={() => inputNumber(0)}
-              className="col-span-2 px-4 py-4 sm:py-5 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white rounded-2xl hover:bg-white dark:hover:bg-gray-700 hover:shadow-md transition-all transform active:scale-95 font-bold text-2xl border border-gray-100/50 dark:border-gray-700/50"
-            >
-              0
-            </button>
-            <button
-              onClick={inputDecimal}
-              className="px-4 py-4 sm:py-5 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white rounded-2xl hover:bg-white dark:hover:bg-gray-700 hover:shadow-md transition-all transform active:scale-95 font-bold text-2xl border border-gray-100/50 dark:border-gray-700/50"
-            >
-              .
-            </button>
+          <div className="text-4xl sm:text-5xl font-mono font-black text-white tracking-wider overflow-x-auto whitespace-nowrap scrollbar-hide">
+            {display}
           </div>
         </div>
 
-        <div className="mt-8">
-          {/* AdSense Removed */}
+        {/* Scientific Keys */}
+        {isScientific && (
+          <div className="grid grid-cols-5 gap-2 mb-4">
+            {['sin', 'cos', 'tan', 'log', 'ln', 'sqrt', 'pow2', 'pow3', '1/x', 'pi'].map((op) => (
+              <button
+                key={op}
+                onClick={() => scientificOperation(op)}
+                className="py-2.5 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-900/60 font-bold text-xs uppercase border border-blue-200/50 dark:border-blue-800/40 transition-colors"
+              >
+                {op === 'sqrt' ? '√' : op === 'pow2' ? 'x²' : op === 'pow3' ? 'x³' : op === 'pi' ? 'π' : op}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Standard Keypad */}
+        <div className="grid grid-cols-4 gap-2.5 sm:gap-3">
+          <button
+            onClick={clear}
+            className="col-span-2 py-4 bg-red-100 dark:bg-red-950/40 text-red-600 dark:text-red-400 rounded-2xl hover:bg-red-200 font-extrabold text-lg transition-colors border border-red-200 dark:border-red-900/40"
+          >
+            AC
+          </button>
+          <button
+            onClick={() => performOperation('/')}
+            className="py-4 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-2xl hover:bg-blue-100 font-black text-2xl transition-colors border border-blue-200 dark:border-blue-900/40"
+          >
+            ÷
+          </button>
+          <button
+            onClick={() => performOperation('*')}
+            className="py-4 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-2xl hover:bg-blue-100 font-black text-2xl transition-colors border border-blue-200 dark:border-blue-900/40"
+          >
+            ×
+          </button>
+
+          {[7, 8, 9].map((num) => (
+            <button
+              key={num}
+              onClick={() => inputNumber(num)}
+              className="py-4 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white rounded-2xl hover:bg-white dark:hover:bg-slate-700 font-bold text-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
+            >
+              {num}
+            </button>
+          ))}
+          <button
+            onClick={() => performOperation('-')}
+            className="py-4 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-2xl hover:bg-blue-100 font-black text-2xl transition-colors border border-blue-200 dark:border-blue-900/40"
+          >
+            −
+          </button>
+
+          {[4, 5, 6].map((num) => (
+            <button
+              key={num}
+              onClick={() => inputNumber(num)}
+              className="py-4 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white rounded-2xl hover:bg-white dark:hover:bg-slate-700 font-bold text-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
+            >
+              {num}
+            </button>
+          ))}
+          <button
+            onClick={() => performOperation('+')}
+            className="py-4 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-2xl hover:bg-blue-100 font-black text-2xl transition-colors border border-blue-200 dark:border-blue-900/40"
+          >
+            +
+          </button>
+
+          {[1, 2, 3].map((num) => (
+            <button
+              key={num}
+              onClick={() => inputNumber(num)}
+              className="py-4 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white rounded-2xl hover:bg-white dark:hover:bg-slate-700 font-bold text-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
+            >
+              {num}
+            </button>
+          ))}
+          <button
+            onClick={() => performOperation('=')}
+            className="row-span-2 py-4 bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-2xl hover:from-blue-700 hover:to-indigo-700 font-black text-2xl shadow-lg hover:shadow-blue-500/30 flex items-center justify-center transition-all"
+          >
+            =
+          </button>
+
+          <button
+            onClick={() => inputNumber(0)}
+            className="col-span-2 py-4 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white rounded-2xl hover:bg-white dark:hover:bg-slate-700 font-bold text-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
+          >
+            0
+          </button>
+          <button
+            onClick={inputDecimal}
+            className="py-4 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white rounded-2xl hover:bg-white dark:hover:bg-slate-700 font-bold text-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
+          >
+            .
+          </button>
         </div>
       </div>
-    </div>
+    </ToolLayout>
   );
 };
 

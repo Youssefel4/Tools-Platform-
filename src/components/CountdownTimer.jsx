@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import SEO from './SEO';
+import { LuTimer, LuPlay, LuPause, LuRotateCcw, LuVolume2 } from 'react-icons/lu';
+import ToolLayout from './ToolLayout';
 
 const CountdownTimer = () => {
   const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
+  const [minutes, setMinutes] = useState(5);
   const [seconds, setSeconds] = useState(0);
-  const [totalSeconds, setTotalSeconds] = useState(0);
+  const [totalSeconds, setTotalSeconds] = useState(300);
+  const [initialSeconds, setInitialSeconds] = useState(300);
   const [isRunning, setIsRunning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef(null);
@@ -24,27 +26,36 @@ const CountdownTimer = () => {
         });
       }, 1000);
     } else {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
+      if (intervalRef.current) clearInterval(intervalRef.current);
     }
 
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
+      if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, [isRunning, isPaused, totalSeconds]);
 
   const playAlarm = () => {
-    const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmFgU7k9n1unEiBC13yO/eizEIHWq+8+OWT');
-    audio.play().catch(() => { }); // Audio play failed silently
+    try {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1.2);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 1.2);
+    } catch {
+      // Audio fallback silently
+    }
   };
 
   const startTimer = () => {
     const total = hours * 3600 + minutes * 60 + seconds;
     if (total > 0) {
       setTotalSeconds(total);
+      setInitialSeconds(total);
       setIsRunning(true);
       setIsPaused(false);
     }
@@ -57,226 +68,166 @@ const CountdownTimer = () => {
   const resetTimer = () => {
     setIsRunning(false);
     setIsPaused(false);
-    setTotalSeconds(0);
-    setHours(0);
-    setMinutes(0);
+    setTotalSeconds(initialSeconds || 300);
+  };
+
+  const setPreset = (mins) => {
+    setIsRunning(false);
+    setIsPaused(false);
+    setHours(Math.floor(mins / 60));
+    setMinutes(mins % 60);
     setSeconds(0);
+    const secs = mins * 60;
+    setTotalSeconds(secs);
+    setInitialSeconds(secs);
   };
 
-  const formatTime = (totalSecs) => {
-    const h = Math.floor(totalSecs / 3600);
-    const m = Math.floor((totalSecs % 3600) / 60);
-    const s = totalSecs % 60;
-    return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  const formatTime = (secs) => {
+    const h = Math.floor(secs / 3600);
+    const m = Math.floor((secs % 3600) / 60);
+    const s = secs % 60;
+    return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
   };
 
-  const displayHours = Math.floor(totalSeconds / 3600);
-  const displayMinutes = Math.floor((totalSeconds % 3600) / 60);
-  const displaySeconds = totalSeconds % 60;
+  const percentLeft = initialSeconds > 0 ? (totalSeconds / initialSeconds) * 100 : 0;
 
-  const presetTimers = [
-    { name: '1 Minute', hours: 0, minutes: 1, seconds: 0 },
-    { name: '5 Minutes', hours: 0, minutes: 5, seconds: 0 },
-    { name: '10 Minutes', hours: 0, minutes: 10, seconds: 0 },
-    { name: '15 Minutes', hours: 0, minutes: 15, seconds: 0 },
-    { name: '30 Minutes', hours: 0, minutes: 30, seconds: 0 },
-    { name: '1 Hour', hours: 1, minutes: 0, seconds: 0 },
+  const faqs = [
+    {
+      question: "Does the timer sound play in background tabs?",
+      answer: "Yes, modern Web Audio synthesized alerts continue to sound when the timer reaches zero, even if your browser tab is minimized or in the background."
+    },
+    {
+      question: "Can I use preset times for studying or cooking?",
+      answer: "Yes, you can click on any quick preset (1m, 5m, 15m, 25m, 45m, 60m) to set the countdown timer instantly."
+    },
+    {
+      question: "Is this online timer completely free?",
+      answer: "Yes, the countdown timer is 100% free with unlimited usage, zero ads, and zero downloads required."
+    }
+  ];
+
+  const howToUse = [
+    { title: "Set Desired Time", desc: "Select a quick preset button or enter hours, minutes, and seconds manually." },
+    { title: "Start Countdown", desc: "Click Start Timer to begin. Pause and resume whenever necessary." },
+    { title: "Audible Chime Alert", desc: "Listen for the chime tone as the countdown reaches zero." }
+  ];
+
+  const features = [
+    { title: "Quick Presets", desc: "One-click shortcuts for 1m, 5m, 15m, 25m (Pomodoro), and 60 minutes." },
+    { title: "Web Audio Chime", desc: "Clear tone sounds reliably at 00:00:00 without external media files." },
+    { title: "Visual Progress Bar", desc: "Dynamic animated indicator displays time remaining at a glance." }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
-      <SEO
-        title="Countdown Timer"
-        description="Free online countdown timer with alarm - set hours, minutes, and seconds. Perfect for cooking, workouts, meetings, and time management. Simple and easy to use timer."
-        keywords="countdown timer, online timer, alarm timer, stopwatch, time tracker, cooking timer, workout timer, free timer, countdown clock, timer app"
-        url="https://platformtools.netlify.app/countdown-timer"
-      />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-10 sm:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">
-            Countdown <span className="text-gradient">Timer</span>
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 font-medium max-w-2xl mx-auto">
-            Set countdown timers with alarms for tasks, cooking, or focused work sessions
-          </p>
+    <ToolLayout
+      title="Online Countdown Timer with Alarm"
+      subtitle="Set hours, minutes, and seconds with audible alert chime and quick study presets."
+      category="timers"
+      categoryName="Timers & Productivity"
+      icon={LuTimer}
+      badge="Productivity"
+      seoDescription="Free online countdown timer with alarm sound. Set custom hours, minutes, and seconds for cooking, study, workouts, and productivity with full-screen support."
+      seoKeywords="countdown timer, online timer, timer with alarm, free countdown timer, timer clock, study timer, productivity timer"
+      howToUse={howToUse}
+      features={features}
+      faqs={faqs}
+      relatedToolIds={['pomodoro-timer', 'stopwatch', 'sleep-calculator']}
+    >
+      <div className="max-w-xl mx-auto space-y-8 text-center">
+        {/* Presets */}
+        <div className="flex flex-wrap justify-center gap-2">
+          {[1, 5, 10, 15, 25, 45, 60].map((m) => (
+            <button
+              key={m}
+              onClick={() => setPreset(m)}
+              className="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-blue-50 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-200 dark:border-slate-700 transition-colors"
+            >
+              {m}m
+            </button>
+          ))}
         </div>
 
-        <div className="glass-panel rounded-3xl p-8 sm:p-12 mb-8 relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-          
-          <div className="text-center mb-10 relative z-10">
-            <div className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-mono font-black text-transparent bg-clip-text bg-gradient-to-br from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 mb-6 drop-shadow-md tracking-tight overflow-hidden animate-pulse-subtle">
-              {formatTime(totalSeconds)}
-            </div>
-            {isRunning && !isPaused && (
-              <div className="inline-flex items-center px-4 py-1.5 bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 rounded-full text-sm font-bold shadow-sm border border-green-200 dark:border-green-800">
-                <span className="w-2 h-2 bg-green-500 rounded-full mr-2.5 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
-                Running
-              </div>
-            )}
-            {isRunning && isPaused && (
-              <div className="inline-flex items-center px-4 py-1.5 bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-300 rounded-full text-sm font-bold shadow-sm border border-yellow-200 dark:border-yellow-800">
-                <span className="w-2 h-2 bg-yellow-500 rounded-full mr-2.5"></span>
-                Paused
-              </div>
-            )}
+        {/* Display Screen */}
+        <div className="p-8 sm:p-12 rounded-3xl bg-slate-900 border border-slate-800 text-white shadow-xl relative overflow-hidden">
+          <div className="text-5xl sm:text-7xl font-mono font-black tracking-wider mb-4">
+            {formatTime(totalSeconds)}
           </div>
 
-          {!isRunning ? (
-            <div className="mb-8 relative z-10 transition-all duration-300">
-              <div className="grid grid-cols-3 gap-4 sm:gap-6 mb-8 max-w-2xl mx-auto">
-                <div className="bg-white/80 dark:bg-gray-800/80 p-5 rounded-3xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg transform transition-all hover:scale-105">
-                  <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-2 text-center uppercase tracking-widest">
-                    Hours
-                  </label>
-                  <input
-                    type="number"
-                    min="0"
-                    max="23"
-                    value={hours}
-                    onChange={(e) => setHours(Math.min(23, Math.max(0, parseInt(e.target.value) || 0)))}
-                    className="w-full px-2 py-2 bg-transparent border-0 border-b-2 border-gray-200 dark:border-gray-700 text-center text-4xl sm:text-5xl font-black font-mono focus:ring-0 focus:border-blue-500 dark:text-white transition-all"
-                  />
-                </div>
-                <div className="bg-white/80 dark:bg-gray-800/80 p-5 rounded-3xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg transform transition-all hover:scale-105">
-                  <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-2 text-center uppercase tracking-widest">
-                    Minutes
-                  </label>
-                  <input
-                    type="number"
-                    min="0"
-                    max="59"
-                    value={minutes}
-                    onChange={(e) => setMinutes(Math.min(59, Math.max(0, parseInt(e.target.value) || 0)))}
-                    className="w-full px-2 py-2 bg-transparent border-0 border-b-2 border-gray-200 dark:border-gray-700 text-center text-4xl sm:text-5xl font-black font-mono focus:ring-0 focus:border-blue-500 dark:text-white transition-all"
-                  />
-                </div>
-                <div className="bg-white/80 dark:bg-gray-800/80 p-5 rounded-3xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg transform transition-all hover:scale-105">
-                  <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-2 text-center uppercase tracking-widest">
-                    Seconds
-                  </label>
-                  <input
-                    type="number"
-                    min="0"
-                    max="59"
-                    value={seconds}
-                    onChange={(e) => setSeconds(Math.min(59, Math.max(0, parseInt(e.target.value) || 0)))}
-                    className="w-full px-2 py-2 bg-transparent border-0 border-b-2 border-gray-200 dark:border-gray-700 text-center text-4xl sm:text-5xl font-black font-mono focus:ring-0 focus:border-blue-500 dark:text-white transition-all"
-                  />
-                </div>
-              </div>
-
-              <div className="mb-10 max-w-3xl mx-auto">
-                <h3 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-4 text-center uppercase tracking-wider">Quick Presets</h3>
-                <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
-                  {presetTimers.map((preset, index) => (
-                    <button
-                      key={index}
-                      onClick={() => {
-                        setHours(preset.hours);
-                        setMinutes(preset.minutes);
-                        setSeconds(preset.seconds);
-                      }}
-                      className="px-3 py-2.5 bg-gray-50 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 transition-all font-medium text-sm hover:scale-105 shadow-sm"
-                    >
-                      {preset.name}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="max-w-md mx-auto">
-                <button
-                  onClick={startTimer}
-                  className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-2xl transition-all transform hover:-translate-y-1 shadow-lg hover:shadow-purple-500/30 font-bold text-xl flex items-center justify-center gap-3"
-                >
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                  Start Timer
-                </button>
-              </div>
-            </div>
-          ) : (
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 max-w-xl mx-auto relative z-10 transition-all duration-300 animate-fade-in-up">
-              <button
-                onClick={pauseTimer}
-                className={`flex-1 px-8 py-4 ${isPaused ? 'bg-gradient-to-r from-green-500 to-emerald-600 hover:shadow-green-500/30' : 'bg-gradient-to-r from-yellow-500 to-orange-500 hover:shadow-orange-500/30'} text-white rounded-2xl hover:shadow-lg transition-all transform hover:-translate-y-1 font-bold text-xl flex items-center justify-center gap-3`}
-              >
-                {isPaused ? (
-                  <><svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Resume</>
-                ) : (
-                  <><svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Pause</>
-                )}
-              </button>
-              <button
-                onClick={resetTimer}
-                className="flex-1 px-8 py-4 bg-gray-100 dark:bg-gray-800 hover:bg-red-50 dark:hover:bg-red-900/40 text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 border border-gray-200 dark:border-gray-700 hover:border-red-300 dark:hover:border-red-800 rounded-2xl transition-all transform hover:-translate-y-1 font-bold text-xl flex items-center justify-center gap-3 shadow-sm hover:shadow-red-500/10"
-              >
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-                Reset
-              </button>
-            </div>
-          )}
+          {/* Progress bar */}
+          <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-1000"
+              style={{ width: `${percentLeft}%` }}
+            />
+          </div>
         </div>
 
-        <div className="glass-panel rounded-3xl p-6 sm:p-8 mb-8 relative overflow-hidden">
-          <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
-              <span className="text-white text-xl">📊</span>
+        {/* Manual Time Input (when not running) */}
+        {!isRunning && (
+          <div className="grid grid-cols-3 gap-3 max-w-xs mx-auto">
+            <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+              <label className="text-[10px] font-bold uppercase text-slate-400">Hours</label>
+              <input
+                type="number"
+                min="0"
+                max="99"
+                value={hours}
+                onChange={(e) => setHours(Math.max(0, parseInt(e.target.value) || 0))}
+                className="w-full text-center bg-transparent font-mono font-bold text-lg text-slate-900 dark:text-white focus:outline-none"
+              />
             </div>
-            Timer Progress
-          </h2>
-          <div className="mb-8">
-            <div className="flex justify-between text-sm font-bold text-gray-600 dark:text-gray-400 mb-3">
-              <span className="uppercase tracking-wider">Progress</span>
-              <span className="text-blue-600 dark:text-blue-400">
-                {totalSeconds === 0 ? '0' : Math.round((1 - totalSeconds / (hours * 3600 + minutes * 60 + seconds)) * 100)}%
-              </span>
+            <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+              <label className="text-[10px] font-bold uppercase text-slate-400">Minutes</label>
+              <input
+                type="number"
+                min="0"
+                max="59"
+                value={minutes}
+                onChange={(e) => setMinutes(Math.max(0, parseInt(e.target.value) || 0))}
+                className="w-full text-center bg-transparent font-mono font-bold text-lg text-slate-900 dark:text-white focus:outline-none"
+              />
             </div>
-            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4 shadow-inner overflow-hidden flex">
-              <div
-                className="bg-gradient-to-r from-blue-500 to-purple-500 h-full rounded-full transition-all duration-1000 ease-linear shadow-sm"
-                style={{
-                  width: `${totalSeconds === 0 ? (isRunning ? 0 : 100) : Math.round((1 - totalSeconds / (hours * 3600 + minutes * 60 + seconds)) * 100)}%`
-                }}
+            <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+              <label className="text-[10px] font-bold uppercase text-slate-400">Seconds</label>
+              <input
+                type="number"
+                min="0"
+                max="59"
+                value={seconds}
+                onChange={(e) => setSeconds(Math.max(0, parseInt(e.target.value) || 0))}
+                className="w-full text-center bg-transparent font-mono font-bold text-lg text-slate-900 dark:text-white focus:outline-none"
               />
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-4 sm:gap-6 text-center">
-            <div className="bg-white/50 dark:bg-gray-800/50 p-4 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-16 h-16 bg-blue-500/5 rounded-full blur-xl"></div>
-              <div className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-white font-mono mb-1">
-                {displayHours.toString().padStart(2, '0')}
-              </div>
-              <div className="text-xs sm:text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Hours</div>
-            </div>
-            <div className="bg-white/50 dark:bg-gray-800/50 p-4 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-16 h-16 bg-purple-500/5 rounded-full blur-xl"></div>
-              <div className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-white font-mono mb-1">
-                {displayMinutes.toString().padStart(2, '0')}
-              </div>
-              <div className="text-xs sm:text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Minutes</div>
-            </div>
-            <div className="bg-white/50 dark:bg-gray-800/50 p-4 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-16 h-16 bg-pink-500/5 rounded-full blur-xl"></div>
-              <div className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-white font-mono mb-1">
-                {displaySeconds.toString().padStart(2, '0')}
-              </div>
-              <div className="text-xs sm:text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Seconds</div>
-            </div>
-          </div>
-        </div>
+        )}
 
-        <div className="mt-8">
-          <ins className="adsbygoogle"
-            style={{ display: 'block', width: '100%', height: '250px' }}
-            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-            data-ad-slot="XXXXXXXXXX"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
+        {/* Controls */}
+        <div className="flex justify-center items-center gap-4">
+          {!isRunning ? (
+            <button
+              onClick={startTimer}
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-blue-500/30 transition-all flex items-center gap-2 text-base"
+            >
+              <LuPlay size={18} /> Start Timer
+            </button>
+          ) : (
+            <button
+              onClick={pauseTimer}
+              className="px-8 py-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-amber-500/30 transition-all flex items-center gap-2 text-base"
+            >
+              <LuPause size={18} /> {isPaused ? 'Resume' : 'Pause'}
+            </button>
+          )}
+
+          <button
+            onClick={resetTimer}
+            className="px-6 py-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold rounded-2xl transition-colors flex items-center gap-2 text-base border border-slate-200 dark:border-slate-700"
+          >
+            <LuRotateCcw size={18} /> Reset
+          </button>
         </div>
       </div>
-    </div>
+    </ToolLayout>
   );
 };
 

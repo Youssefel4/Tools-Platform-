@@ -45,12 +45,12 @@ const Footer = () => {
               Calculators
             </h4>
             <ul className="space-y-2.5 text-sm text-slate-600 dark:text-slate-400">
-              <li><Link to="/percentage-calculator" className="hover:text-blue-600 transition-colors">Percentage Calculator</Link></li>
-              <li><Link to="/bmi-calculator" className="hover:text-blue-600 transition-colors">BMI Calculator</Link></li>
-              <li><Link to="/mortgage-calculator" className="hover:text-blue-600 transition-colors">Mortgage Calculator</Link></li>
-              <li><Link to="/calorie-calculator" className="hover:text-blue-600 transition-colors">Calorie & BMR Calc</Link></li>
-              <li><Link to="/compound-interest-calculator" className="hover:text-blue-600 transition-colors">Compound Interest</Link></li>
-              <li><Link to="/age-calculator" className="hover:text-blue-600 transition-colors">Age Calculator</Link></li>
+              <li><Link to="/tools/percentage-calculator" className="hover:text-blue-600 transition-colors">Percentage Calculator</Link></li>
+              <li><Link to="/tools/bmi-calculator" className="hover:text-blue-600 transition-colors">BMI Calculator</Link></li>
+              <li><Link to="/tools/mortgage-calculator" className="hover:text-blue-600 transition-colors">Mortgage Calculator</Link></li>
+              <li><Link to="/tools/calorie-calculator" className="hover:text-blue-600 transition-colors">Calorie & BMR Calc</Link></li>
+              <li><Link to="/tools/compound-interest-calculator" className="hover:text-blue-600 transition-colors">Compound Interest</Link></li>
+              <li><Link to="/tools/age-calculator" className="hover:text-blue-600 transition-colors">Age Calculator</Link></li>
             </ul>
           </div>
 
@@ -60,12 +60,12 @@ const Footer = () => {
               Converters & Dev
             </h4>
             <ul className="space-y-2.5 text-sm text-slate-600 dark:text-slate-400">
-              <li><Link to="/unit-converter" className="hover:text-blue-600 transition-colors">Universal Unit Converter</Link></li>
-              <li><Link to="/password-generator" className="hover:text-blue-600 transition-colors">Password Generator</Link></li>
-              <li><Link to="/qr-generator" className="hover:text-blue-600 transition-colors">QR Code Generator</Link></li>
-              <li><Link to="/image-resizer" className="hover:text-blue-600 transition-colors">Image Resizer</Link></li>
-              <li><Link to="/image-compressor" className="hover:text-blue-600 transition-colors">Image Compressor</Link></li>
-              <li><Link to="/csv-json-converter" className="hover:text-blue-600 transition-colors">CSV to JSON</Link></li>
+              <li><Link to="/tools/unit-converter" className="hover:text-blue-600 transition-colors">Universal Unit Converter</Link></li>
+              <li><Link to="/tools/password-generator" className="hover:text-blue-600 transition-colors">Password Generator</Link></li>
+              <li><Link to="/tools/qr-generator" className="hover:text-blue-600 transition-colors">QR Code Generator</Link></li>
+              <li><Link to="/tools/image-resizer" className="hover:text-blue-600 transition-colors">Image Resizer</Link></li>
+              <li><Link to="/tools/image-compressor" className="hover:text-blue-600 transition-colors">Image Compressor</Link></li>
+              <li><Link to="/tools/csv-json-converter" className="hover:text-blue-600 transition-colors">CSV to JSON</Link></li>
             </ul>
           </div>
 

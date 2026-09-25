@@ -280,6 +280,74 @@ const Home = () => {
         )}
       </section>
 
+      
+      {/* Category Directory & Internal Linking Hub (Crucial for Googlebot Crawling & Indexation) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-900 text-blue-700 dark:text-blue-300 text-xs font-bold mb-3">
+            <span>🗂️</span> Structured Tool Directory
+          </div>
+          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+            Browse All Tools by Category
+          </h2>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
+            Direct crawlable access to every single tool, calculator, and converter on Tools Platform.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {TOOL_CATEGORIES.filter(c => c.id !== 'all').map(category => {
+            const CatIcon = category.icon;
+            const categoryTools = ALL_TOOLS.filter(t => t.category === category.id);
+            return (
+              <div
+                key={category.id}
+                className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center gap-3 mb-4 pb-3 border-b border-slate-100 dark:border-slate-800">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+                      <CatIcon size={20} />
+                    </div>
+                    <div>
+                      <h3 className="font-extrabold text-slate-900 dark:text-white text-base">
+                        {category.name}
+                      </h3>
+                      <span className="text-[11px] text-slate-400 font-medium">
+                        {categoryTools.length} free web tools
+                      </span>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-2 mb-4">
+                    {categoryTools.map(tool => (
+                      <li key={tool.id}>
+                        <Link
+                          to={tool.href}
+                          className="group/item flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 py-1 transition-colors"
+                        >
+                          <span className="truncate pr-2">{tool.name}</span>
+                          <LuArrowRight size={12} className="opacity-0 group-hover/item:opacity-100 transform group-hover/item:translate-x-1 transition-all text-blue-500 flex-shrink-0" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="pt-3 border-t border-slate-100 dark:border-slate-800/60">
+                  <button
+                    onClick={() => { setActiveCategory(category.id); window.scrollTo({ top: 400, behavior: 'smooth' }); }}
+                    className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+                  >
+                    Filter by {category.name} →
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
       {/* Featured Educational Blog Guides Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-slate-900 dark:to-slate-900 border border-blue-200/70 dark:border-slate-800">

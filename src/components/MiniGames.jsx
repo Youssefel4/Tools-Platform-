@@ -1,79 +1,93 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { LuGamepad2, LuArrowLeft } from 'react-icons/lu';
+import ToolLayout from './ToolLayout';
 
 const MiniGames = () => {
   const [activeGame, setActiveGame] = useState(null);
 
   const games = [
-    { id: 'tictactoe', name: 'Tic-Tac-Toe', icon: '⭕', description: 'Classic two-player game' },
-    { id: 'numberguess', name: 'Number Guessing', icon: '🔢', description: 'Guess the secret number' },
-    { id: 'snake', name: 'Snake Game', icon: '🐍', description: 'Classic snake game' }
+    { id: 'tictactoe', name: 'Tic-Tac-Toe', icon: '⭕', description: 'Classic two-player game of X and O' },
+    { id: 'numberguess', name: 'Number Guessing', icon: '🔢', description: 'Guess the hidden secret number from 1 to 100' },
+    { id: 'snake', name: 'Snake Game', icon: '🐍', description: 'Classic arcade snake game with score tracking' }
+  ];
+
+  const faqs = [
+    {
+      question: "Are these mini games free to play?",
+      answer: "Yes, all mini games are 100% free with unlimited replays, no advertisements, and zero downloads required."
+    },
+    {
+      question: "Can I play these games on mobile?",
+      answer: "Yes! The games feature touch-friendly controls that work smoothly on iPhone, Android, and tablets."
+    }
+  ];
+
+  const howToUse = [
+    { title: "Select a Game", desc: "Choose from Tic-Tac-Toe, Number Guessing, or Snake." },
+    { title: "Play in Browser", desc: "Interact via mouse, keyboard arrow keys, or on-screen touch controls." },
+    { title: "Switch & Restart", desc: "Use the Back to Games button at any time to try another classic game." }
+  ];
+
+  const features = [
+    { title: "3 Classic Games", desc: "Timeless strategy, arcade, and puzzle games in one responsive hub." },
+    { title: "Instant Play", desc: "Runs directly in your browser with zero installation or account requirements." },
+    { title: "Responsive Layout", desc: "Optimized for mobile touchscreens and desktop keyboards." }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-10 sm:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">
-            Mini <span className="text-gradient">Games</span>
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 font-medium max-w-2xl mx-auto">
-            Take a break, relax, and enjoy some classic games
-          </p>
-        </div>
-
+    <ToolLayout
+      title="Classic Mini Games Online"
+      subtitle="Take a mental break with classic retro browser games: Tic-Tac-Toe, Snake, and Number Guessing."
+      category="timers"
+      categoryName="Timers & Productivity"
+      icon={LuGamepad2}
+      badge="Games"
+      seoDescription="Play free classic mini games online. Play Tic-Tac-Toe, Snake, and Number Guessing right in your browser with no installation."
+      seoKeywords="mini games, online games, tic tac toe online, snake game, number guessing game, free browser games"
+      howToUse={howToUse}
+      features={features}
+      faqs={faqs}
+      relatedToolIds={['dice-roller', 'random-picker', 'pomodoro-timer']}
+    >
+      <div>
         {!activeGame ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {games.map((game) => (
               <div
                 key={game.id}
                 onClick={() => setActiveGame(game.id)}
-                className="glass-panel p-8 rounded-3xl cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group relative overflow-hidden"
+                className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-blue-500 hover:shadow-xl transition-all duration-200 transform hover:-translate-y-1 text-center group"
               >
-                <div className="absolute top-0 right-0 -mr-8 -mt-8 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all duration-500"></div>
-                <div className="text-6xl mb-6 text-center transform group-hover:scale-110 transition-transform duration-300 drop-shadow-sm">{game.icon}</div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">{game.icon}</div>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {game.name}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 text-center font-medium line-clamp-2">
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
                   {game.description}
                 </p>
-                <div className="mt-6 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
-                  <span className="px-6 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-bold rounded-full text-sm flex items-center gap-2">
-                    Play Now <span>👉</span>
-                  </span>
-                </div>
+                <span className="inline-block px-4 py-1.5 rounded-full bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 font-bold text-xs">
+                  Play Now →
+                </span>
               </div>
             ))}
           </div>
         ) : (
-          <div className="relative">
+          <div className="space-y-6">
             <button
               onClick={() => setActiveGame(null)}
-              className="absolute -top-16 left-0 px-5 py-2.5 bg-white/50 hover:bg-white/80 dark:bg-gray-800/50 dark:hover:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white rounded-xl font-bold backdrop-blur-md border border-gray-200/50 dark:border-gray-700/50 transition-all shadow-sm flex items-center gap-2 group z-20"
+              className="px-4 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold rounded-xl text-xs flex items-center gap-1.5 transition-colors border border-slate-200 dark:border-slate-700"
             >
-              <span className="transform group-hover:-translate-x-1 transition-transform">←</span> Back to Games
+              <LuArrowLeft size={14} /> Back to Games
             </button>
-            <div className="pt-4">
+            <div className="pt-2">
               {activeGame === 'tictactoe' && <TicTacToe />}
               {activeGame === 'numberguess' && <NumberGuessing />}
               {activeGame === 'snake' && <SnakeGame />}
             </div>
           </div>
         )}
-
-        <div className="mt-12 glass-panel rounded-3xl p-6 relative z-10 flex justify-center items-center h-48">
-          <span className="text-gray-400 text-sm">Advertisement</span>
-          <div className="absolute inset-0 opacity-0 pointer-events-none">
-            <ins className="adsbygoogle"
-                 style={{ display: 'block', width: '100%', height: '100%' }}
-                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                 data-ad-slot="XXXXXXXXXX"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-          </div>
-        </div>
       </div>
-    </div>
+    </ToolLayout>
   );
 };
 

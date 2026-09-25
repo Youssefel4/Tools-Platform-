@@ -25,7 +25,7 @@ export const ALL_TOOLS = [
   {
     id: 'calculator',
     name: 'Scientific Calculator',
-    href: '/calculator',
+    href: '/tools/calculator',
     description: 'Precision scientific & standard calculator with advanced trigonometric and algebraic formulas.',
     category: 'calculators',
     icon: LuCalculator,
@@ -37,7 +37,7 @@ export const ALL_TOOLS = [
   {
     id: 'percentage-calculator',
     name: 'Percentage Calculator',
-    href: '/percentage-calculator',
+    href: '/tools/percentage-calculator',
     description: 'Calculate percentages easily: percentage increase, discount rate, and fraction to percentage.',
     category: 'calculators',
     icon: LuPercent,
@@ -50,7 +50,7 @@ export const ALL_TOOLS = [
   {
     id: 'bmi-calculator',
     name: 'BMI Calculator',
-    href: '/bmi-calculator',
+    href: '/tools/bmi-calculator',
     description: 'Calculate Body Mass Index (BMI) for adults with metric and imperial units & healthy weight ranges.',
     category: 'calculators',
     icon: LuScale,
@@ -62,7 +62,7 @@ export const ALL_TOOLS = [
   {
     id: 'mortgage-calculator',
     name: 'Mortgage & Loan Calculator',
-    href: '/mortgage-calculator',
+    href: '/tools/mortgage-calculator',
     description: 'Estimate monthly mortgage payments, interest rates, loan terms, and total payoff schedules.',
     category: 'calculators',
     icon: LuLandmark,
@@ -74,7 +74,7 @@ export const ALL_TOOLS = [
   {
     id: 'calorie-calculator',
     name: 'Calorie & BMR Calculator',
-    href: '/calorie-calculator',
+    href: '/tools/calorie-calculator',
     description: 'Find your Basal Metabolic Rate (BMR) and daily caloric targets for maintenance, loss, or muscle gain.',
     category: 'calculators',
     icon: LuFlame,
@@ -86,7 +86,7 @@ export const ALL_TOOLS = [
   {
     id: 'age-calculator',
     name: 'Age Calculator',
-    href: '/age-calculator',
+    href: '/tools/age-calculator',
     description: 'Accurately calculate your chronological age down to years, months, days, and next birthday countdown.',
     category: 'calculators',
     icon: LuCalendar,
@@ -98,7 +98,7 @@ export const ALL_TOOLS = [
   {
     id: 'date-calculator',
     name: 'Date Difference Calculator',
-    href: '/date-calculator',
+    href: '/tools/date-calculator',
     description: 'Count exact calendar days, weeks, and business days between any two dates or add/subtract time.',
     category: 'calculators',
     icon: LuClock,
@@ -110,7 +110,7 @@ export const ALL_TOOLS = [
   {
     id: 'tip-calculator',
     name: 'Tip & Bill Splitter',
-    href: '/tip-calculator',
+    href: '/tools/tip-calculator',
     description: 'Instantly calculate tip amounts and split bills fairly among multiple friends with round-up options.',
     category: 'calculators',
     icon: LuDollarSign,
@@ -122,7 +122,7 @@ export const ALL_TOOLS = [
   {
     id: 'compound-interest-calculator',
     name: 'Compound Interest Calculator',
-    href: '/compound-interest-calculator',
+    href: '/tools/compound-interest-calculator',
     description: 'Forecast your wealth and investment growth over time with customizable deposits and compounding cycles.',
     category: 'calculators',
     icon: LuTrendingUp,
@@ -134,7 +134,7 @@ export const ALL_TOOLS = [
   {
     id: 'grade-calculator',
     name: 'Grade & GPA Calculator',
-    href: '/grade-calculator',
+    href: '/tools/grade-calculator',
     description: 'Calculate semester and cumulative GPA on a 4.0 scale or find the score needed on your final exam.',
     category: 'calculators',
     icon: LuGraduationCap,
@@ -146,7 +146,7 @@ export const ALL_TOOLS = [
   {
     id: 'sleep-calculator',
     name: 'Sleep Cycle Calculator',
-    href: '/sleep-calculator',
+    href: '/tools/sleep-calculator',
     description: 'Wake up refreshed by syncing with natural 90-minute REM sleep cycles and bedtime calculations.',
     category: 'calculators',
     icon: LuMoon,
@@ -159,7 +159,7 @@ export const ALL_TOOLS = [
   {
     id: 'time-calculator',
     name: 'Time Calculator',
-    href: '/time-calculator',
+    href: '/tools/time-calculator',
     description: 'Add, subtract, and calculate total elapsed hours, minutes, and seconds between clocks easily.',
     category: 'calculators',
     icon: LuClock,
@@ -172,7 +172,7 @@ export const ALL_TOOLS = [
   {
     id: 'cash-calculator',
     name: 'Cash Counter',
-    href: '/cash-calculator',
+    href: '/tools/cash-calculator',
     description: 'Fast cash register and money counting tool for all bills and coins with live subtotal tallies.',
     category: 'calculators',
     icon: LuCoins,
@@ -187,7 +187,7 @@ export const ALL_TOOLS = [
   {
     id: 'unit-converter',
     name: 'Unit Converter',
-    href: '/unit-converter',
+    href: '/tools/unit-converter',
     description: 'Convert between units of length, weight, temperature, pressure, digital storage, speed, and volume.',
     category: 'converters',
     icon: LuArrowLeftRight,
@@ -199,7 +199,7 @@ export const ALL_TOOLS = [
   {
     id: 'base-converter',
     name: 'Number Base Converter',
-    href: '/base-converter',
+    href: '/tools/base-converter',
     description: 'Convert numbers seamlessly between Binary, Decimal, Hexadecimal, and Octal formats.',
     category: 'converters',
     icon: LuBinary,
@@ -211,7 +211,7 @@ export const ALL_TOOLS = [
   {
     id: 'roman-numeral-converter',
     name: 'Roman Numeral Converter',
-    href: '/roman-numeral-converter',
+    href: '/tools/roman-numeral-converter',
     description: 'Convert Arabic numbers to Roman numerals and Roman numerals back to numbers instantly.',
     category: 'converters',
     icon: LuHash,
@@ -223,7 +223,7 @@ export const ALL_TOOLS = [
   {
     id: 'url-encoder',
     name: 'URL Encoder & Decoder',
-    href: '/url-encoder',
+    href: '/tools/url-encoder',
     description: 'Encode and decode strings to safe percent-encoded URLs or decode query parameters safely.',
     category: 'converters',
     icon: LuLink,
@@ -235,7 +235,7 @@ export const ALL_TOOLS = [
   {
     id: 'timestamp-converter',
     name: 'UNIX Timestamp Converter',
-    href: '/timestamp-converter',
+    href: '/tools/timestamp-converter',
     description: 'Real-time Unix epoch timestamp to human date converter (UTC & Local) and vice versa.',
     category: 'converters',
     icon: LuClock,
@@ -248,7 +248,7 @@ export const ALL_TOOLS = [
   {
     id: 'csv-json-converter',
     name: 'CSV to JSON Converter',
-    href: '/csv-json-converter',
+    href: '/tools/csv-json-converter',
     description: 'Convert CSV spreadsheets to formatted JSON data or convert JSON arrays back to CSV.',
     category: 'converters',
     icon: LuFileSpreadsheet,
@@ -260,7 +260,7 @@ export const ALL_TOOLS = [
   {
     id: 'case-converter',
     name: 'Case Converter',
-    href: '/case-converter',
+    href: '/tools/case-converter',
     description: 'Transform text to UPPERCASE, lowercase, Title Case, camelCase, snake_case, and kebab-case.',
     category: 'converters',
     icon: LuType,
@@ -272,7 +272,7 @@ export const ALL_TOOLS = [
   {
     id: 'morse-code-translator',
     name: 'Morse Code Translator',
-    href: '/morse-code-translator',
+    href: '/tools/morse-code-translator',
     description: 'Translate text to Morse code and Morse code back to text with live audio playback beeps.',
     category: 'converters',
     icon: LuRadio,
@@ -284,7 +284,7 @@ export const ALL_TOOLS = [
   {
     id: 'image-base64-converter',
     name: 'Image to Base64 Converter',
-    href: '/image-base64-converter',
+    href: '/tools/image-base64-converter',
     description: 'Convert any image to Base64 data string, CSS background, or HTML image element.',
     category: 'converters',
     icon: LuImage,
@@ -296,7 +296,7 @@ export const ALL_TOOLS = [
   {
     id: 'file-converter',
     name: 'File Converter',
-    href: '/file-converter',
+    href: '/tools/file-converter',
     description: 'Client-side file format conversion for documents, text, and data structures locally.',
     category: 'converters',
     icon: LuFileCheck,
@@ -309,7 +309,7 @@ export const ALL_TOOLS = [
   {
     id: 'text-counter',
     name: 'Word & Character Counter',
-    href: '/text-counter',
+    href: '/tools/text-counter',
     description: 'Detailed text analysis: word count, characters, sentences, paragraphs, and reading time.',
     category: 'text',
     icon: LuFileText,
@@ -321,7 +321,7 @@ export const ALL_TOOLS = [
   {
     id: 'text-reverser',
     name: 'Text Reverser',
-    href: '/text-reverser',
+    href: '/tools/text-reverser',
     description: 'Reverse text characters, reverse word order, reverse lines, or flip characters upside-down.',
     category: 'text',
     icon: LuArrowLeftRight,
@@ -333,7 +333,7 @@ export const ALL_TOOLS = [
   {
     id: 'lorem-ipsum-generator',
     name: 'Lorem Ipsum Generator',
-    href: '/lorem-ipsum-generator',
+    href: '/tools/lorem-ipsum-generator',
     description: 'Generate customizable placeholder dummy text by paragraphs, sentences, or word counts.',
     category: 'text',
     icon: LuSparkles,
@@ -345,7 +345,7 @@ export const ALL_TOOLS = [
   {
     id: 'text-to-speech',
     name: 'Text to Speech Reader',
-    href: '/text-to-speech',
+    href: '/tools/text-to-speech',
     description: 'Convert written text into natural spoken voice using browser speech synthesis with pitch and rate controls.',
     category: 'text',
     icon: LuVolume2,
@@ -357,7 +357,7 @@ export const ALL_TOOLS = [
   {
     id: 'markdown-previewer',
     name: 'Markdown Live Editor',
-    href: '/markdown-previewer',
+    href: '/tools/markdown-previewer',
     description: 'Interactive split-pane Markdown editor with live HTML preview, syntax shortcuts, and export.',
     category: 'text',
     icon: LuFileCode,
@@ -369,7 +369,7 @@ export const ALL_TOOLS = [
   {
     id: 'text-diff-checker',
     name: 'Text Diff Checker',
-    href: '/text-diff-checker',
+    href: '/tools/text-diff-checker',
     description: 'Compare two texts side-by-side to highlight added, removed, and modified words and lines.',
     category: 'text',
     icon: LuGitCompare,
@@ -382,7 +382,7 @@ export const ALL_TOOLS = [
   {
     id: 'random-picker',
     name: 'Random Name & Number Picker',
-    href: '/random-picker',
+    href: '/tools/random-picker',
     description: 'Pick random contest winners from names or generate random numbers with custom ranges.',
     category: 'text',
     icon: LuShuffle,
@@ -397,7 +397,7 @@ export const ALL_TOOLS = [
   {
     id: 'password-generator',
     name: 'Password Generator',
-    href: '/password-generator',
+    href: '/tools/password-generator',
     description: 'Generate cryptographically strong, unbreakable passwords with customizable characters and length.',
     category: 'developer',
     icon: LuKey,
@@ -409,7 +409,7 @@ export const ALL_TOOLS = [
   {
     id: 'regex-tester',
     name: 'Regex Tester & Debugger',
-    href: '/regex-tester',
+    href: '/tools/regex-tester',
     description: 'Test regular expressions in real-time with regex flag toggles, capture groups, and cheatsheet.',
     category: 'developer',
     icon: LuCode,
@@ -421,7 +421,7 @@ export const ALL_TOOLS = [
   {
     id: 'json-formatter',
     name: 'JSON Formatter & Validator',
-    href: '/json-formatter',
+    href: '/tools/json-formatter',
     description: 'Beautify, indent, minify, and validate JSON data with instant syntax error detection.',
     category: 'developer',
     icon: LuBraces,
@@ -433,7 +433,7 @@ export const ALL_TOOLS = [
   {
     id: 'hash-generator',
     name: 'Hash Generator',
-    href: '/hash-generator',
+    href: '/tools/hash-generator',
     description: 'Generate cryptographic hash digests in real-time: MD5, SHA-1, SHA-256, and SHA-512.',
     category: 'developer',
     icon: LuFingerprint,
@@ -445,7 +445,7 @@ export const ALL_TOOLS = [
   {
     id: 'css-gradient-generator',
     name: 'CSS Gradient Generator',
-    href: '/css-gradient-generator',
+    href: '/tools/css-gradient-generator',
     description: 'Visual CSS linear and radial gradient designer with angle controls, color stops, and CSS copy.',
     category: 'developer',
     icon: LuPalette,
@@ -458,7 +458,7 @@ export const ALL_TOOLS = [
   {
     id: 'password-strength-tester',
     name: 'Password Strength Tester',
-    href: '/password-strength-tester',
+    href: '/tools/password-strength-tester',
     description: 'Test password entropy, estimate brute-force cracking time, and check vulnerability criteria.',
     category: 'developer',
     icon: LuShieldCheck,
@@ -470,7 +470,7 @@ export const ALL_TOOLS = [
   {
     id: 'color-contrast-checker',
     name: 'Color Contrast Checker',
-    href: '/color-contrast-checker',
+    href: '/tools/color-contrast-checker',
     description: 'Ensure web accessibility with WCAG 2.1 AA and AAA contrast ratio scores for text and background colors.',
     category: 'developer',
     icon: LuEye,
@@ -482,7 +482,7 @@ export const ALL_TOOLS = [
   {
     id: 'color-palette-generator',
     name: 'Color Palette Generator',
-    href: '/color-palette-generator',
+    href: '/tools/color-palette-generator',
     description: 'Generate aesthetic harmonious color schemes (analogous, monochromatic, triadic) with lock and spacebar.',
     category: 'developer',
     icon: LuPalette,
@@ -494,7 +494,7 @@ export const ALL_TOOLS = [
   {
     id: 'image-compressor',
     name: 'Image Compressor',
-    href: '/image-compressor',
+    href: '/tools/image-compressor',
     description: 'Compress PNG and JPEG images client-side with quality sliders and instant file size savings.',
     category: 'developer',
     icon: LuMinimize2,
@@ -506,7 +506,7 @@ export const ALL_TOOLS = [
   {
     id: 'ip-lookup',
     name: 'What Is My IP & Network',
-    href: '/ip-lookup',
+    href: '/tools/ip-lookup',
     description: 'Instantly view your public IP address, ISP, location information, browser, and network latency.',
     category: 'developer',
     icon: LuGlobe,
@@ -520,7 +520,7 @@ export const ALL_TOOLS = [
   {
     id: 'pomodoro-timer',
     name: 'Pomodoro Focus Timer',
-    href: '/pomodoro-timer',
+    href: '/tools/pomodoro-timer',
     description: 'Boost focus with custom 25-minute Pomodoro study sessions, break cycles, and audio alerts.',
     category: 'timers',
     icon: LuTimer,
@@ -533,7 +533,7 @@ export const ALL_TOOLS = [
   {
     id: 'stopwatch',
     name: 'Digital Stopwatch',
-    href: '/stopwatch',
+    href: '/tools/stopwatch',
     description: 'High-precision millisecond stopwatch with lap tracking, fastest/slowest lap markers, and export.',
     category: 'timers',
     icon: LuPlay,
@@ -545,7 +545,7 @@ export const ALL_TOOLS = [
   {
     id: 'countdown-timer',
     name: 'Countdown Timer',
-    href: '/countdown-timer',
+    href: '/tools/countdown-timer',
     description: 'Set custom countdown timers for presentations, events, deadlines, and alarms with sound.',
     category: 'timers',
     icon: LuClock,
@@ -556,7 +556,7 @@ export const ALL_TOOLS = [
   {
     id: 'typing-test',
     name: 'Typing Speed Test',
-    href: '/typing-test',
+    href: '/tools/typing-test',
     description: 'Measure your typing speed (WPM), keystrokes per minute (CPM), and typing accuracy in 60 seconds.',
     category: 'timers',
     icon: LuKeyboard,
@@ -569,7 +569,7 @@ export const ALL_TOOLS = [
   {
     id: 'dice-roller',
     name: 'Dice Roller & Coin Flip',
-    href: '/dice-roller',
+    href: '/tools/dice-roller',
     description: 'Roll virtual polyhedral dice (d4, d6, d8, d10, d12, d20) with animations or flip a 3D coin.',
     category: 'timers',
     icon: LuDices,
@@ -583,7 +583,7 @@ export const ALL_TOOLS = [
   {
     id: 'color-picker',
     name: 'Color Picker & Palette',
-    href: '/color-picker',
+    href: '/tools/color-picker',
     description: 'Pick colors, sample eye dropper, extract HEX, RGB, HSL codes, and test color combinations.',
     category: 'media',
     icon: LuPalette,
@@ -594,7 +594,7 @@ export const ALL_TOOLS = [
   {
     id: 'qr-generator',
     name: 'QR Code Generator',
-    href: '/qr-generator',
+    href: '/tools/qr-generator',
     description: 'Create high-resolution custom QR codes for URLs, WiFi networks, text, and vCards with instant download.',
     category: 'media',
     icon: LuQrCode,
@@ -606,7 +606,7 @@ export const ALL_TOOLS = [
   {
     id: 'image-resizer',
     name: 'Image Resizer',
-    href: '/image-resizer',
+    href: '/tools/image-resizer',
     description: 'Resize image dimensions in pixels or percentages locally without quality loss or server uploads.',
     category: 'media',
     icon: LuMaximize2,
@@ -618,7 +618,7 @@ export const ALL_TOOLS = [
   {
     id: 'notes',
     name: 'Private Notes',
-    href: '/notes',
+    href: '/tools/notes',
     description: 'Write, edit, and organize encrypted local notes with markdown support and tag sorting.',
     category: 'timers',
     icon: LuStickyNote,
@@ -629,7 +629,7 @@ export const ALL_TOOLS = [
   {
     id: 'todo-list',
     name: 'Task & To-Do List',
-    href: '/todo-list',
+    href: '/tools/todo-list',
     description: 'Keep your daily goals organized with task prioritization, checklists, and local persistence.',
     category: 'timers',
     icon: LuSquareCheck,
@@ -640,7 +640,7 @@ export const ALL_TOOLS = [
   {
     id: 'mini-games',
     name: 'Focus Break Mini-Games',
-    href: '/mini-games',
+    href: '/tools/mini-games',
     description: 'Quick arcade puzzles and brain teasers for a healthy 3-minute mental refresh during work breaks.',
     category: 'timers',
     icon: LuGamepad2,

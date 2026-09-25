@@ -2,373 +2,373 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://platformtools.netlify.app/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://platformtools.netlify.app/blog</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://platformtools.netlify.app/about</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://platformtools.netlify.app/contact</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://platformtools.netlify.app/privacy</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://platformtools.netlify.app/terms</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/calculator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/calculator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/percentage-calculator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/percentage-calculator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/bmi-calculator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/bmi-calculator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/mortgage-calculator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/mortgage-calculator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/calorie-calculator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/calorie-calculator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/age-calculator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/age-calculator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/date-calculator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/date-calculator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/tip-calculator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/tip-calculator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/compound-interest-calculator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/compound-interest-calculator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/grade-calculator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/grade-calculator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/sleep-calculator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/sleep-calculator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/time-calculator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/time-calculator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/cash-calculator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/cash-calculator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/unit-converter</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/unit-converter</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/base-converter</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/base-converter</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/roman-numeral-converter</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/roman-numeral-converter</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/url-encoder</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/url-encoder</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/timestamp-converter</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/timestamp-converter</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/csv-json-converter</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/csv-json-converter</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/case-converter</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/case-converter</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/morse-code-translator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/morse-code-translator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/image-base64-converter</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/image-base64-converter</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/file-converter</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/file-converter</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/text-counter</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/text-counter</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/text-reverser</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/text-reverser</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/lorem-ipsum-generator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/lorem-ipsum-generator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/text-to-speech</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/text-to-speech</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/markdown-previewer</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/markdown-previewer</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/text-diff-checker</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/text-diff-checker</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/random-picker</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/random-picker</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/password-generator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/password-generator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/regex-tester</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/regex-tester</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/json-formatter</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/json-formatter</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/hash-generator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/hash-generator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/css-gradient-generator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/css-gradient-generator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/password-strength-tester</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/password-strength-tester</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/color-contrast-checker</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/color-contrast-checker</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/color-palette-generator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/color-palette-generator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/image-compressor</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/image-compressor</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/ip-lookup</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/ip-lookup</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/pomodoro-timer</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/pomodoro-timer</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/stopwatch</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/stopwatch</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/countdown-timer</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/countdown-timer</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/typing-test</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/typing-test</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/dice-roller</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/dice-roller</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/color-picker</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/color-picker</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/qr-generator</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/qr-generator</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/image-resizer</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/image-resizer</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/notes</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/notes</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/todo-list</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/todo-list</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://platformtools.netlify.app/mini-games</loc>
-    <lastmod>2026-09-22</lastmod>
+    <loc>https://platformtools.netlify.app/tools/mini-games</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://platformtools.netlify.app/blog/strong-password-generator-guide</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://platformtools.netlify.app/blog/free-qr-code-generator-online-guide</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://platformtools.netlify.app/blog/unit-converter-guide-length-weight-temperature</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://platformtools.netlify.app/blog/how-to-resize-image-without-losing-quality</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://platformtools.netlify.app/blog/12-vs-16-character-passwords-security-comparison</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>

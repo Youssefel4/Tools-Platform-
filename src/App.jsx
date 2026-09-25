@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -83,7 +83,6 @@ function App() {
   const [initializing, setInitializing] = useState(true);
 
   useEffect(() => {
-    // Local Session Setup
     const initSession = () => {
       let localUserId = getEncryptedItem('local_user_id');
       if (!localUserId) {
@@ -131,7 +130,7 @@ function App() {
           <Header darkMode={darkMode} setDarkMode={setDarkMode} />
           <main className="flex-grow">
             <Routes>
-              {/* Pages */}
+              {/* Core Pages */}
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
@@ -140,68 +139,125 @@ function App() {
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
 
-              {/* Existing Tools */}
-              <Route path="/calculator" element={<Calculator />} />
-              <Route path="/notes" element={<Notes session={session} />} />
-              <Route path="/unit-converter" element={<UnitConverter />} />
-              <Route path="/text-counter" element={<TextCounter />} />
-              <Route path="/password-generator" element={<PasswordGenerator />} />
-              <Route path="/countdown-timer" element={<CountdownTimer />} />
-              <Route path="/color-picker" element={<ColorPicker />} />
-              <Route path="/todo-list" element={<TodoList session={session} />} />
-              <Route path="/qr-generator" element={<QRCodeGenerator />} />
-              <Route path="/image-resizer" element={<ImageResizer />} />
-              <Route path="/file-converter" element={<FileConverter />} />
-              <Route path="/mini-games" element={<MiniGames />} />
+              {/* Canonical /tools/... Routes */}
+              <Route path="/tools/calculator" element={<Calculator />} />
+              <Route path="/tools/notes" element={<Notes session={session} />} />
+              <Route path="/tools/unit-converter" element={<UnitConverter />} />
+              <Route path="/tools/text-counter" element={<TextCounter />} />
+              <Route path="/tools/password-generator" element={<PasswordGenerator />} />
+              <Route path="/tools/countdown-timer" element={<CountdownTimer />} />
+              <Route path="/tools/color-picker" element={<ColorPicker />} />
+              <Route path="/tools/todo-list" element={<TodoList session={session} />} />
+              <Route path="/tools/qr-generator" element={<QRCodeGenerator />} />
+              <Route path="/tools/image-resizer" element={<ImageResizer />} />
+              <Route path="/tools/file-converter" element={<FileConverter />} />
+              <Route path="/tools/mini-games" element={<MiniGames />} />
 
-              {/* Newly Added Calculators */}
-              <Route path="/percentage-calculator" element={<PercentageCalculator />} />
-              <Route path="/bmi-calculator" element={<BMICalculator />} />
-              <Route path="/mortgage-calculator" element={<MortgageCalculator />} />
-              <Route path="/calorie-calculator" element={<CalorieCalculator />} />
-              <Route path="/age-calculator" element={<AgeCalculator />} />
-              <Route path="/date-calculator" element={<DateCalculator />} />
-              <Route path="/tip-calculator" element={<TipCalculator />} />
-              <Route path="/compound-interest-calculator" element={<CompoundInterestCalculator />} />
-              <Route path="/grade-calculator" element={<GradeCalculator />} />
-              <Route path="/sleep-calculator" element={<SleepCalculator />} />
-              <Route path="/time-calculator" element={<TimeCalculator />} />
-              <Route path="/cash-calculator" element={<CashCalculator />} />
+              {/* Calculators */}
+              <Route path="/tools/percentage-calculator" element={<PercentageCalculator />} />
+              <Route path="/tools/bmi-calculator" element={<BMICalculator />} />
+              <Route path="/tools/mortgage-calculator" element={<MortgageCalculator />} />
+              <Route path="/tools/calorie-calculator" element={<CalorieCalculator />} />
+              <Route path="/tools/age-calculator" element={<AgeCalculator />} />
+              <Route path="/tools/date-calculator" element={<DateCalculator />} />
+              <Route path="/tools/tip-calculator" element={<TipCalculator />} />
+              <Route path="/tools/compound-interest-calculator" element={<CompoundInterestCalculator />} />
+              <Route path="/tools/grade-calculator" element={<GradeCalculator />} />
+              <Route path="/tools/sleep-calculator" element={<SleepCalculator />} />
+              <Route path="/tools/time-calculator" element={<TimeCalculator />} />
+              <Route path="/tools/cash-calculator" element={<CashCalculator />} />
 
-              {/* Newly Added Converters */}
-              <Route path="/base-converter" element={<BaseConverter />} />
-              <Route path="/roman-numeral-converter" element={<RomanNumeralConverter />} />
-              <Route path="/url-encoder" element={<UrlEncoder />} />
-              <Route path="/timestamp-converter" element={<TimestampConverter />} />
-              <Route path="/csv-json-converter" element={<CsvJsonConverter />} />
-              <Route path="/case-converter" element={<CaseConverter />} />
-              <Route path="/morse-code-translator" element={<MorseCodeTranslator />} />
-              <Route path="/image-base64-converter" element={<ImageBase64Converter />} />
+              {/* Converters */}
+              <Route path="/tools/base-converter" element={<BaseConverter />} />
+              <Route path="/tools/roman-numeral-converter" element={<RomanNumeralConverter />} />
+              <Route path="/tools/url-encoder" element={<UrlEncoder />} />
+              <Route path="/tools/timestamp-converter" element={<TimestampConverter />} />
+              <Route path="/tools/csv-json-converter" element={<CsvJsonConverter />} />
+              <Route path="/tools/case-converter" element={<CaseConverter />} />
+              <Route path="/tools/morse-code-translator" element={<MorseCodeTranslator />} />
+              <Route path="/tools/image-base64-converter" element={<ImageBase64Converter />} />
 
-              {/* Newly Added Text Tools */}
-              <Route path="/text-reverser" element={<TextReverser />} />
-              <Route path="/lorem-ipsum-generator" element={<LoremIpsumGenerator />} />
-              <Route path="/text-to-speech" element={<TextToSpeech />} />
-              <Route path="/markdown-previewer" element={<MarkdownPreviewer />} />
-              <Route path="/text-diff-checker" element={<TextDiffChecker />} />
-              <Route path="/random-picker" element={<RandomPicker />} />
+              {/* Text Tools */}
+              <Route path="/tools/text-reverser" element={<TextReverser />} />
+              <Route path="/tools/lorem-ipsum-generator" element={<LoremIpsumGenerator />} />
+              <Route path="/tools/text-to-speech" element={<TextToSpeech />} />
+              <Route path="/tools/markdown-previewer" element={<MarkdownPreviewer />} />
+              <Route path="/tools/text-diff-checker" element={<TextDiffChecker />} />
+              <Route path="/tools/random-picker" element={<RandomPicker />} />
 
-              {/* Newly Added Developer Tools */}
-              <Route path="/regex-tester" element={<RegexTester />} />
-              <Route path="/json-formatter" element={<JsonFormatter />} />
-              <Route path="/hash-generator" element={<HashGenerator />} />
-              <Route path="/css-gradient-generator" element={<CssGradientGenerator />} />
-              <Route path="/password-strength-tester" element={<PasswordStrengthTester />} />
-              <Route path="/color-contrast-checker" element={<ColorContrastChecker />} />
-              <Route path="/color-palette-generator" element={<ColorPaletteGenerator />} />
-              <Route path="/image-compressor" element={<ImageCompressor />} />
-              <Route path="/ip-lookup" element={<IpLookup />} />
+              {/* Developer Tools */}
+              <Route path="/tools/regex-tester" element={<RegexTester />} />
+              <Route path="/tools/json-formatter" element={<JsonFormatter />} />
+              <Route path="/tools/hash-generator" element={<HashGenerator />} />
+              <Route path="/tools/css-gradient-generator" element={<CssGradientGenerator />} />
+              <Route path="/tools/password-strength-tester" element={<PasswordStrengthTester />} />
+              <Route path="/tools/color-contrast-checker" element={<ColorContrastChecker />} />
+              <Route path="/tools/color-palette-generator" element={<ColorPaletteGenerator />} />
+              <Route path="/tools/image-compressor" element={<ImageCompressor />} />
+              <Route path="/tools/ip-lookup" element={<IpLookup />} />
 
-              {/* Newly Added Timers & Productivity */}
-              <Route path="/pomodoro-timer" element={<PomodoroTimer />} />
-              <Route path="/stopwatch" element={<Stopwatch />} />
-              <Route path="/typing-test" element={<TypingSpeedTest />} />
-              <Route path="/dice-roller" element={<DiceRoller />} />
+              {/* Timers & Productivity */}
+              <Route path="/tools/pomodoro-timer" element={<PomodoroTimer />} />
+              <Route path="/tools/stopwatch" element={<Stopwatch />} />
+              <Route path="/tools/typing-test" element={<TypingSpeedTest />} />
+              <Route path="/tools/dice-roller" element={<DiceRoller />} />
+
+              {/* Backward-Compatible Redirects from Legacy /:id to /tools/:id */}
+              <Route path="/calculator" element={<Navigate to="/tools/calculator" replace />} />
+              <Route path="/notes" element={<Navigate to="/tools/notes" replace />} />
+              <Route path="/unit-converter" element={<Navigate to="/tools/unit-converter" replace />} />
+              <Route path="/text-counter" element={<Navigate to="/tools/text-counter" replace />} />
+              <Route path="/password-generator" element={<Navigate to="/tools/password-generator" replace />} />
+              <Route path="/countdown-timer" element={<Navigate to="/tools/countdown-timer" replace />} />
+              <Route path="/color-picker" element={<Navigate to="/tools/color-picker" replace />} />
+              <Route path="/todo-list" element={<Navigate to="/tools/todo-list" replace />} />
+              <Route path="/qr-generator" element={<Navigate to="/tools/qr-generator" replace />} />
+              <Route path="/image-resizer" element={<Navigate to="/tools/image-resizer" replace />} />
+              <Route path="/file-converter" element={<Navigate to="/tools/file-converter" replace />} />
+              <Route path="/mini-games" element={<Navigate to="/tools/mini-games" replace />} />
+
+              <Route path="/percentage-calculator" element={<Navigate to="/tools/percentage-calculator" replace />} />
+              <Route path="/bmi-calculator" element={<Navigate to="/tools/bmi-calculator" replace />} />
+              <Route path="/mortgage-calculator" element={<Navigate to="/tools/mortgage-calculator" replace />} />
+              <Route path="/calorie-calculator" element={<Navigate to="/tools/calorie-calculator" replace />} />
+              <Route path="/age-calculator" element={<Navigate to="/tools/age-calculator" replace />} />
+              <Route path="/date-calculator" element={<Navigate to="/tools/date-calculator" replace />} />
+              <Route path="/tip-calculator" element={<Navigate to="/tools/tip-calculator" replace />} />
+              <Route path="/compound-interest-calculator" element={<Navigate to="/tools/compound-interest-calculator" replace />} />
+              <Route path="/grade-calculator" element={<Navigate to="/tools/grade-calculator" replace />} />
+              <Route path="/sleep-calculator" element={<Navigate to="/tools/sleep-calculator" replace />} />
+              <Route path="/time-calculator" element={<Navigate to="/tools/time-calculator" replace />} />
+              <Route path="/cash-calculator" element={<Navigate to="/tools/cash-calculator" replace />} />
+              <Route path="/base-converter" element={<Navigate to="/tools/base-converter" replace />} />
+              <Route path="/roman-numeral-converter" element={<Navigate to="/tools/roman-numeral-converter" replace />} />
+              <Route path="/url-encoder" element={<Navigate to="/tools/url-encoder" replace />} />
+              <Route path="/timestamp-converter" element={<Navigate to="/tools/timestamp-converter" replace />} />
+              <Route path="/csv-json-converter" element={<Navigate to="/tools/csv-json-converter" replace />} />
+              <Route path="/case-converter" element={<Navigate to="/tools/case-converter" replace />} />
+              <Route path="/morse-code-translator" element={<Navigate to="/tools/morse-code-translator" replace />} />
+              <Route path="/image-base64-converter" element={<Navigate to="/tools/image-base64-converter" replace />} />
+              <Route path="/text-reverser" element={<Navigate to="/tools/text-reverser" replace />} />
+              <Route path="/lorem-ipsum-generator" element={<Navigate to="/tools/lorem-ipsum-generator" replace />} />
+              <Route path="/text-to-speech" element={<Navigate to="/tools/text-to-speech" replace />} />
+              <Route path="/markdown-previewer" element={<Navigate to="/tools/markdown-previewer" replace />} />
+              <Route path="/text-diff-checker" element={<Navigate to="/tools/text-diff-checker" replace />} />
+              <Route path="/random-picker" element={<Navigate to="/tools/random-picker" replace />} />
+              <Route path="/regex-tester" element={<Navigate to="/tools/regex-tester" replace />} />
+              <Route path="/json-formatter" element={<Navigate to="/tools/json-formatter" replace />} />
+              <Route path="/hash-generator" element={<Navigate to="/tools/hash-generator" replace />} />
+              <Route path="/css-gradient-generator" element={<Navigate to="/tools/css-gradient-generator" replace />} />
+              <Route path="/password-strength-tester" element={<Navigate to="/tools/password-strength-tester" replace />} />
+              <Route path="/color-contrast-checker" element={<Navigate to="/tools/color-contrast-checker" replace />} />
+              <Route path="/color-palette-generator" element={<Navigate to="/tools/color-palette-generator" replace />} />
+              <Route path="/image-compressor" element={<Navigate to="/tools/image-compressor" replace />} />
+              <Route path="/ip-lookup" element={<Navigate to="/tools/ip-lookup" replace />} />
+              <Route path="/pomodoro-timer" element={<Navigate to="/tools/pomodoro-timer" replace />} />
+              <Route path="/stopwatch" element={<Navigate to="/tools/stopwatch" replace />} />
+              <Route path="/typing-test" element={<Navigate to="/tools/typing-test" replace />} />
+              <Route path="/dice-roller" element={<Navigate to="/tools/dice-roller" replace />} />
+
+              {/* Fallback */}
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
           <Footer />
