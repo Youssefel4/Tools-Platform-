@@ -252,7 +252,7 @@ const Calculator = () => {
           ))}
           <button
             onClick={() => performOperation('=')}
-            className="row-span-2 py-4 bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-2xl hover:from-blue-700 hover:to-indigo-700 font-black text-2xl shadow-lg hover:shadow-blue-500/30 flex items-center justify-center transition-all"
+            className="row-span-2 py-4 bg-[#804DF2] text-white rounded-2xl hover:bg-[#6c3bde] font-black text-2xl shadow-lg hover:shadow-[#804DF2]/30 flex items-center justify-center transition-all"
           >
             =
           </button>

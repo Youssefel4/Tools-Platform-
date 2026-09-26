@@ -3,6 +3,7 @@ import { supabaseHelpers } from '../config/supabase';
 import { validateText, validateEmail } from '../utils/validation';
 import { sanitizeInput } from '../utils/sanitization';
 import { canExecute } from '../utils/rateLimit';
+import { LuCircleCheckBig, LuCircleAlert, LuMail, LuMessageCircle, LuShare2, LuSend } from 'react-icons/lu';
 import SEO from '../components/SEO';
 
 const Contact = () => {
@@ -19,39 +20,36 @@ const Contact = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
-    setError(''); // مسح الخطأ عند الكتابة
+    setError('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
-    // التحقق من Rate Limiting (3 ثواني بين كل إرسال)
     if (!canExecute('contact-form', 3000)) {
-      setError('يرجى الانتظار قبل إرسال رسالة أخرى');
+      setError('Please wait before sending another message');
       return;
     }
 
-    // تنقية المدخلات
     const sanitizedData = {
       name: sanitizeInput(formData.name),
       email: sanitizeInput(formData.email),
       message: sanitizeInput(formData.message)
     };
 
-    // التحقق من صحة المدخلات
     if (!validateText(sanitizedData.name, 2, 100)) {
-      setError('الاسم يجب أن يكون بين 2 و 100 حرف');
+      setError('Name must be between 2 and 100 characters');
       return;
     }
 
     if (!validateEmail(sanitizedData.email)) {
-      setError('البريد الإلكتروني غير صالح');
+      setError('Email address is invalid');
       return;
     }
 
     if (!validateText(sanitizedData.message, 10, 1000)) {
-      setError('الرسالة يجب أن تكون بين 10 و 1000 حرف');
+      setError('Message must be between 10 and 1000 characters');
       return;
     }
 
@@ -62,12 +60,12 @@ const Contact = () => {
       setTimeout(() => setSubmitted(false), 5000);
     } catch (err) {
       console.error('Error sending message:', err);
-      setError('حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى.');
+      setError('An error occurred while sending your message. Please try again.');
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-6 sm:py-8">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-10 sm:py-16 text-slate-900 dark:text-slate-100">
       <SEO
         title="Contact Us"
         description="Get in touch with Tools Platform. Send us your feedback, questions, or suggestions. We'd love to hear from you!"
@@ -75,41 +73,42 @@ const Contact = () => {
         url="https://platformtools.netlify.app/contact"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-10 sm:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">
-            Contact <span className="text-gradient">Us</span>
+        <div className="text-center mb-10 sm:mb-14">
+          <h1 className="text-3xl sm:text-5xl font-black text-[#001645] dark:text-white mb-4 tracking-tight">
+            Contact <span className="text-[#804DF2]">Us</span>
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Get in touch with us - we'd love to hear from you!
+          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            Get in touch with us — we'd love to hear your questions and feedback!
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          <div className="glass-panel rounded-3xl p-8 sm:p-10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+          <div className="rounded-3xl p-8 sm:p-10 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h2 className="text-2xl font-black text-[#001645] dark:text-white mb-6">
               Send us a Message
             </h2>
 
             {submitted && (
-              <div className="mb-6 p-4 bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-lg">
-                <p className="text-green-800 dark:text-green-300 text-sm sm:text-base">
-                  ✅ Thank you for your message! We'll get back to you soon.
+              <div className="mb-6 p-4 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 rounded-xl flex items-center gap-3">
+                <LuCircleCheckBig size={20} className="text-emerald-600 shrink-0" />
+                <p className="text-emerald-800 dark:text-emerald-300 text-sm font-medium">
+                  Thank you for your message! We'll get back to you soon.
                 </p>
               </div>
             )}
 
             {error && (
-              <div className="mb-6 p-4 bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-700 rounded-lg">
-                <p className="text-red-800 dark:text-red-300 text-sm sm:text-base">
-                  ⚠️ {error}
+              <div className="mb-6 p-4 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-xl flex items-center gap-3">
+                <LuCircleAlert size={20} className="text-amber-600 shrink-0" />
+                <p className="text-amber-800 dark:text-amber-300 text-sm font-medium">
+                  {error}
                 </p>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="name" className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">
                   Name *
                 </label>
                 <input
@@ -119,13 +118,13 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-50/50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 dark:text-white transition-all text-base"
+                  className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#804DF2] dark:text-white transition-all text-base"
                   placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="email" className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">
                   Email *
                 </label>
                 <input
@@ -135,13 +134,13 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-50/50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 dark:text-white transition-all text-base"
+                  className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#804DF2] dark:text-white transition-all text-base"
                   placeholder="your.email@example.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="message" className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">
                   Message *
                 </label>
                 <textarea
@@ -151,97 +150,90 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows="5"
-                  className="w-full px-4 py-3 bg-gray-50/50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 dark:text-white transition-all text-base resize-none"
+                  className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#804DF2] dark:text-white transition-all text-base resize-none"
                   placeholder="Tell us what's on your mind..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full px-6 py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1 font-semibold text-base"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#804DF2] hover:bg-[#6c3bde] text-white rounded-xl shadow-md transition-all font-bold text-base"
               >
+                <LuSend size={18} />
                 Send Message
               </button>
             </form>
           </div>
 
           <div className="space-y-6 md:space-y-8">
-            <div className="glass-panel rounded-3xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="absolute bottom-0 right-0 -mr-16 -mb-16 w-32 h-32 bg-green-500/10 rounded-full blur-2xl pointer-events-none"></div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 relative z-10">
+            <div className="rounded-3xl p-8 sm:p-10 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <h2 className="text-2xl font-black text-[#001645] dark:text-white mb-6">
                 Other Ways to Reach Us
               </h2>
 
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
+                  <div className="w-12 h-12 bg-purple-50 dark:bg-purple-950/60 rounded-xl flex items-center justify-center text-[#804DF2]">
+                    <LuMail size={22} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white">Email</h3>
-                    <p className="text-gray-600 dark:text-gray-400">yousseflachgar288@gmail.com</p>
+                    <h3 className="font-bold text-slate-900 dark:text-white">Email</h3>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm">yousseflachgar288@gmail.com</p>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                    </svg>
+                  <div className="w-12 h-12 bg-purple-50 dark:bg-purple-950/60 rounded-xl flex items-center justify-center text-[#804DF2]">
+                    <LuMessageCircle size={22} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white">Live Chat</h3>
-                    <p className="text-gray-600 dark:text-gray-400">Available Mon-Fri, 9AM-5PM EST</p>
+                    <h3 className="font-bold text-slate-900 dark:text-white">Live Chat</h3>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm">Available Mon-Fri, 9AM-5PM</p>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                    </svg>
+                  <div className="w-12 h-12 bg-purple-50 dark:bg-purple-950/60 rounded-xl flex items-center justify-center text-[#804DF2]">
+                    <LuShare2 size={22} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white">Social Media</h3>
-                    <p className="text-gray-600 dark:text-gray-400">@toolsplatform</p>
+                    <h3 className="font-bold text-slate-900 dark:text-white">Social Media</h3>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm">@toolsplatform</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="glass-panel rounded-3xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="absolute top-0 left-0 -ml-16 -mt-16 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl pointer-events-none"></div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 relative z-10">
+            <div className="rounded-3xl p-8 sm:p-10 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <h2 className="text-2xl font-black text-[#001645] dark:text-white mb-6">
                 Frequently Asked Questions
               </h2>
 
               <div className="space-y-4">
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                  <h3 className="font-bold text-slate-900 dark:text-white mb-1">
                     Are all tools really free?
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Yes! All our tools are completely free to use with no hidden costs or premium features.
+                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                    Yes! All our tools are completely free to use with no hidden costs or subscriptions.
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                  <h3 className="font-bold text-slate-900 dark:text-white mb-1">
                     Is my data secure?
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Absolutely! All tools use secure cloud storage with privacy protection.
+                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                    Absolutely! All tools execute client-side inside your browser with 100% privacy protection.
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                  <h3 className="font-bold text-slate-900 dark:text-white mb-1">
                     Can I use these tools offline?
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Once loaded, most tools work offline. Data sync requires internet.
+                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                    Once loaded, all client-side tools work offline without requiring an active connection.
                   </p>
                 </div>
               </div>

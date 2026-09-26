@@ -154,7 +154,7 @@ const TipCalculator = () => {
         </div>
 
         {/* Results Card */}
-        <div className="lg:col-span-5 bg-gradient-to-br from-emerald-500 to-teal-600 p-8 rounded-3xl text-white shadow-xl shadow-emerald-500/20 flex flex-col justify-between">
+        <div className="lg:col-span-5 bg-[#804DF2] p-8 rounded-3xl text-white shadow-xl shadow-[#804DF2]/20 flex flex-col justify-between">
           <div>
             <span className="text-xs uppercase font-bold tracking-wider opacity-90">
               Total Per Person

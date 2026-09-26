@@ -123,7 +123,7 @@ const CompoundInterestCalculator = () => {
 
         {/* Primary Results */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-lg shadow-blue-500/20 text-center">
+          <div className="p-6 rounded-3xl bg-[#804DF2] text-white shadow-lg shadow-[#804DF2]/20 text-center">
             <span className="text-xs uppercase font-bold tracking-wider opacity-90">Future Balance</span>
             <div className="text-3xl sm:text-4xl font-black mt-2">
               {formatCurrency(finalBalance)}

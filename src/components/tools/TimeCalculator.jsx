@@ -196,7 +196,7 @@ const TimeCalculator = () => {
             </div>
 
             {/* Result */}
-            <div className="p-8 rounded-3xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white text-center shadow-xl shadow-blue-500/20">
+            <div className="p-8 rounded-3xl bg-[#804DF2] text-white text-center shadow-xl shadow-[#804DF2]/20">
               <span className="text-xs uppercase tracking-wider font-semibold opacity-90">Total Calculated Time</span>
               <div className="text-4xl sm:text-5xl font-black mt-2">
                 {resH}h {resM}m {resS}s

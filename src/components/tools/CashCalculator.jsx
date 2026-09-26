@@ -92,7 +92,7 @@ const CashCalculator = () => {
     >
       <div className="space-y-8">
         {/* Top Summary Bar */}
-        <div className="p-6 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-xl shadow-emerald-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="p-6 rounded-3xl bg-[#804DF2] text-white shadow-xl shadow-[#804DF2]/20 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <span className="text-xs uppercase font-bold tracking-wider opacity-90">Total Cash Count</span>
             <div className="text-4xl sm:text-5xl font-black mt-1">

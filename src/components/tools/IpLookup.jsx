@@ -76,7 +76,7 @@ const IpLookup = () => {
     >
       <div className="space-y-8 max-w-2xl mx-auto">
         {/* Main IP Highlight Card */}
-        <div className="p-8 rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-xl shadow-blue-500/20 text-center space-y-4">
+        <div className="p-8 rounded-3xl bg-[#804DF2] text-white shadow-xl shadow-[#804DF2]/20 text-center space-y-4">
           <span className="text-xs uppercase font-bold tracking-wider opacity-90">
             Your Public IP Address
           </span>

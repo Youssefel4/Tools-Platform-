@@ -169,7 +169,7 @@ const RandomPicker = () => {
             </div>
 
             {winner && (
-              <div className="p-8 rounded-3xl bg-gradient-to-br from-amber-500 to-orange-600 text-white text-center shadow-xl shadow-amber-500/20 animate-fade-in">
+              <div className="p-8 rounded-3xl bg-[#804DF2] text-white text-center shadow-xl shadow-[#804DF2]/20 animate-fade-in">
                 <LuTrophy className="mx-auto text-yellow-200 mb-2" size={44} />
                 <span className="text-xs uppercase font-bold tracking-wider opacity-90">
                   Winning Selection

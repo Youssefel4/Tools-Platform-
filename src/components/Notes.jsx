@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LuStickyNote, LuSearch, LuPlus, LuTrash2, LuClock } from 'react-icons/lu';
+import { LuStickyNote, LuSearch, LuPlus, LuTrash2, LuClock, LuPencilLine, LuBookMarked } from 'react-icons/lu';
 import ToolLayout from './ToolLayout';
 import { supabaseHelpers } from '../config/supabase';
 import { setEncryptedItem, getEncryptedItem } from '../utils/encryption';
@@ -161,7 +161,7 @@ const Notes = ({ session }) => {
         {/* Editor Form */}
         <div className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 space-y-4">
           <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
-            <span>✍️</span> {isEditing ? 'Edit Note' : 'Create New Note'}
+            <LuPencilLine className="text-[#804DF2]" size={16} /> {isEditing ? 'Edit Note' : 'Create New Note'}
           </h3>
 
           <div>
@@ -194,7 +194,7 @@ const Notes = ({ session }) => {
             <button
               onClick={saveNote}
               disabled={loading}
-              className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-sm transition-all text-sm"
+              className="flex-1 py-3 bg-[#804DF2] hover:bg-[#6c3bde] text-white font-bold rounded-xl shadow-sm transition-all text-sm"
             >
               {isEditing ? 'Update Note' : 'Save Note'}
             </button>
@@ -213,7 +213,7 @@ const Notes = ({ session }) => {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <span>📚</span> Saved Notes ({notes.length})
+              <LuBookMarked className="text-[#804DF2]" size={16} /> Saved Notes ({notes.length})
             </h3>
             <div className="relative w-48">
               <LuSearch className="absolute left-3 top-2.5 text-slate-400" size={14} />

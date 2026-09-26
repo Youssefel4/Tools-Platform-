@@ -4,9 +4,9 @@ import ToolLayout from '../ToolLayout';
 
 const PomodoroTimer = () => {
   const modes = {
-    work: { name: 'Focus Session', time: 25 * 60, color: 'from-rose-500 to-red-600' },
-    shortBreak: { name: 'Short Break', time: 5 * 60, color: 'from-emerald-500 to-teal-600' },
-    longBreak: { name: 'Long Break', time: 15 * 60, color: 'from-blue-500 to-indigo-600' }
+    work: { name: 'Focus Session', time: 25 * 60 },
+    shortBreak: { name: 'Short Break', time: 5 * 60 },
+    longBreak: { name: 'Long Break', time: 15 * 60 }
   };
 
   const [currentMode, setCurrentMode] = useState('work');
@@ -130,7 +130,7 @@ const PomodoroTimer = () => {
         </div>
 
         {/* Circular Countdown Display */}
-        <div className={`p-12 rounded-3xl bg-gradient-to-br ${modes[currentMode].color} text-white shadow-2xl transition-all duration-500`}>
+        <div className="p-12 rounded-3xl bg-[#804DF2] text-white shadow-2xl transition-all duration-500">
           <span className="text-xs uppercase font-bold tracking-widest opacity-90 block mb-2">
             {modes[currentMode].name}
           </span>

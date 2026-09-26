@@ -72,7 +72,7 @@ const TimestampConverter = () => {
     >
       <div className="space-y-8">
         {/* Live Epoch Banner */}
-        <div className="p-6 rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-xl shadow-blue-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="p-6 rounded-3xl bg-[#804DF2] text-white shadow-xl shadow-[#804DF2]/20 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <span className="text-xs uppercase font-bold tracking-wider opacity-90">
               Current Unix Epoch Timestamp

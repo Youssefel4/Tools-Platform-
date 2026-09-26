@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { LuPalette, LuLock, LuLockOpen, LuCopy, LuCheck, LuShuffle } from 'react-icons/lu';
+import { LuPalette, LuLock, LuLockOpen, LuCopy, LuCheck, LuShuffle, LuLightbulb } from 'react-icons/lu';
 import ToolLayout from '../ToolLayout';
 
 const ColorPaletteGenerator = () => {
@@ -92,7 +92,7 @@ const ColorPaletteGenerator = () => {
         {/* Toolbar */}
         <div className="flex flex-wrap items-center justify-between gap-4 p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700">
           <div className="text-xs text-slate-500 font-medium">
-            💡 Press <kbd className="px-2 py-0.5 rounded bg-white dark:bg-slate-900 border font-mono font-bold text-slate-700 dark:text-slate-300">Spacebar</kbd> to roll colors
+            <LuLightbulb className="text-[#804DF2] inline mr-1" size={14} /> Press <kbd className="px-2 py-0.5 rounded bg-white dark:bg-slate-900 border font-mono font-bold text-slate-700 dark:text-slate-300">Spacebar</kbd> to roll colors
           </div>
 
           <div className="flex items-center gap-2">

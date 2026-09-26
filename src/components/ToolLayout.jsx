@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LuChevronRight, LuChevronDown, LuShieldCheck, LuZap, LuSmartphone, LuArrowRight } from 'react-icons/lu';
+import { LuChevronRight, LuChevronDown, LuShieldCheck, LuZap, LuArrowRight } from 'react-icons/lu';
 import SEO from './SEO';
 import { ALL_TOOLS } from '../data/toolsRegistry';
 
@@ -56,7 +56,7 @@ const ToolLayout = ({
       <div className="max-w-5xl mx-auto">
         {/* Breadcrumb Navigation */}
         <nav className="flex items-center space-x-2 text-sm text-slate-500 dark:text-slate-400 mb-6">
-          <Link to="/" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</Link>
+          <Link to="/" className="hover:text-[#804DF2] transition-colors">Home</Link>
           <LuChevronRight size={14} />
           {categoryName && (
             <>
@@ -71,7 +71,7 @@ const ToolLayout = ({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-start sm:items-center gap-4">
             {Icon && (
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/20 flex-shrink-0">
+              <div className="w-14 h-14 rounded-2xl bg-[#804DF2] flex items-center justify-center text-white shadow-lg shadow-[#804DF2]/20 flex-shrink-0">
                 <Icon size={28} />
               </div>
             )}
@@ -81,7 +81,7 @@ const ToolLayout = ({
                   {title}
                 </h1>
                 {badge && (
-                  <span className="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">
+                  <span className="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-purple-100 text-[#804DF2] dark:bg-purple-900/60 dark:text-[#a782f7]">
                     {badge}
                   </span>
                 )}
@@ -95,10 +95,10 @@ const ToolLayout = ({
           {/* Trust Highlights */}
           <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
             <span className="inline-flex items-center gap-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-2.5 py-1 rounded-full shadow-sm">
-              <LuShieldCheck className="text-emerald-500" size={14} /> 100% Private
+              <LuShieldCheck className="text-[#804DF2]" size={14} /> 100% Private
             </span>
             <span className="inline-flex items-center gap-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-2.5 py-1 rounded-full shadow-sm">
-              <LuZap className="text-amber-500" size={14} /> Instant
+              <LuZap className="text-[#804DF2]" size={14} /> Instant
             </span>
           </div>
         </div>
@@ -110,9 +110,9 @@ const ToolLayout = ({
 
         {/* Optional Link to Relevant Blog Article */}
         {blogSlug && (
-          <div className="mb-12 p-5 rounded-2xl bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-slate-900 dark:via-blue-950/40 dark:to-slate-900 border border-blue-200/70 dark:border-blue-800/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="mb-12 p-5 rounded-2xl bg-purple-50 dark:bg-purple-950/20 border border-[#804DF2]/20 dark:border-[#804DF2]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#804DF2] dark:text-[#a782f7]">
                 In-Depth Educational Guide
               </span>
               <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mt-0.5">
@@ -121,7 +121,7 @@ const ToolLayout = ({
             </div>
             <Link
               to={`/blog/${blogSlug}`}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition-all shadow-md flex-shrink-0"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#804DF2] hover:bg-[#6c3bde] text-white text-sm font-semibold transition-all shadow-md flex-shrink-0"
             >
               Read Guide <LuArrowRight size={15} />
             </Link>
@@ -132,12 +132,12 @@ const ToolLayout = ({
         {howToUse.length > 0 && (
           <div className="mb-12 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-6 sm:p-8">
             <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-              <LuZap className="text-blue-500" size={20} /> How to Use {title}
+              <LuZap className="text-[#804DF2]" size={20} /> How to Use {title}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {howToUse.map((step, idx) => (
                 <div key={idx} className="relative p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-                  <div className="w-8 h-8 rounded-full bg-blue-600 text-white text-sm font-bold flex items-center justify-center mb-3">
+                  <div className="w-8 h-8 rounded-full bg-[#804DF2] text-white text-sm font-bold flex items-center justify-center mb-3">
                     {idx + 1}
                   </div>
                   <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-1">{step.title}</h4>
@@ -153,7 +153,7 @@ const ToolLayout = ({
           <div className="mb-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
             {features.map((feat, idx) => (
               <div key={idx} className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
+                <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-900/40 text-[#804DF2] dark:text-[#a782f7] flex items-center justify-center mb-4">
                   <LuShieldCheck size={20} />
                 </div>
                 <h3 className="font-bold text-slate-900 dark:text-white text-base mb-2">{feat.title}</h3>
@@ -163,7 +163,7 @@ const ToolLayout = ({
           </div>
         )}
 
-        {/* Frequently Asked Questions (FAQ) Accordion with SEO Rich Snippets */}
+        {/* Frequently Asked Questions */}
         {faqs.length > 0 && (
           <div className="mb-12 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-6 sm:p-8">
             <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-6">
@@ -185,7 +185,7 @@ const ToolLayout = ({
                       <span className="text-sm sm:text-base">{faq.question}</span>
                       <LuChevronDown
                         size={18}
-                        className={`text-slate-400 transform transition-transform duration-200 flex-shrink-0 ${
+                        className={`text-[#804DF2] transform transition-transform duration-200 flex-shrink-0 ${
                           isOpen ? 'rotate-180' : ''
                         }`}
                       />
@@ -215,13 +215,13 @@ const ToolLayout = ({
                   <Link
                     key={tool.id}
                     to={tool.href}
-                    className="group p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 hover:border-blue-500/50 hover:shadow-lg transition-all"
+                    className="group p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 hover:border-[#804DF2]/50 hover:shadow-lg transition-all"
                   >
                     <div className="flex items-center gap-3 mb-2">
-                      <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${tool.color} text-white flex items-center justify-center text-sm`}>
+                      <div className="w-9 h-9 rounded-xl bg-[#804DF2] text-white flex items-center justify-center text-sm">
                         <ToolIcon size={18} />
                       </div>
-                      <h4 className="font-semibold text-slate-900 dark:text-white text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      <h4 className="font-semibold text-slate-900 dark:text-white text-sm group-hover:text-[#804DF2] dark:group-hover:text-[#a782f7] transition-colors">
                         {tool.name}
                       </h4>
                     </div>

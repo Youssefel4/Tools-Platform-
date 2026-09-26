@@ -151,9 +151,9 @@ const MortgageCalculator = () => {
         </div>
 
         {/* Right Summary Card */}
-        <div className="lg:col-span-5 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-slate-800/60 dark:to-slate-900/60 p-6 sm:p-8 rounded-3xl border border-blue-200/80 dark:border-blue-900/50 flex flex-col justify-between">
+        <div className="lg:col-span-5 bg-purple-50 dark:bg-purple-950/20 p-6 sm:p-8 rounded-3xl border border-[#804DF2]/20 dark:border-[#804DF2]/30 flex flex-col justify-between">
           <div>
-            <span className="text-xs uppercase font-bold tracking-wider text-blue-600 dark:text-blue-400">
+            <span className="text-xs uppercase font-bold tracking-wider text-[#804DF2] dark:text-[#a782f7]">
               Estimated Total Monthly Payment
             </span>
             <div className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white my-3">

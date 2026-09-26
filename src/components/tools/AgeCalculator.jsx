@@ -108,7 +108,7 @@ const AgeCalculator = () => {
         {ageData && (
           <div className="space-y-6">
             {/* Primary Age Highlight */}
-            <div className="p-8 rounded-3xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white text-center shadow-xl shadow-blue-500/20">
+            <div className="p-8 rounded-3xl bg-[#804DF2] text-white text-center shadow-xl shadow-[#804DF2]/20">
               <span className="text-xs uppercase tracking-wider font-semibold opacity-90">
                 Your Exact Chronological Age
               </span>

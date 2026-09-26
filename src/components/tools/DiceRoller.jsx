@@ -179,7 +179,7 @@ const DiceRoller = () => {
             <div className="p-10 rounded-3xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 space-y-6">
               <div className="flex justify-center">
                 <div
-                  className={`w-32 h-32 rounded-full border-4 border-amber-400 bg-gradient-to-br from-amber-300 via-amber-400 to-amber-500 text-amber-950 font-black text-2xl flex items-center justify-center shadow-2xl transition-transform duration-300 ${
+                  className={`w-32 h-32 rounded-full border-4 border-[#804DF2] bg-[#804DF2] text-white font-black text-2xl flex items-center justify-center shadow-2xl transition-transform duration-300 ${
                     isFlipping ? 'scale-90 rotate-180' : ''
                   }`}
                 >

@@ -2,7 +2,7 @@ import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   LuSearch, LuArrowRight, LuShieldCheck, LuZap, LuSmartphone,
-  LuSparkles, LuX, LuBookOpen, LuChevronDown
+  LuSparkles, LuX, LuBookOpen, LuChevronDown, LuFolderTree
 } from 'react-icons/lu';
 import SEO from '../components/SEO';
 import { ALL_TOOLS, TOOL_CATEGORIES } from '../data/toolsRegistry';
@@ -78,7 +78,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-blue-500 selection:text-white">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-[#804DF2] selection:text-white">
       <SEO
         title="Free Online Tools for Everyday Tasks"
         description="50+ free, fast, and private online tools: calculators, converters, image resizer, QR generator, and developer utilities. 100% free and browser-based."
@@ -87,74 +87,86 @@ const Home = () => {
         faqs={homeFaqs}
       />
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
-        {/* Ambient background glows */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-blue-100/50 via-indigo-50/30 to-transparent dark:from-blue-950/20 dark:via-indigo-950/10 pointer-events-none blur-3xl -z-10" />
-
+      {/* Hero Section matching user mockup */}
+      <section className="relative overflow-hidden pt-8 pb-14 lg:pt-12 lg:pb-18">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Trust Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-xs font-bold text-slate-700 dark:text-slate-300 mb-6">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-            <span>40+ Free Online Web Tools • 100% Private & Instant</span>
+          {/* Top Graphic Sticker from user upload */}
+          <div className="flex justify-center mb-5">
+            <img
+              src="/free online tools for everyday.png"
+              alt="Free Online Tools for Everyday Tasks"
+              className="w-56 sm:w-72 md:w-80 h-auto object-contain select-none"
+            />
           </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.1] mb-6">
-            Free Online Tools for <br className="hidden sm:inline" />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400">
-              Everyday Tasks
-            </span>
+          {/* Clean Solid Dual-Color Heading - NO gradients */}
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-5">
+            <span className="text-[#001645] dark:text-white">Free Online Tools for</span>
+            <br />
+            <span className="text-[#804DF2]">Everyday Tasks</span>
           </h1>
 
-          <p className="text-base sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed font-normal">
             Simple, fast, and privacy-first web utilities. No registration, no downloads, no ads clutter. Just open in your browser and get things done.
           </p>
 
-          {/* Interactive Live Search Bar (In place of static Explore button) */}
-          <div id="tools-search" className="max-w-2xl mx-auto relative mb-6">
-            <div className="relative flex items-center">
-              <LuSearch className="absolute left-5 text-slate-400" size={22} />
-              <input
-                ref={searchInputRef}
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search 40+ tools... (e.g. 'password', 'bmi', 'qr', 'mortgage', 'diff')"
-                className="w-full pl-14 pr-24 py-4 sm:py-5 rounded-3xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-semibold text-base sm:text-lg shadow-xl shadow-slate-200/50 dark:shadow-none outline-none focus:border-blue-600 dark:focus:border-blue-500 transition-all"
-              />
-              <div className="absolute right-4 flex items-center gap-2">
-                {searchQuery ? (
-                  <button
-                    onClick={() => setSearchQuery('')}
-                    className="p-1 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
-                    title="Clear search"
-                  >
-                    <LuX size={18} />
-                  </button>
-                ) : (
-                  <kbd className="hidden sm:inline-block px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 text-xs font-mono font-bold text-slate-500">
-                    /
-                  </kbd>
-                )}
-              </div>
-            </div>
+          {/* Centered Pill Search Input matching mockup */}
+          <div id="tools-search" className="max-w-xl mx-auto relative mb-8">
+            <input
+              ref={searchInputRef}
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search for +40 tools free..."
+              className="w-full px-6 py-3.5 rounded-full border-2 border-[#804DF2] bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-medium text-base shadow-sm outline-none placeholder:text-[#804DF2]/60 focus:ring-4 focus:ring-[#804DF2]/15 transition-all text-center sm:text-left sm:pl-7"
+            />
           </div>
 
-          {/* Quick Category Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto">
-            {TOOL_CATEGORIES.map(cat => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-semibold transition-all ${
-                  activeCategory === cat.id
-                    ? 'bg-blue-600 text-white shadow-md shadow-blue-500/25 scale-105'
-                    : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
-                }`}
-              >
-                {cat.name}
-              </button>
-            ))}
+          {/* Quick Category Filter Pills in 2 rows as seen in mockup */}
+          <div className="flex flex-col items-center gap-2.5 max-w-3xl mx-auto">
+            {/* Row 1: All Tools, Calculators, Converters, Text & Writing, Developer Tools */}
+            <div className="flex flex-wrap items-center justify-center gap-2.5">
+              {['all', 'calculators', 'converters', 'text', 'developer'].map(catId => {
+                const cat = TOOL_CATEGORIES.find(c => c.id === catId);
+                if (!cat) return null;
+                const isActive = activeCategory === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveCategory(cat.id)}
+                    className={`px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+                      isActive
+                        ? 'bg-[#001645] text-white border-2 border-[#001645] shadow-sm'
+                        : 'border-2 border-[#804DF2] text-[#804DF2] bg-white dark:bg-slate-900 hover:bg-[#804DF2]/10'
+                    }`}
+                  >
+                    {cat.name}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Row 2: Media & Design, Timers & Productivity */}
+            <div className="flex flex-wrap items-center justify-center gap-2.5">
+              {['media', 'timers'].map(catId => {
+                const cat = TOOL_CATEGORIES.find(c => c.id === catId);
+                if (!cat) return null;
+                const isActive = activeCategory === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveCategory(cat.id)}
+                    className={`px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+                      isActive
+                        ? 'bg-[#001645] text-white border-2 border-[#001645] shadow-sm'
+                        : 'border-2 border-[#804DF2] text-[#804DF2] bg-white dark:bg-slate-900 hover:bg-[#804DF2]/10'
+                    }`}
+                  >
+                    {cat.name}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -164,7 +176,7 @@ const Home = () => {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+              <h2 className="text-xl sm:text-2xl font-black text-[#001645] dark:text-white">
                 Popular & Trending Tools
               </h2>
               <p className="text-xs sm:text-sm text-slate-500">
@@ -180,19 +192,19 @@ const Home = () => {
                 <Link
                   key={tool.id}
                   to={tool.href}
-                  className="group relative p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 hover:border-blue-500/50 shadow-lg shadow-slate-200/30 dark:shadow-none hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                  className="group relative p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 hover:border-[#804DF2] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${tool.color} text-white flex items-center justify-center shadow-md`}>
+                      <div className="w-12 h-12 rounded-2xl bg-[#804DF2] text-white flex items-center justify-center shadow-sm">
                         <ToolIcon size={24} />
                       </div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
+                      <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-purple-50 text-[#804DF2] dark:bg-purple-950/60 dark:text-[#a782f7]">
                         {tool.badge || 'Popular'}
                       </span>
                     </div>
 
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2">
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#804DF2] dark:group-hover:text-[#a782f7] transition-colors mb-2">
                       {tool.name}
                     </h3>
                     <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
@@ -200,7 +212,7 @@ const Home = () => {
                     </p>
                   </div>
 
-                  <div className="mt-6 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-bold text-blue-600 dark:text-blue-400">
+                  <div className="mt-6 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-bold text-[#804DF2] dark:text-[#a782f7]">
                     <span>Open Tool</span>
                     <LuArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -234,7 +246,7 @@ const Home = () => {
             </p>
             <button
               onClick={() => { setSearchQuery(''); setActiveCategory('all'); }}
-              className="mt-4 px-5 py-2.5 rounded-xl bg-blue-600 text-white font-semibold text-xs"
+              className="mt-4 px-5 py-2.5 rounded-xl bg-[#804DF2] hover:bg-[#6c3bde] text-white font-semibold text-xs transition-colors"
             >
               Reset Search Filter
             </button>
@@ -247,21 +259,21 @@ const Home = () => {
                 <Link
                   key={tool.id}
                   to={tool.href}
-                  className="group p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 hover:border-blue-500/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between"
+                  className="group p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 hover:border-[#804DF2] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <div className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${tool.color} text-white flex items-center justify-center shadow-sm`}>
+                      <div className="w-11 h-11 rounded-2xl bg-purple-50 dark:bg-purple-950/60 text-[#804DF2] dark:text-[#a782f7] flex items-center justify-center shadow-sm">
                         <ToolIcon size={20} />
                       </div>
                       {tool.badge && (
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-purple-50 dark:bg-purple-950/60 text-[#804DF2] dark:text-[#a782f7]">
                           {tool.badge}
                         </span>
                       )}
                     </div>
 
-                    <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-1.5">
+                    <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#804DF2] dark:group-hover:text-[#a782f7] transition-colors mb-1.5">
                       {tool.name}
                     </h3>
                     <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
@@ -269,7 +281,7 @@ const Home = () => {
                     </p>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between text-xs font-semibold text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between text-xs font-semibold text-slate-400 group-hover:text-[#804DF2] dark:group-hover:text-[#a782f7]">
                     <span>Get Started</span>
                     <LuArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -280,14 +292,14 @@ const Home = () => {
         )}
       </section>
 
-      
       {/* Category Directory & Internal Linking Hub (Crucial for Googlebot Crawling & Indexation) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-900 text-blue-700 dark:text-blue-300 text-xs font-bold mb-3">
-            <span>🗂️</span> Structured Tool Directory
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 dark:bg-purple-950/50 border border-purple-200 dark:border-purple-900 text-[#804DF2] dark:text-[#a782f7] text-xs font-bold mb-3">
+            <LuFolderTree size={14} className="text-[#804DF2]" />
+            <span>Structured Tool Directory</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-black text-[#001645] dark:text-white tracking-tight">
             Browse All Tools by Category
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
@@ -302,11 +314,11 @@ const Home = () => {
             return (
               <div
                 key={category.id}
-                className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+                className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 hover:border-[#804DF2]/50 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center gap-3 mb-4 pb-3 border-b border-slate-100 dark:border-slate-800">
-                    <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-[#804DF2] dark:text-[#a782f7] flex items-center justify-center">
                       <CatIcon size={20} />
                     </div>
                     <div>
@@ -324,10 +336,10 @@ const Home = () => {
                       <li key={tool.id}>
                         <Link
                           to={tool.href}
-                          className="group/item flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 py-1 transition-colors"
+                          className="group/item flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-[#804DF2] dark:hover:text-[#a782f7] py-1 transition-colors"
                         >
                           <span className="truncate pr-2">{tool.name}</span>
-                          <LuArrowRight size={12} className="opacity-0 group-hover/item:opacity-100 transform group-hover/item:translate-x-1 transition-all text-blue-500 flex-shrink-0" />
+                          <LuArrowRight size={12} className="opacity-0 group-hover/item:opacity-100 transform group-hover/item:translate-x-1 transition-all text-[#804DF2] flex-shrink-0" />
                         </Link>
                       </li>
                     ))}
@@ -337,7 +349,7 @@ const Home = () => {
                 <div className="pt-3 border-t border-slate-100 dark:border-slate-800/60">
                   <button
                     onClick={() => { setActiveCategory(category.id); window.scrollTo({ top: 400, behavior: 'smooth' }); }}
-                    className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+                    className="text-xs font-bold text-[#804DF2] dark:text-[#a782f7] hover:underline flex items-center gap-1"
                   >
                     Filter by {category.name} →
                   </button>
@@ -350,19 +362,19 @@ const Home = () => {
 
       {/* Featured Educational Blog Guides Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-slate-900 dark:to-slate-900 border border-blue-200/70 dark:border-slate-800">
+        <div className="p-8 sm:p-12 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#804DF2] dark:text-[#a782f7]">
                 Knowledge Base & Best Practices
               </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-1">
+              <h2 className="text-2xl sm:text-3xl font-black text-[#001645] dark:text-white mt-1">
                 Featured Guides & Tutorials
               </h2>
             </div>
             <Link
               to="/blog"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-sm"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#804DF2] hover:bg-[#6c3bde] text-white text-xs font-bold transition-all shadow-sm"
             >
               View All Articles <LuArrowRight size={14} />
             </Link>
@@ -373,20 +385,20 @@ const Home = () => {
               <Link
                 key={post.slug}
                 to={`/blog/${post.slug}`}
-                className="group p-6 rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 hover:shadow-lg transition-all flex flex-col justify-between"
+                className="group p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 hover:border-[#804DF2] hover:shadow-lg transition-all flex flex-col justify-between"
               >
                 <div>
-                  <span className="text-xs font-bold text-blue-600 dark:text-blue-400 block mb-2">
+                  <span className="text-xs font-bold text-[#804DF2] dark:text-[#a782f7] block mb-2">
                     {post.category}
                   </span>
-                  <h3 className="font-bold text-slate-900 dark:text-white text-base group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 line-clamp-2">
+                  <h3 className="font-bold text-slate-900 dark:text-white text-base group-hover:text-[#804DF2] dark:group-hover:text-[#a782f7] transition-colors mb-2 line-clamp-2">
                     {post.title}
                   </h3>
                   <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed mb-4">
                     {post.excerpt}
                   </p>
                 </div>
-                <div className="text-xs font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1">
+                <div className="text-xs font-bold text-[#804DF2] dark:text-[#a782f7] flex items-center gap-1">
                   Read Guide <LuArrowRight size={13} />
                 </div>
               </Link>
@@ -407,8 +419,8 @@ const Home = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 text-center space-y-3">
-            <div className="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto text-2xl shadow-sm">
+          <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 text-center space-y-3 shadow-sm hover:border-[#804DF2]/40 transition-all">
+            <div className="w-14 h-14 rounded-2xl bg-purple-50 dark:bg-purple-950/50 text-[#804DF2] dark:text-[#a782f7] flex items-center justify-center mx-auto text-2xl shadow-sm">
               <LuShieldCheck size={28} />
             </div>
             <h3 className="text-lg font-bold text-slate-900 dark:text-white">Absolute Privacy</h3>
@@ -417,8 +429,8 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 text-center space-y-3">
-            <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center mx-auto text-2xl shadow-sm">
+          <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 text-center space-y-3 shadow-sm hover:border-[#804DF2]/40 transition-all">
+            <div className="w-14 h-14 rounded-2xl bg-purple-50 dark:bg-purple-950/50 text-[#804DF2] dark:text-[#a782f7] flex items-center justify-center mx-auto text-2xl shadow-sm">
               <LuZap size={28} />
             </div>
             <h3 className="text-lg font-bold text-slate-900 dark:text-white">Lightning Fast</h3>
@@ -427,8 +439,8 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 text-center space-y-3">
-            <div className="w-14 h-14 rounded-2xl bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 flex items-center justify-center mx-auto text-2xl shadow-sm">
+          <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 text-center space-y-3 shadow-sm hover:border-[#804DF2]/40 transition-all">
+            <div className="w-14 h-14 rounded-2xl bg-purple-50 dark:bg-purple-950/50 text-[#804DF2] dark:text-[#a782f7] flex items-center justify-center mx-auto text-2xl shadow-sm">
               <LuSmartphone size={28} />
             </div>
             <h3 className="text-lg font-bold text-slate-900 dark:text-white">Works Everywhere</h3>

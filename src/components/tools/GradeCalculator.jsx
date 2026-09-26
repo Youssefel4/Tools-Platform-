@@ -182,7 +182,7 @@ const GradeCalculator = () => {
               </div>
             </div>
 
-            <div className="p-8 rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white text-center shadow-xl shadow-blue-500/20 max-w-sm mx-auto">
+            <div className="p-8 rounded-3xl bg-[#804DF2] text-white text-center shadow-xl shadow-[#804DF2]/20 max-w-sm mx-auto">
               <span className="text-xs uppercase font-bold tracking-wider opacity-90">
                 Your Cumulative GPA
               </span>

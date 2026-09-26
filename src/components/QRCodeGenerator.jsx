@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaQrcode, FaDownload, FaCopy, FaTrash, FaClock } from 'react-icons/fa';
+import { LuSettings2, LuLink, LuMail, LuPhone, LuWifi, LuSparkles } from 'react-icons/lu';
 import ToolLayout from './ToolLayout';
 import { supabaseHelpers, supabase } from '../config/supabase';
 
@@ -139,8 +140,8 @@ const QRCodeGenerator = () => {
         <div className="lg:col-span-7 space-y-6">
           <div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-              <span className="p-1.5 bg-blue-100 dark:bg-blue-900/40 rounded-lg text-blue-600 dark:text-blue-400">⚙️</span>
-              QR Code Content & Style
+              <span className="p-1.5 bg-purple-50 dark:bg-purple-900/40 rounded-lg text-[#804DF2]"><LuSettings2 size={14} /></span>
+              QR Code Content &amp; Style
             </h3>
 
             <div className="space-y-4">
@@ -161,18 +162,18 @@ const QRCodeGenerator = () => {
                 <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">
                   Quick Templates
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  <button onClick={() => setText('https://')} className="p-2.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-blue-50 dark:hover:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 font-semibold text-xs text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-1.5">
-                    <span>🔗</span> Link
+                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  <button onClick={() => setText('https://')} className="p-2.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-purple-50 dark:hover:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 font-semibold text-xs text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-1.5">
+                    <LuLink size={13} className="text-[#804DF2]" /> Link
                   </button>
-                  <button onClick={() => setText('mailto:')} className="p-2.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-blue-50 dark:hover:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 font-semibold text-xs text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-1.5">
-                    <span>📧</span> Email
+                  <button onClick={() => setText('mailto:')} className="p-2.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-purple-50 dark:hover:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 font-semibold text-xs text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-1.5">
+                    <LuMail size={13} className="text-[#804DF2]" /> Email
                   </button>
-                  <button onClick={() => setText('tel:')} className="p-2.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-blue-50 dark:hover:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 font-semibold text-xs text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-1.5">
-                    <span>📞</span> Phone
+                  <button onClick={() => setText('tel:')} className="p-2.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-purple-50 dark:hover:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 font-semibold text-xs text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-1.5">
+                    <LuPhone size={13} className="text-[#804DF2]" /> Phone
                   </button>
-                  <button onClick={() => setText('WIFI:T:WPA;S:MyNetwork;P:MyPassword;;')} className="p-2.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-blue-50 dark:hover:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 font-semibold text-xs text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-1.5">
-                    <span>📶</span> WiFi
+                  <button onClick={() => setText('WIFI:T:WPA;S:MyNetwork;P:MyPassword;;')} className="p-2.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-purple-50 dark:hover:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 font-semibold text-xs text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-1.5">
+                    <LuWifi size={13} className="text-[#804DF2]" /> WiFi
                   </button>
                 </div>
               </div>
@@ -244,9 +245,9 @@ const QRCodeGenerator = () => {
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <button
                   onClick={generateQRCode}
-                  className="flex-1 px-6 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg hover:shadow-indigo-500/30 transition-all text-base flex justify-center items-center gap-2"
+                  className="flex-1 px-6 py-3.5 bg-[#804DF2] hover:bg-[#6c3bde] text-white font-bold rounded-xl shadow-lg shadow-[#804DF2]/20 transition-all text-base flex justify-center items-center gap-2"
                 >
-                  <span>✨</span> Generate QR Code
+                  <LuSparkles size={16} /> Generate QR Code
                 </button>
                 <button
                   onClick={copyToClipboard}

@@ -156,7 +156,7 @@ const CountdownTimer = () => {
           {/* Progress bar */}
           <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-1000"
+              className="h-full bg-[#804DF2] transition-all duration-1000"
               style={{ width: `${percentLeft}%` }}
             />
           </div>
@@ -206,7 +206,7 @@ const CountdownTimer = () => {
           {!isRunning ? (
             <button
               onClick={startTimer}
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-blue-500/30 transition-all flex items-center gap-2 text-base"
+              className="px-8 py-4 bg-[#804DF2] hover:bg-[#6c3bde] text-white font-bold rounded-2xl shadow-lg hover:shadow-[#804DF2]/30 transition-all flex items-center gap-2 text-base"
             >
               <LuPlay size={18} /> Start Timer
             </button>

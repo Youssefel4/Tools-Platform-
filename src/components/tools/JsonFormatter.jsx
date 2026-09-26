@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LuBraces, LuCopy, LuCheck, LuMinimize2, LuMaximize2 } from 'react-icons/lu';
+import { LuBraces, LuCopy, LuCheck, LuMinimize2, LuMaximize2, LuTriangleAlert } from 'react-icons/lu';
 import ToolLayout from '../ToolLayout';
 
 const JsonFormatter = () => {
@@ -112,7 +112,7 @@ const JsonFormatter = () => {
 
         {error && (
           <div className="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 text-xs font-mono">
-            ⚠️ Invalid JSON: {error}
+            <LuTriangleAlert size={13} className="inline mr-1" /> Invalid JSON: {error}
           </div>
         )}
 

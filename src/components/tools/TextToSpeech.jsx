@@ -191,7 +191,16 @@ const TextToSpeech = () => {
           throw new Error('Audio generation server error');
         }
 
+        const contentType = res.headers.get('content-type') || '';
+        if (contentType.includes('text/html')) {
+          throw new Error('Audio service temporarily unavailable. Please try again.');
+        }
+
         const blob = await res.blob();
+        if (blob.size < 100) {
+          throw new Error('Generated audio file was invalid. Please try again.');
+        }
+
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -217,6 +226,11 @@ const TextToSpeech = () => {
 
           if (!res.ok) {
             throw new Error(`Failed to fetch audio segment ${i + 1}`);
+          }
+
+          const contentType = res.headers.get('content-type') || '';
+          if (contentType.includes('text/html')) {
+            throw new Error(`Audio segment ${i + 1} service unavailable. Please try again.`);
           }
 
           const arrayBuf = await res.arrayBuffer();
@@ -259,12 +273,8 @@ const TextToSpeech = () => {
       setTimeout(() => setDownloadSuccess(false), 4000);
     } catch (err) {
       console.error('Download voice error:', err);
-      // Fallback: direct download link if proxy is unavailable
-      const lang = detectLangCode();
-      const directUrl = `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${encodeURIComponent(lang)}&q=${encodeURIComponent(text.slice(0, 180))}`;
-      window.open(directUrl, '_blank');
-      setErrorMessage('Audio generated via direct stream.');
-      setTimeout(() => setErrorMessage(''), 5000);
+      setErrorMessage(err.message || 'Audio generation failed. Please check your connection and try again.');
+      setTimeout(() => setErrorMessage(''), 6000);
     } finally {
       setDownloading(false);
       setDownloadProgress('');
@@ -313,9 +323,9 @@ const TextToSpeech = () => {
     >
       <div className="space-y-6">
         {/* Blog Post Promotion Card */}
-        <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/20 border border-blue-100 dark:border-blue-900/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs sm:text-sm">
+        <div className="p-4 rounded-2xl bg-purple-50 dark:bg-purple-950/20 border border-[#804DF2]/20 dark:border-[#804DF2]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs sm:text-sm">
           <div className="flex items-center gap-2.5">
-            <span className="p-1.5 rounded-lg bg-blue-600 text-white font-bold">
+            <span className="p-1.5 rounded-lg bg-[#804DF2] text-white font-bold">
               <LuBookOpen size={14} />
             </span>
             <span className="text-slate-700 dark:text-slate-300 font-medium">

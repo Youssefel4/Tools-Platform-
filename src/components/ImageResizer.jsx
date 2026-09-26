@@ -217,8 +217,8 @@ const ImageResizer = () => {
                                     </div>
                                 </div>
                                 <div className="mt-6 flex flex-wrap justify-between items-center text-sm">
-                                    <span className="bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-xl font-bold border border-blue-100 dark:border-blue-800 shadow-sm flex items-center gap-2">
-                                        <span>📏</span> Original: {image.naturalWidth} × {image.naturalHeight}px
+                                    <span className="bg-purple-50 dark:bg-purple-900/30 text-[#804DF2] dark:text-[#a782f7] px-4 py-2 rounded-xl font-bold border border-purple-100 dark:border-purple-800 shadow-sm flex items-center gap-2">
+                                        Original: {image.naturalWidth} × {image.naturalHeight}px
                                     </span>
                                 </div>
                             </div>

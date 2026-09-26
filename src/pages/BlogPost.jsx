@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { LuClock, LuCalendar, LuArrowLeft, LuArrowRight, LuCheckCircle2, LuShare2, LuBookmark } from 'react-icons/lu';
+import { LuClock, LuCalendar, LuArrowLeft, LuArrowRight, LuShare2 } from 'react-icons/lu';
 import SEO from '../components/SEO';
 import { BLOG_POSTS } from '../data/blogPosts';
 
@@ -17,7 +17,6 @@ const BlogPost = () => {
 
   // Helper to parse basic markdown headers and bolding
   const renderMarkdownContent = (content) => {
-    // Convert headers, tables, code blocks, and markdown links
     const lines = content.trim().split('\n');
     const elements = [];
     let inTable = false;
@@ -26,7 +25,7 @@ const BlogPost = () => {
     const flushTable = (key) => {
       if (tableRows.length > 0) {
         const header = tableRows[0];
-        const body = tableRows.slice(2); // skip separator row
+        const body = tableRows.slice(2);
         elements.push(
           <div key={`table-${key}`} className="my-6 overflow-x-auto border border-slate-200 dark:border-slate-800 rounded-2xl">
             <table className="w-full text-left text-sm">
@@ -105,7 +104,6 @@ const BlogPost = () => {
     return elements;
   };
 
-  // Replace markdown links [text](url) with React Router Links
   const parseInlineLinks = (text) => {
     const parts = [];
     let lastIndex = 0;
@@ -121,13 +119,13 @@ const BlogPost = () => {
 
       if (url.startsWith('/')) {
         parts.push(
-          <Link key={match.index} to={url} className="text-blue-600 dark:text-blue-400 font-semibold underline hover:text-blue-700">
+          <Link key={match.index} to={url} className="text-[#804DF2] dark:text-[#a782f7] font-semibold underline hover:opacity-80">
             {label}
           </Link>
         );
       } else {
         parts.push(
-          <a key={match.index} href={url} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 font-semibold underline">
+          <a key={match.index} href={url} target="_blank" rel="noopener noreferrer" className="text-[#804DF2] dark:text-[#a782f7] font-semibold underline">
             {label}
           </a>
         );
@@ -168,7 +166,7 @@ const BlogPost = () => {
       <div className="max-w-4xl mx-auto">
         {/* Navigation Breadcrumb */}
         <div className="flex items-center justify-between gap-4 mb-8 text-sm text-slate-500">
-          <Link to="/blog" className="inline-flex items-center gap-1.5 hover:text-blue-600 transition-colors">
+          <Link to="/blog" className="inline-flex items-center gap-1.5 hover:text-[#804DF2] transition-colors">
             <LuArrowLeft size={16} /> Back to Guides
           </Link>
           <button
@@ -182,7 +180,7 @@ const BlogPost = () => {
         {/* Article Header */}
         <header className="mb-10 pb-8 border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-900">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#804DF2] dark:text-[#a782f7] px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-900">
               {post.category}
             </span>
             <span className="text-xs text-slate-400 flex items-center gap-1">
@@ -205,7 +203,7 @@ const BlogPost = () => {
 
         {/* High-Converting Embedded Tool Callout Box */}
         {post.relatedTool && (
-          <div className="mb-10 p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-xl shadow-blue-500/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="mb-10 p-6 sm:p-7 rounded-3xl bg-[#804DF2] text-white shadow-xl shadow-[#804DF2]/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div>
               <span className="text-xs uppercase font-bold tracking-wider opacity-90 block mb-1">
                 Featured Free Tool
@@ -217,7 +215,7 @@ const BlogPost = () => {
             </div>
             <Link
               to={post.relatedTool.href}
-              className="px-6 py-3 rounded-2xl bg-white text-blue-600 hover:bg-blue-50 font-bold text-sm shadow-md transition-all flex-shrink-0"
+              className="px-6 py-3 rounded-2xl bg-white text-[#804DF2] hover:bg-purple-50 font-bold text-sm shadow-md transition-all flex-shrink-0"
             >
               Launch Tool Now →
             </Link>
@@ -240,7 +238,7 @@ const BlogPost = () => {
             </p>
             <Link
               to={post.relatedTool.href}
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-base shadow-lg transition-all"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-[#804DF2] hover:bg-[#6c3bde] text-white font-bold text-base shadow-lg transition-all"
             >
               Open {post.relatedTool.name} <LuArrowRight size={18} />
             </Link>
@@ -258,12 +256,12 @@ const BlogPost = () => {
                 <Link
                   key={p.slug}
                   to={`/blog/${p.slug}`}
-                  className="group p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-500/50 hover:shadow-lg transition-all"
+                  className="group p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-[#804DF2]/50 hover:shadow-lg transition-all"
                 >
-                  <span className="text-xs font-bold uppercase text-blue-600 dark:text-blue-400 block mb-1">
+                  <span className="text-xs font-bold uppercase text-[#804DF2] dark:text-[#a782f7] block mb-1">
                     {p.category}
                   </span>
-                  <h4 className="font-bold text-slate-900 dark:text-white text-base group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2">
+                  <h4 className="font-bold text-slate-900 dark:text-white text-base group-hover:text-[#804DF2] dark:group-hover:text-[#a782f7] transition-colors mb-2">
                     {p.title}
                   </h4>
                   <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">

@@ -221,8 +221,8 @@ const DateCalculator = () => {
               </div>
             </div>
 
-            <div className="p-8 rounded-3xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-slate-800/60 dark:to-slate-900/60 border border-blue-200/80 dark:border-blue-900/50 text-center">
-              <span className="text-xs uppercase tracking-wider font-bold text-blue-600 dark:text-blue-400">
+            <div className="p-8 rounded-3xl bg-purple-50 dark:bg-purple-950/20 border border-[#804DF2]/20 dark:border-[#804DF2]/30 text-center">
+              <span className="text-xs uppercase tracking-wider font-bold text-[#804DF2] dark:text-[#a782f7]">
                 Calculated Date
               </span>
               <div className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-2">
