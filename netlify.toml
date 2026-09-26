@@ -6,21 +6,6 @@
   # Build command
   command = "npm run build"
 
-# Netlify Functions
-[functions]
-  directory = "netlify/functions"
-
-# API Redirects (MUST come before SPA wildcard redirect)
-[[redirects]]
-  from = "/api/tts"
-  to = "/.netlify/functions/tts"
-  status = 200
-
-[[redirects]]
-  from = "/api/tts/*"
-  to = "/.netlify/functions/tts"
-  status = 200
-
 # Redirect rules for SPA (Single Page Application)
 [[redirects]]
   from = "/*"
