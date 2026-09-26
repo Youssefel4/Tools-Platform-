@@ -105,7 +105,7 @@ const ColorPaletteGenerator = () => {
             </button>
             <button
               onClick={rollPalette}
-              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-sm transition-all"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-[#804DF2] hover:bg-[#6c3bde] text-white text-xs font-bold shadow-sm transition-all"
             >
               <LuShuffle size={14} /> Roll Palette
             </button>
@@ -126,7 +126,7 @@ const ColorPaletteGenerator = () => {
                 className="w-10 h-10 rounded-full bg-black/30 hover:bg-black/50 text-white backdrop-blur-sm flex items-center justify-center transition-all"
                 title={item.locked ? 'Unlock color' : 'Lock color'}
               >
-                {item.locked ? <LuLock size={18} /> : <LuUnlock size={18} />}
+                {item.locked ? <LuLock size={18} /> : <LuLockOpen size={18} />}
               </button>
 
               {/* Hex Code & Copy */}
