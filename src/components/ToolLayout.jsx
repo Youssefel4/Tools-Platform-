@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { LuChevronRight, LuChevronDown, LuShieldCheck, LuZap, LuArrowRight } from 'react-icons/lu';
 import SEO from './SEO';
 import { ALL_TOOLS } from '../data/toolsRegistry';
@@ -43,12 +43,16 @@ const ToolLayout = ({
     "description": seoDescription || subtitle
   };
 
+  const location = useLocation();
+  const currentUrl = `https://platformtools.netlify.app${location.pathname}`;
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 py-8 px-4 sm:px-6 lg:px-8">
       <SEO
         title={title}
         description={seoDescription || subtitle}
         keywords={seoKeywords}
+        url={currentUrl}
         structuredData={structuredData}
         faqs={faqs}
       />

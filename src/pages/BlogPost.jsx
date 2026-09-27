@@ -161,6 +161,7 @@ const BlogPost = () => {
         description={post.metaDescription}
         keywords={post.targetKeyword}
         article={post}
+        url={`https://platformtools.netlify.app/blog/${post.slug}`}
       />
 
       <div className="max-w-4xl mx-auto">

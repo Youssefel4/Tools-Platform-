@@ -23,6 +23,7 @@ const Blog = () => {
         title="Blog & Tutorials"
         description="Comprehensive guides, tutorials, and deep-dives on cybersecurity, passwords, QR codes, unit conversion, and image optimization."
         keywords="tools blog, password security guide, qr code tutorial, unit converter formulas, image resizing tips"
+        url="https://platformtools.netlify.app/blog"
       />
 
       <div className="max-w-6xl mx-auto">

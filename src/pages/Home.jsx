@@ -83,6 +83,7 @@ const Home = () => {
         title="Free Online Tools for Everyday Tasks"
         description="50+ free, fast, and private online tools: calculators, converters, image resizer, QR generator, and developer utilities. 100% free and browser-based."
         keywords="free online tools, calculators, unit converter, password generator, qr code generator, image resizer, developer utilities"
+        url="https://platformtools.netlify.app"
         structuredData={structuredData}
         faqs={homeFaqs}
       />
