@@ -19,9 +19,9 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     X-XSS-Protection = "1; mode=block"
-    Referrer-Policy = "no-referrer-when-downgrade"
+    Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-eval' https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https:; media-src 'self' blob: data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://api.qrserver.com; frame-ancestors 'none'; object-src 'none'; base-uri 'self';"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.google-analytics.com https://pagead2.googlesyndication.com https://*.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https:; media-src 'self' blob: data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://api.qrserver.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
     
 # Block access to source maps
 [[headers]]
@@ -66,9 +66,9 @@
     Content-Type = "application/xml"
     Cache-Control = "public, max-age=3600"
     
-# Robots.txt headers
+# Text files and IndexNow headers
 [[headers]]
-  for = "/robots.txt"
+  for = "/*.txt"
   [headers.values]
-    Content-Type = "text/plain"
-    Cache-Control = "public, max-age=3600"
+    Content-Type = "text/plain; charset=utf-8"
+    Cache-Control = "public, max-age=86400"
