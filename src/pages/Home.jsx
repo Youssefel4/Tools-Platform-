@@ -101,25 +101,25 @@ const Home = () => {
           </div>
 
           {/* Clean Solid Dual-Color Heading - NO gradients */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-5">
+          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-[1.15] mb-4 sm:mb-5">
             <span className="text-[#001645] dark:text-white">Free Online Tools for</span>
             <br />
             <span className="text-[#804DF2]">Everyday Tasks</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed font-normal">
+          <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-6 sm:mb-8 leading-relaxed font-normal">
             Simple, fast, and privacy-first web utilities. No registration, no downloads, no ads clutter. Just open in your browser and get things done.
           </p>
 
           {/* Centered Pill Search Input matching mockup */}
-          <div id="tools-search" className="max-w-xl mx-auto relative mb-8">
+          <div id="tools-search" className="max-w-xl mx-auto relative mb-6 sm:mb-8">
             <input
               ref={searchInputRef}
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search for +40 tools free..."
-              className="w-full px-6 py-3.5 rounded-full border-2 border-[#804DF2] bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-medium text-base shadow-sm outline-none placeholder:text-[#804DF2]/60 focus:ring-4 focus:ring-[#804DF2]/15 transition-all text-center sm:text-left sm:pl-7"
+              className="w-full px-5 py-3 sm:px-6 sm:py-3.5 rounded-full border-2 border-[#804DF2] bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-medium text-sm sm:text-base shadow-sm outline-none placeholder:text-[#804DF2]/60 focus:ring-4 focus:ring-[#804DF2]/15 transition-all text-center sm:text-left sm:pl-7"
             />
           </div>
 

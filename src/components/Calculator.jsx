@@ -164,23 +164,23 @@ const Calculator = () => {
         </div>
 
         {/* Display Screen */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 mb-6 text-right shadow-inner">
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 sm:p-5 mb-4 sm:mb-6 text-right shadow-inner">
           <div className="text-xs text-slate-400 font-mono font-semibold h-4 mb-1">
             {operation && previousValue !== null ? `${previousValue} ${operation}` : ''}
           </div>
-          <div className="text-4xl sm:text-5xl font-mono font-black text-white tracking-wider overflow-x-auto whitespace-nowrap scrollbar-hide">
+          <div className="text-3xl sm:text-5xl font-mono font-black text-white tracking-wider overflow-x-auto whitespace-nowrap scrollbar-hide">
             {display}
           </div>
         </div>
 
         {/* Scientific Keys */}
         {isScientific && (
-          <div className="grid grid-cols-5 gap-2 mb-4">
+          <div className="grid grid-cols-5 gap-1.5 sm:gap-2 mb-3 sm:mb-4">
             {['sin', 'cos', 'tan', 'log', 'ln', 'sqrt', 'pow2', 'pow3', '1/x', 'pi'].map((op) => (
               <button
                 key={op}
                 onClick={() => scientificOperation(op)}
-                className="py-2.5 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-900/60 font-bold text-xs uppercase border border-blue-200/50 dark:border-blue-800/40 transition-colors"
+                className="py-2 sm:py-2.5 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 rounded-lg sm:rounded-xl hover:bg-blue-100 dark:hover:bg-blue-900/60 font-bold text-[10px] sm:text-xs uppercase border border-blue-200/50 dark:border-blue-800/40 transition-colors"
               >
                 {op === 'sqrt' ? '√' : op === 'pow2' ? 'x²' : op === 'pow3' ? 'x³' : op === 'pi' ? 'π' : op}
               </button>
@@ -189,22 +189,22 @@ const Calculator = () => {
         )}
 
         {/* Standard Keypad */}
-        <div className="grid grid-cols-4 gap-2.5 sm:gap-3">
+        <div className="grid grid-cols-4 gap-2 sm:gap-3">
           <button
             onClick={clear}
-            className="col-span-2 py-4 bg-red-100 dark:bg-red-950/40 text-red-600 dark:text-red-400 rounded-2xl hover:bg-red-200 font-extrabold text-lg transition-colors border border-red-200 dark:border-red-900/40"
+            className="col-span-2 py-3 sm:py-4 bg-red-100 dark:bg-red-950/40 text-red-600 dark:text-red-400 rounded-xl sm:rounded-2xl hover:bg-red-200 font-extrabold text-base sm:text-lg transition-colors border border-red-200 dark:border-red-900/40"
           >
             AC
           </button>
           <button
             onClick={() => performOperation('/')}
-            className="py-4 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-2xl hover:bg-blue-100 font-black text-2xl transition-colors border border-blue-200 dark:border-blue-900/40"
+            className="py-3 sm:py-4 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-xl sm:rounded-2xl hover:bg-blue-100 font-black text-xl sm:text-2xl transition-colors border border-blue-200 dark:border-blue-900/40"
           >
             ÷
           </button>
           <button
             onClick={() => performOperation('*')}
-            className="py-4 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-2xl hover:bg-blue-100 font-black text-2xl transition-colors border border-blue-200 dark:border-blue-900/40"
+            className="py-3 sm:py-4 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-xl sm:rounded-2xl hover:bg-blue-100 font-black text-xl sm:text-2xl transition-colors border border-blue-200 dark:border-blue-900/40"
           >
             ×
           </button>
@@ -213,14 +213,14 @@ const Calculator = () => {
             <button
               key={num}
               onClick={() => inputNumber(num)}
-              className="py-4 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white rounded-2xl hover:bg-white dark:hover:bg-slate-700 font-bold text-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
+              className="py-3 sm:py-4 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white rounded-xl sm:rounded-2xl hover:bg-white dark:hover:bg-slate-700 font-bold text-lg sm:text-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
             >
               {num}
             </button>
           ))}
           <button
             onClick={() => performOperation('-')}
-            className="py-4 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-2xl hover:bg-blue-100 font-black text-2xl transition-colors border border-blue-200 dark:border-blue-900/40"
+            className="py-3 sm:py-4 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-xl sm:rounded-2xl hover:bg-blue-100 font-black text-xl sm:text-2xl transition-colors border border-blue-200 dark:border-blue-900/40"
           >
             −
           </button>
@@ -229,14 +229,14 @@ const Calculator = () => {
             <button
               key={num}
               onClick={() => inputNumber(num)}
-              className="py-4 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white rounded-2xl hover:bg-white dark:hover:bg-slate-700 font-bold text-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
+              className="py-3 sm:py-4 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white rounded-xl sm:rounded-2xl hover:bg-white dark:hover:bg-slate-700 font-bold text-lg sm:text-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
             >
               {num}
             </button>
           ))}
           <button
             onClick={() => performOperation('+')}
-            className="py-4 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-2xl hover:bg-blue-100 font-black text-2xl transition-colors border border-blue-200 dark:border-blue-900/40"
+            className="py-3 sm:py-4 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-xl sm:rounded-2xl hover:bg-blue-100 font-black text-xl sm:text-2xl transition-colors border border-blue-200 dark:border-blue-900/40"
           >
             +
           </button>
@@ -245,27 +245,27 @@ const Calculator = () => {
             <button
               key={num}
               onClick={() => inputNumber(num)}
-              className="py-4 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white rounded-2xl hover:bg-white dark:hover:bg-slate-700 font-bold text-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
+              className="py-3 sm:py-4 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white rounded-xl sm:rounded-2xl hover:bg-white dark:hover:bg-slate-700 font-bold text-lg sm:text-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
             >
               {num}
             </button>
           ))}
           <button
             onClick={() => performOperation('=')}
-            className="row-span-2 py-4 bg-[#804DF2] text-white rounded-2xl hover:bg-[#6c3bde] font-black text-2xl shadow-lg hover:shadow-[#804DF2]/30 flex items-center justify-center transition-all"
+            className="row-span-2 py-3 sm:py-4 bg-[#804DF2] text-white rounded-xl sm:rounded-2xl hover:bg-[#6c3bde] font-black text-xl sm:text-2xl shadow-lg hover:shadow-[#804DF2]/30 flex items-center justify-center transition-all"
           >
             =
           </button>
 
           <button
             onClick={() => inputNumber(0)}
-            className="col-span-2 py-4 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white rounded-2xl hover:bg-white dark:hover:bg-slate-700 font-bold text-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
+            className="col-span-2 py-3 sm:py-4 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white rounded-xl sm:rounded-2xl hover:bg-white dark:hover:bg-slate-700 font-bold text-lg sm:text-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
           >
             0
           </button>
           <button
             onClick={inputDecimal}
-            className="py-4 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white rounded-2xl hover:bg-white dark:hover:bg-slate-700 font-bold text-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
+            className="py-3 sm:py-4 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white rounded-xl sm:rounded-2xl hover:bg-white dark:hover:bg-slate-700 font-bold text-lg sm:text-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
           >
             .
           </button>

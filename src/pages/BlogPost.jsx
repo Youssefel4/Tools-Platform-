@@ -155,7 +155,7 @@ const BlogPost = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 py-6 px-3 sm:py-10 sm:px-6 lg:px-8">
       <SEO
         title={post.seoTitle || post.title}
         description={post.metaDescription}
@@ -166,57 +166,57 @@ const BlogPost = () => {
 
       <div className="max-w-4xl mx-auto">
         {/* Navigation Breadcrumb */}
-        <div className="flex items-center justify-between gap-4 mb-8 text-sm text-slate-500">
-          <Link to="/blog" className="inline-flex items-center gap-1.5 hover:text-[#804DF2] transition-colors">
-            <LuArrowLeft size={16} /> Back to Guides
+        <div className="flex items-center justify-between gap-3 mb-6 sm:mb-8 text-xs sm:text-sm text-slate-500">
+          <Link to="/blog" className="inline-flex items-center gap-1.5 hover:text-[#804DF2] transition-colors font-medium">
+            <LuArrowLeft size={15} /> Back to Guides
           </Link>
           <button
             onClick={handleShare}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
-            <LuShare2 size={14} /> Share Guide
+            <LuShare2 size={13} /> Share Guide
           </button>
         </div>
 
         {/* Article Header */}
-        <header className="mb-10 pb-8 border-b border-slate-200 dark:border-slate-800">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#804DF2] dark:text-[#a782f7] px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-900">
+        <header className="mb-6 sm:mb-10 pb-6 sm:pb-8 border-b border-slate-200 dark:border-slate-800">
+          <div className="flex items-center gap-2 mb-2.5 sm:mb-3">
+            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#804DF2] dark:text-[#a782f7] px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-900">
               {post.category}
             </span>
-            <span className="text-xs text-slate-400 flex items-center gap-1">
-              <LuClock size={13} /> {post.readTime}
+            <span className="text-[11px] sm:text-xs text-slate-400 flex items-center gap-1">
+              <LuClock size={12} /> {post.readTime}
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-snug sm:leading-tight mb-3 sm:mb-4">
             {post.title}
           </h1>
 
-          <div className="flex items-center gap-4 text-xs sm:text-sm text-slate-500 pt-2">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-slate-500 pt-1">
             <span>By <strong className="text-slate-800 dark:text-slate-200">{post.author.name}</strong></span>
             <span>•</span>
             <span className="flex items-center gap-1">
-              <LuCalendar size={14} /> {post.publishedDate}
+              <LuCalendar size={13} /> {post.publishedDate}
             </span>
           </div>
         </header>
 
         {/* High-Converting Embedded Tool Callout Box */}
         {post.relatedTool && (
-          <div className="mb-10 p-6 sm:p-7 rounded-3xl bg-[#804DF2] text-white shadow-xl shadow-[#804DF2]/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="mb-8 sm:mb-10 p-4 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#804DF2] text-white shadow-xl shadow-[#804DF2]/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
             <div>
-              <span className="text-xs uppercase font-bold tracking-wider opacity-90 block mb-1">
+              <span className="text-[11px] sm:text-xs uppercase font-bold tracking-wider opacity-90 block mb-1">
                 Featured Free Tool
               </span>
-              <h3 className="text-xl sm:text-2xl font-black">{post.relatedTool.name}</h3>
-              <p className="text-sm opacity-90 mt-1 max-w-xl">
+              <h3 className="text-lg sm:text-2xl font-black">{post.relatedTool.name}</h3>
+              <p className="text-xs sm:text-sm opacity-90 mt-1 max-w-xl">
                 {post.relatedTool.description}
               </p>
             </div>
             <Link
               to={post.relatedTool.href}
-              className="px-6 py-3 rounded-2xl bg-white text-[#804DF2] hover:bg-purple-50 font-bold text-sm shadow-md transition-all flex-shrink-0"
+              className="w-full sm:w-auto text-center px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl bg-white text-[#804DF2] hover:bg-purple-50 font-bold text-sm shadow-md transition-all flex-shrink-0"
             >
               Launch Tool Now →
             </Link>
